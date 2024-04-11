@@ -18,25 +18,26 @@ Aplicação em desenvolvimento desde 28/03/2024*
 
 [6 - Endpoints](#_Endpoint)
 
-a
+
 <a id="_Integrantes"></a>
 
 # 1 - Integrantes
+    RM: 551401  Nome: Ana Luiza Fontes Franco
+    RM: 551856  Nome: Beatriz Fon Ehnert de Santi
     RM: 552295  Nome: Matheus Felipe Camarinha Duarte
     RM: 98672   Nome: Mirelly Ribeiro Azevedo
-    RM: 551856  Nome: Beatriz Fon Ehnert de Santi
-    RM: 551401  Nome: Ana Luiza Fontes Franco
-
 
 <a id="_Instruicoes"></a>
 
 # 2 - Instrucoes de como rodar a aplicação
 
-
 <a id="_Diagramas"></a>
 
 # 3 - Diagramas
+## Diagrama de classe
+![diagrama.jpg](documentacao%2Fdiagramas%2Fdiagrama.jpg)
 
+## Diagrama de entidade e relacionamento (DER)
 
 <a id="_Picth"></a>
 
