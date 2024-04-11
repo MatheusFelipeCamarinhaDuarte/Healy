@@ -2,7 +2,6 @@ package br.com.fiap.healy.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
 
 @Data
@@ -11,13 +10,13 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "TB_HEALY_PESSOA", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_TB_HEALY_PESSOA",columnNames = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PESSOA", columnNames = {
                 "EMAIL"
         })
 })
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "SQ_HEALY_PESSOA")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_HEALY_PESSOA")
     @SequenceGenerator(name = "SQ_HEALY_PESSOA")
     @Column(name = "ID_PESSOA")
     private Long id;

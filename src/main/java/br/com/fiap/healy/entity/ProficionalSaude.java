@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -17,7 +16,7 @@ import java.util.Set;
 @Table(name = "TB_HEALY_PROFICIONAL_SAUDE")
 public class ProficionalSaude {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "SQ_PROFICIONAL_SAUDE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PROFICIONAL_SAUDE")
     @SequenceGenerator(name = "SQ_PROFICIONAL_SAUDE", sequenceName = "SQ_PROFICIONAL_SAUDE", allocationSize = 1)
     @Column(name = "ID_PROFICIONAL_SAUDE")
     private Long id;
@@ -31,7 +30,7 @@ public class ProficionalSaude {
     @Column(name = "DOCUMENTO")
     private String crm;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",
@@ -41,7 +40,7 @@ public class ProficionalSaude {
     )
     private Pessoa pessoa;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "TB_HEALY_PROFICIONAL_PACIENTE",
             joinColumns = {

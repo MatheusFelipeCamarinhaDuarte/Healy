@@ -39,7 +39,7 @@ public class Paciente {
     )
     private Pessoa pessoa;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(
             name = "PLANO",
             referencedColumnName = "ID_PLANO_SAUDE",

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -17,12 +16,12 @@ import java.util.Set;
 @Table(name = "TB_HEALY_PLANO_SAUDE")
 public class PlanoSaude {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "SQ_PLANO_SAUDE")
-    @SequenceGenerator(name = "SQ_PLANO_SAUDE",sequenceName = "SQ_PLANO_SAUDE",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PLANO_SAUDE")
+    @SequenceGenerator(name = "SQ_PLANO_SAUDE", sequenceName = "SQ_PLANO_SAUDE", allocationSize = 1)
     @Column(name = "ID_PLANO_SAUDE")
     private Long id;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "TB_HEALY_PLANO_AREA_MEDICA",
             joinColumns = {
