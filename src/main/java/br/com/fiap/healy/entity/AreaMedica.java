@@ -1,4 +1,4 @@
 package br.com.fiap.healy.entity;
 
-public class HistoricoMedicoEntity {
+public class AreaMedica {
 }

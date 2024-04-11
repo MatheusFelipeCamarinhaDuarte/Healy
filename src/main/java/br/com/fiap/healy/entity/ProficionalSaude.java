@@ -1,4 +1,4 @@
 package br.com.fiap.healy.entity;
 
-public class PacienteEntity {
+public class ProficionalSaude {
 }
