@@ -11,7 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_HEALY_PACIENTE")
+@Table(name = "TB_HEALY_PACIENTE", uniqueConstraints = {
+        @UniqueConstraint( name = "UK_TB_HEALY_PACIENTE_USER", columnNames = {
+                "USER_PACIENTE"
+        }),
+        @UniqueConstraint(name = "UK_TB_HEALY_PACIENTE_CPF",columnNames = {
+                "CPF_PACIENTE"
+        })
+})
 public class Paciente {
 
     @Id
@@ -26,7 +33,7 @@ public class Paciente {
     @Column(name = "SENHA_PACIENTE")
     private String senhaPaciente;
 
-    @Column(name = "CPF")
+    @Column(name = "CPF_PACIENTE")
     private String cpf;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
@@ -48,6 +55,16 @@ public class Paciente {
             )
     )
     private PlanoSaude plano;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @JoinColumn(
+            name = "HISTORICO_MEDICO",
+            referencedColumnName = "ID_HISTORICO_MEDICO",
+            foreignKey = @ForeignKey(
+                    name = "FK_PACIENTE_HISTORICO"
+            )
+    )
+    private HistoricoMedico historico;
 
 
 }
