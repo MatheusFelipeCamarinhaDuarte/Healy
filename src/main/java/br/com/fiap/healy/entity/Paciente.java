@@ -21,10 +21,10 @@ public class Paciente {
     private Long id;
 
     @Column(name = "USER_PACIENTE")
-    private String user;
+    private String userPaciente;
 
     @Column(name = "SENHA_PACIENTE")
-    private String senha;
+    private String senhaPaciente;
 
     @Column(name = "CPF")
     private String cpf;
