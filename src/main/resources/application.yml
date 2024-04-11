@@ -1,0 +1,7 @@
+server:
+  port: 80
+spring:
+  profiles:
+    active: desenvolvimento
+  thymeleaf:
+    check-template-location: false
