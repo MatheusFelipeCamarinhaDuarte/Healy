@@ -13,7 +13,14 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "TB_HEALY_PROFICIONAL_SAUDE")
+@Table(name = "TB_HEALY_PROFICIONAL_SAUDE", uniqueConstraints = {
+        @UniqueConstraint( name = "UK_TB_HEALY_PROFICIONAL_SAUDE_USER", columnNames = {
+                "USER_PROFICIONAL"
+        }),
+        @UniqueConstraint(name = "UK_TB_HEALY_PROFICIONAL_SAUDE_DOCUMENTO",columnNames = {
+                "DOCUMENTO"
+        })
+})
 public class ProficionalSaude {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PROFICIONAL_SAUDE")
