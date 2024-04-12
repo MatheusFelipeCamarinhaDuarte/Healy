@@ -28,7 +28,7 @@ public class Pessoa {
     private String email;
 
     @Column(name = "DT_NASCIMENTO")
-    private LocalDate nasciemento;
+    private LocalDate nascimento;
 
     @Column(name = "TELEFONE")
     private String telefone;

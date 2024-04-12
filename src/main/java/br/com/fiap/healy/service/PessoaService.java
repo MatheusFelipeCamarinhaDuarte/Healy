@@ -20,7 +20,7 @@ public class PessoaService implements ServiceDTO<Pessoa,PessoaRequest,PessoaResp
         return Pessoa.builder()
                 .nome(pessoaRequest.nome())
                 .email(pessoaRequest.email())
-                .nasciemento(pessoaRequest.nascimento())
+                .nascimento(pessoaRequest.nascimento())
                 .telefone(pessoaRequest.telefone())
                 .build();
     }
@@ -31,7 +31,7 @@ public class PessoaService implements ServiceDTO<Pessoa,PessoaRequest,PessoaResp
                 .id(pessoa.getId())
                 .nome(pessoa.getNome())
                 .email(pessoa.getEmail())
-                .nascimento(pessoa.getNasciemento())
+                .nascimento(pessoa.getNascimento())
                 .telefone(pessoa.getTelefone())
                 .build();
     }
