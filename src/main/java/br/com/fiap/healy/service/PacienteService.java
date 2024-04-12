@@ -32,12 +32,12 @@ public class PacienteService implements ServiceDTO<Paciente, PacienteRequest, Pa
         if (Objects.isNull(pessoa)) return null;
 
         PlanoSaude planoSaude = null;
-        if (Objects.nonNull(pacienteRequest.pessoa().id())) {
+        if (Objects.nonNull(pacienteRequest.plano().id())) {
             planoSaude = planoSaudeService.findById(pacienteRequest.plano().id());
         }
 
         HistoricoMedico historicoMedico = null;
-        if (Objects.nonNull(pacienteRequest.pessoa().id())) {
+        if (Objects.nonNull(pacienteRequest.historico().id())) {
             historicoMedico = historicoMedicoService.findById(pacienteRequest.historico().id());
         }
 
@@ -53,7 +53,20 @@ public class PacienteService implements ServiceDTO<Paciente, PacienteRequest, Pa
 
     @Override
     public PacienteResponse toResponse(Paciente paciente) {
-        return null;
+        if (Objects.isNull(paciente)) return null;
+        var pessoa = pessoaService.toResponse( paciente.getPessoa() );
+        var plano = planoSaudeService.toResponse( paciente.getPlano() );
+        var historico = historicoMedicoService.toResponse( paciente.getHistorico() );
+
+        return PacienteResponse.builder()
+                .id(paciente.getId())
+                .userPaciente(paciente.getUserPaciente())
+                .senhaPaciente(paciente.getSenhaPaciente())
+                .cpf(paciente.getCpf())
+                .pessoa(pessoa)
+                .plano(plano)
+                .historico(historico)
+                .build();
     }
 
     @Override

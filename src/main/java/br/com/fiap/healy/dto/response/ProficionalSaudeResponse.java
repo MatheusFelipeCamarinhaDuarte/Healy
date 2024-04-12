@@ -2,15 +2,15 @@ package br.com.fiap.healy.dto.response;
 
 import lombok.Builder;
 
+import java.util.Collection;
+
 @Builder
-public record PacienteResponse(
+public record ProficionalSaudeResponse(
         Long id,
         String userPaciente,
         String senhaPaciente,
-        String cpf,
+        String crm,
         PessoaResponse pessoa,
-        PlanoSaudeResponse plano,
-        HistoricoMedicoResponse historico
-
+        Collection<PacienteResponse> pacientes
 ) {
 }
