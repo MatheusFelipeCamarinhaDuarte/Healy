@@ -28,6 +28,7 @@ public class HistoricoMedicoService implements ServiceDTO<HistoricoMedico, Histo
     @Override
     public HistoricoMedicoResponse toResponse(HistoricoMedico historicoMedico) {
         return HistoricoMedicoResponse.builder()
+                .id(historicoMedico.getId())
                 .doencas(historicoMedico.getDoencas())
                 .doencasAnteriores(historicoMedico.getDoencasAnteriores())
                 .alergias(historicoMedico.getAlergias())
