@@ -21,21 +21,21 @@ public class PlanoSaudeResource {
     private PlanoSaudeService service;
 
     @GetMapping
-    public List<PlanoSaudeResponse> findAll(){
+    public List<PlanoSaudeResponse> findAll() {
         return service.findAll().stream().map(service::toResponse).toList();
     }
 
     @GetMapping(value = "/{id}")
-    public PlanoSaudeResponse findById(@PathVariable Long id){
+    public PlanoSaudeResponse findById(@PathVariable Long id) {
         return service.toResponse(service.findById(id));
     }
 
     @Transactional
     @PostMapping
-    public ResponseEntity<PlanoSaudeResponse> save(@RequestBody PlanoSaudeRequest planoSaudeRequest){
+    public ResponseEntity<PlanoSaudeResponse> save(@RequestBody PlanoSaudeRequest planoSaudeRequest) {
         var saved = service
-                        .save(service
-                                .toEntity(planoSaudeRequest));
+                .save(service
+                        .toEntity(planoSaudeRequest));
         var response = service.toResponse(saved);
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()

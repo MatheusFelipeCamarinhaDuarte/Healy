@@ -11,9 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 @Service
-public class HistoricoMedicoService implements ServiceDTO<HistoricoMedico, HistoricoMedicoRequest, HistoricoMedicoResponse>{
+public class HistoricoMedicoService implements ServiceDTO<HistoricoMedico, HistoricoMedicoRequest, HistoricoMedicoResponse> {
     @Autowired
     private HistoricoMedicoRepository repo;
+
     @Override
     public HistoricoMedico toEntity(HistoricoMedicoRequest historicoMedicoRequest) {
         return HistoricoMedico.builder()

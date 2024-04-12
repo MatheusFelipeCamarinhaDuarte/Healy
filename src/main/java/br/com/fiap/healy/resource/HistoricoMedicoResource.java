@@ -23,11 +23,11 @@ public class HistoricoMedicoResource {
 
     @GetMapping
     public Collection<HistoricoMedicoResponse> findAll(
-            @RequestParam(name = "doecas",required = false) String doecas,
-            @RequestParam(name = "doencasAnteriores",required = false) String doencasAnteriores,
-            @RequestParam(name = "alergias",required = false) String alergias,
-            @RequestParam(name = "medicamento",required = false) String medicamento
-    ){
+            @RequestParam(name = "doecas", required = false) String doecas,
+            @RequestParam(name = "doencasAnteriores", required = false) String doencasAnteriores,
+            @RequestParam(name = "alergias", required = false) String alergias,
+            @RequestParam(name = "medicamento", required = false) String medicamento
+    ) {
 
         HistoricoMedico historicoMedico = HistoricoMedico.builder()
                 .doencas(doecas)
@@ -41,19 +41,20 @@ public class HistoricoMedicoResource {
                 .withIgnoreCase()
                 .withIgnoreNullValues();
 
-        Example<HistoricoMedico> example = Example.of(historicoMedico,matcher);
+        Example<HistoricoMedico> example = Example.of(historicoMedico, matcher);
 
         return service.findAll(example).stream().map(service::toResponse).toList();
 
     }
+
     @GetMapping(value = "/{id}")
-    public HistoricoMedicoResponse findById(@PathVariable Long id){
+    public HistoricoMedicoResponse findById(@PathVariable Long id) {
         return service.toResponse(service.findById(id));
     }
 
     @Transactional
     @PostMapping
-    public ResponseEntity<HistoricoMedicoResponse> save(@RequestBody @Valid HistoricoMedicoRequest historicoMedicoRequest){
+    public ResponseEntity<HistoricoMedicoResponse> save(@RequestBody @Valid HistoricoMedicoRequest historicoMedicoRequest) {
         var saved = service.save(service.toEntity(historicoMedicoRequest));
 
         var response = service.toResponse(saved);
