@@ -35,7 +35,7 @@ public class PacienteResource {
     public Collection<PacienteResponse> findAll(
             @RequestParam(name = "userPaciente") String userPaciente,
             @RequestParam(name = "cpf") String cpf
-    ){
+    ) {
         Paciente paciente = Paciente.builder()
                 .userPaciente(userPaciente)
                 .cpf(cpf)
@@ -45,7 +45,7 @@ public class PacienteResource {
                 .withIgnoreNullValues()
                 .withIgnoreCase();
 
-        Example<Paciente> example = Example.of(paciente,matcher);
+        Example<Paciente> example = Example.of(paciente, matcher);
 
         var entity = service.findAll(example);
 
@@ -54,14 +54,14 @@ public class PacienteResource {
     }
 
     @GetMapping(value = "/{id}")
-    public PacienteResponse findById(@PathVariable Long id){
+    public PacienteResponse findById(@PathVariable Long id) {
         return service.toResponse(service.findById(id));
     }
 
     @Transactional
     @PostMapping
-    public ResponseEntity<PacienteResponse> save(@RequestBody @Valid PacienteRequest pacienteRequest){
-        var saved =service.save(service.toEntity(pacienteRequest));
+    public ResponseEntity<PacienteResponse> save(@RequestBody @Valid PacienteRequest pacienteRequest) {
+        var saved = service.save(service.toEntity(pacienteRequest));
 
         var response = service.toResponse(saved);
 

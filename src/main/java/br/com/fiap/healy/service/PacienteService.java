@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Service
-public class PacienteService implements ServiceDTO<Paciente, PacienteRequest, PacienteResponse>{
+public class PacienteService implements ServiceDTO<Paciente, PacienteRequest, PacienteResponse> {
     @Autowired
     private PacienteRepository repo;
     @Autowired
@@ -24,20 +24,21 @@ public class PacienteService implements ServiceDTO<Paciente, PacienteRequest, Pa
     private PlanoSaudeService planoSaudeService;
     @Autowired
     private HistoricoMedicoService historicoMedicoService;
+
     @Override
     public Paciente toEntity(PacienteRequest pacienteRequest) {
-        if (Objects.isNull( pacienteRequest.pessoa().id())) return null;
+        if (Objects.isNull(pacienteRequest.pessoa().id())) return null;
         var pessoa = pessoaService.findById(pacienteRequest.pessoa().id());
-        if (Objects.isNull( pessoa )) return null;
+        if (Objects.isNull(pessoa)) return null;
 
         PlanoSaude planoSaude = null;
-        if (Objects.nonNull( pacienteRequest.pessoa().id() )) {
-            planoSaude = planoSaudeService.findById( pacienteRequest.plano().id() );
+        if (Objects.nonNull(pacienteRequest.pessoa().id())) {
+            planoSaude = planoSaudeService.findById(pacienteRequest.plano().id());
         }
 
         HistoricoMedico historicoMedico = null;
-        if (Objects.nonNull( pacienteRequest.pessoa().id() )) {
-            historicoMedico = historicoMedicoService.findById( pacienteRequest.historico().id() );
+        if (Objects.nonNull(pacienteRequest.pessoa().id())) {
+            historicoMedico = historicoMedicoService.findById(pacienteRequest.historico().id());
         }
 
         return Paciente.builder()
