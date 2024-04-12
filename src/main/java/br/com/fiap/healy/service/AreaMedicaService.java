@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
 @Service
 public class AreaMedicaService implements ServiceDTO<AreaMedica, AreaMedicaRequest, AreaMedicaResponse> {
     @Autowired

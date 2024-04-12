@@ -9,8 +9,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
 @Service
-public class PessoaService implements ServiceDTO<Pessoa,PessoaRequest,PessoaResponse> {
+public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaResponse> {
 
     @Autowired
     private PessoaRepository repo;
@@ -43,7 +44,7 @@ public class PessoaService implements ServiceDTO<Pessoa,PessoaRequest,PessoaResp
 
     @Override
     public Collection<Pessoa> findAll(Example<Pessoa> example) {
-        return repo.findAll( example );
+        return repo.findAll(example);
     }
 
     @Override

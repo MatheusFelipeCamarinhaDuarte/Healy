@@ -24,8 +24,8 @@ public class AreaMedicaResource {
 
     @GetMapping
     public List<AreaMedicaResponse> findAll(
-            @RequestParam(name = "nome",required = false) String nome
-    ){
+            @RequestParam(name = "nome", required = false) String nome
+    ) {
         AreaMedica area = AreaMedica.builder()
                 .nome(nome)
                 .build();
@@ -35,7 +35,7 @@ public class AreaMedicaResource {
                 .withIgnoreCase()
                 .withIgnoreNullValues();
 
-        Example<AreaMedica> example = Example.of(area,macther);
+        Example<AreaMedica> example = Example.of(area, macther);
 
         var entity = service.findAll(example);
 
@@ -43,13 +43,13 @@ public class AreaMedicaResource {
     }
 
     @GetMapping(value = "/{id}")
-    public AreaMedicaResponse findById(@PathVariable Long id){
+    public AreaMedicaResponse findById(@PathVariable Long id) {
         return service.toResponse(service.findById(id));
     }
 
     @Transactional
     @PostMapping
-    public ResponseEntity<AreaMedicaResponse> save(@RequestBody @Valid AreaMedicaRequest area){
+    public ResponseEntity<AreaMedicaResponse> save(@RequestBody @Valid AreaMedicaRequest area) {
         var entity = service.toEntity(area);
         var saved = service.save(entity);
         var response = service.toResponse(saved);
@@ -61,9 +61,6 @@ public class AreaMedicaResource {
 
         return ResponseEntity.created(uri).body(response);
     }
-
-
-
 
 
 }
