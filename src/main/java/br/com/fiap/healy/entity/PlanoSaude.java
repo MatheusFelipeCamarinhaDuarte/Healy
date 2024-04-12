@@ -37,7 +37,7 @@ public class PlanoSaude {
             inverseJoinColumns = {
                     @JoinColumn(
                             name = "AREA_MEDICA",
-                            referencedColumnName = "ID_PASSAGEIRO",
+                            referencedColumnName = "ID_AREA_MEDICA",
                             foreignKey = @ForeignKey(
                                     name = "FK_AREA_MEDICA_PLANO"
                             )
