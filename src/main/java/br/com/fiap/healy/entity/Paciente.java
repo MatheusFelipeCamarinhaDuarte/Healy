@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "TB_HEALY_PACIENTE", uniqueConstraints = {
-        @UniqueConstraint( name = "UK_TB_HEALY_PACIENTE_USER", columnNames = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PACIENTE_USER", columnNames = {
                 "USER_PACIENTE"
         }),
-        @UniqueConstraint(name = "UK_TB_HEALY_PACIENTE_CPF",columnNames = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PACIENTE_CPF", columnNames = {
                 "CPF_PACIENTE"
         })
 })
@@ -56,7 +56,7 @@ public class Paciente {
     )
     private PlanoSaude plano;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(
             name = "HISTORICO_MEDICO",
             referencedColumnName = "ID_HISTORICO_MEDICO",

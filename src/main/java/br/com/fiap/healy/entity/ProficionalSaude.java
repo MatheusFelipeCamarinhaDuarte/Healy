@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -14,10 +15,10 @@ import java.util.Set;
 @Entity
 @Builder
 @Table(name = "TB_HEALY_PROFICIONAL_SAUDE", uniqueConstraints = {
-        @UniqueConstraint( name = "UK_TB_HEALY_PROFICIONAL_SAUDE_USER", columnNames = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PROFICIONAL_SAUDE_USER", columnNames = {
                 "USER_PROFICIONAL"
         }),
-        @UniqueConstraint(name = "UK_TB_HEALY_PROFICIONAL_SAUDE_DOCUMENTO",columnNames = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PROFICIONAL_SAUDE_DOCUMENTO", columnNames = {
                 "DOCUMENTO"
         })
 })

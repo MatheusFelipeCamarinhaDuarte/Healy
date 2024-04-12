@@ -20,7 +20,7 @@ public class HistoricoMedico {
     private Long id;
 
     @Column(name = "DOENCAS")
-    private String Doencas;
+    private String doencas;
 
     @Column(name = "DOENCAS_ANTERIORES")
     private String doencasAnteriores;
