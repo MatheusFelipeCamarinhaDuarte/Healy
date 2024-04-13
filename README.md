@@ -30,6 +30,19 @@ Aplicação em desenvolvimento desde 28/03/2024*
 <a id="_Instruicoes"></a>
 
 # 2 - Instrucoes de como rodar a aplicação
+Enrtar em:
+
+src > main > java > br.com.fiap.healy
+
+e executar o arquivo HealyApplication.Java
+
+O projeto estará fluindo a partir dai!
+agora basta retirar o arquivo do postman que foi exportado para:
+
+documentacao > requisicoes-json
+
+lá dentro encontrará o arquivo com os GET e POSTs
+sendo assim, basta rodar no postman.
 
 <a id="_Diagramas"></a>
 
@@ -42,7 +55,7 @@ Aplicação em desenvolvimento desde 28/03/2024*
 <a id="_Picth"></a>
 
 # 4 - Nossa proposta
-[Veja aqui!](#https://www.youtube.com/)
+[Veja aqui!](#https://www.youtube.com)
 
 <a id="_Explicacoes"></a>
 
