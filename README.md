@@ -26,6 +26,7 @@ Aplicação em desenvolvimento desde 28/03/2024*
     RM: 551856  Nome: Beatriz Fon Ehnert de Santi
     RM: 552295  Nome: Matheus Felipe Camarinha Duarte
     RM: 98672   Nome: Mirelly Ribeiro Azevedo
+    RM: 99708   Nome: Gabriel Francisco Lobo
 
 <a id="_Instruicoes"></a>
 
