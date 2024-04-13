@@ -71,6 +71,6 @@ public class ProficionalSaude {
             }
 
     )
-    private Set<Paciente> paciente = new LinkedHashSet<>();
+    private Set<Paciente> pacientes = new LinkedHashSet<>();
 
 }

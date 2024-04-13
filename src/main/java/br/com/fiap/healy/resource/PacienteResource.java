@@ -24,26 +24,20 @@ import java.util.List;
 public class PacienteResource {
     @Autowired
     private PacienteService service;
-    @Autowired
-    private PessoaService pessoaService;
-    @Autowired
-    private PlanoSaudeService planoSaudeService;
-    @Autowired
-    private HistoricoMedicoService historicoMedicoService;
 
     @GetMapping
     public Collection<PacienteResponse> findAll(
-            @RequestParam(name = "userPaciente") String userPaciente,
-            @RequestParam(name = "cpf") String cpf
-    ) {
+            @RequestParam(name = "userPaciente", required = false) String userPaciente,
+            @RequestParam(name = "cpf", required = false) String cpf
+    ){
         Paciente paciente = Paciente.builder()
                 .userPaciente(userPaciente)
                 .cpf(cpf)
                 .build();
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()
-                .withIgnoreNullValues()
-                .withIgnoreCase();
+                .withIgnoreCase()
+                .withIgnoreNullValues();
 
         Example<Paciente> example = Example.of(paciente, matcher);
 

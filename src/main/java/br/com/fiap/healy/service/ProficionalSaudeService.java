@@ -41,11 +41,11 @@ public class ProficionalSaudeService implements ServiceDTO<ProficionalSaude, Pro
         });
 
         return ProficionalSaude.builder()
-                .userMedico(proficionalSaudeRequest.userPaciente())
-                .senhaMedico(proficionalSaudeRequest.senhaPaciente())
+                .userMedico(proficionalSaudeRequest.userMedico())
+                .senhaMedico(proficionalSaudeRequest.senhaMedico())
                 .crm(proficionalSaudeRequest.crm())
                 .pessoa(pessoa)
-                .paciente(pacientes)
+                .pacientes(pacientes)
                 .build();
     }
 
@@ -56,7 +56,7 @@ public class ProficionalSaudeService implements ServiceDTO<ProficionalSaude, Pro
 
         Set<PacienteResponse> pacientes = new LinkedHashSet<>();
 
-        proficionalSaude.getPaciente().forEach(paciente -> {
+        proficionalSaude.getPacientes().forEach(paciente -> {
             if (Objects.nonNull(paciente.getId())) {
                 var p = pacienteService.toResponse(pacienteService.findById(paciente.getId()));
                 if (p != null) {
@@ -66,8 +66,8 @@ public class ProficionalSaudeService implements ServiceDTO<ProficionalSaude, Pro
         });
         return ProficionalSaudeResponse.builder()
                 .id(proficionalSaude.getId())
-                .userPaciente(proficionalSaude.getUserMedico())
-                .senhaPaciente(proficionalSaude.getSenhaMedico())
+                .userMedico(proficionalSaude.getUserMedico())
+                .senhaMedico(proficionalSaude.getSenhaMedico())
                 .crm(proficionalSaude.getCrm())
                 .pessoa(pessoa)
                 .pacientes(pacientes)

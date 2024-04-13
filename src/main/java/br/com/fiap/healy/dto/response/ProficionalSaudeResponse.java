@@ -7,8 +7,8 @@ import java.util.Collection;
 @Builder
 public record ProficionalSaudeResponse(
         Long id,
-        String userPaciente,
-        String senhaPaciente,
+        String userMedico,
+        String senhaMedico,
         String crm,
         PessoaResponse pessoa,
         Collection<PacienteResponse> pacientes

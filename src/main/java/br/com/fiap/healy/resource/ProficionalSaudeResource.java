@@ -22,18 +22,14 @@ import java.util.Collection;
 public class ProficionalSaudeResource {
     @Autowired
     private ProficionalSaudeService service;
-    @Autowired
-    private PessoaService pessoaService;
-    @Autowired
-    private PacienteService pacienteService;
 
     @GetMapping
     public Collection<ProficionalSaudeResponse> findAll(
-            @RequestParam(name = "userProficionalSaude") String userProficional,
-            @RequestParam(name = "crm") String crm
+            @RequestParam(name = "userMedico", required = false) String userMedico,
+            @RequestParam(name = "crm", required = false) String crm
     ){
         ProficionalSaude proficionalSaude = ProficionalSaude.builder()
-                .userMedico(userProficional)
+                .userMedico(userMedico)
                 .crm(crm)
                 .build();
         ExampleMatcher matcher = ExampleMatcher

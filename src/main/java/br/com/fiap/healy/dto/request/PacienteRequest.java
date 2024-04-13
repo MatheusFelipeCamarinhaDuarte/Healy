@@ -12,7 +12,6 @@ public record PacienteRequest(
         @NotNull(message = "O atributo CPF não pode ser nulo")
         @CPF(message = "O formato não corresponde a um CPF")
         String cpf,
-        @NotNull(message = "O atributo pessoa não pode ser nulo")
         AbstractRequest pessoa,
         AbstractRequest plano,
 

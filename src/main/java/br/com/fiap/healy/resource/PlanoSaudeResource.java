@@ -20,8 +20,7 @@ public class PlanoSaudeResource {
 
     @Autowired
     private PlanoSaudeService service;
-    @Autowired
-    private AreaMedicaService areaMedicaService;
+
 
     @GetMapping
     public List<PlanoSaudeResponse> findAll() {
@@ -38,14 +37,6 @@ public class PlanoSaudeResource {
     public ResponseEntity<PlanoSaudeResponse> save(@RequestBody PlanoSaudeRequest planoSaudeRequest) {
 
         var entity = service.toEntity(planoSaudeRequest);
-
-        Set<AreaMedica> areas  = new LinkedHashSet<>();
-        planoSaudeRequest.area().forEach( area ->{
-            var a = areaMedicaService.findById(area.id());
-            areas.add(a);
-        });
-        if (Objects.nonNull( planoSaudeRequest )) entity.setAreaMedica(areas);
-
 
         var saved = service.save(entity);
 
