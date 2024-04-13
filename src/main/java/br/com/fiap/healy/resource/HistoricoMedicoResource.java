@@ -55,7 +55,9 @@ public class HistoricoMedicoResource {
     @Transactional
     @PostMapping
     public ResponseEntity<HistoricoMedicoResponse> save(@RequestBody @Valid HistoricoMedicoRequest historicoMedicoRequest) {
-        var saved = service.save(service.toEntity(historicoMedicoRequest));
+        var entity = service.toEntity(historicoMedicoRequest);
+
+        var saved = service.save(entity);
 
         var response = service.toResponse(saved);
 

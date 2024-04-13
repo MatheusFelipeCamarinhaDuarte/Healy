@@ -56,7 +56,9 @@ public class ProficionalSaudeResource {
     @Transactional
     @PostMapping
     public ResponseEntity<ProficionalSaudeResponse> save(@RequestBody @Valid ProficionalSaudeRequest proficionalSaudeRequest){
-        var saved = service.save(service.toEntity(proficionalSaudeRequest));
+        var entity = service.toEntity(proficionalSaudeRequest);
+
+        var saved = service.save(entity);
 
         var response = service.toResponse(saved);
 

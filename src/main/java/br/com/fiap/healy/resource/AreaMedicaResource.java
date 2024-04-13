@@ -51,8 +51,11 @@ public class AreaMedicaResource {
     @PostMapping
     public ResponseEntity<AreaMedicaResponse> save(@RequestBody @Valid AreaMedicaRequest area) {
         var entity = service.toEntity(area);
+
         var saved = service.save(entity);
+
         var response = service.toResponse(saved);
+
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")

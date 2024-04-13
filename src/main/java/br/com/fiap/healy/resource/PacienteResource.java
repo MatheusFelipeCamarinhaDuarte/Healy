@@ -61,7 +61,10 @@ public class PacienteResource {
     @Transactional
     @PostMapping
     public ResponseEntity<PacienteResponse> save(@RequestBody @Valid PacienteRequest pacienteRequest) {
-        var saved = service.save(service.toEntity(pacienteRequest));
+
+        var entity = service.toEntity(pacienteRequest);
+
+        var saved = service.save(entity);
 
         var response = service.toResponse(saved);
 
