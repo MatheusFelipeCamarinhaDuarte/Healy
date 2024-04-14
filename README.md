@@ -132,6 +132,35 @@ Guarda uma lista dos pacientes atuais.
 <a id="_Endpoint"></a>
 
 # 6 -  Endpoints
+### Área médica
+    localhost/area-medica - GET;
+    localhost/area-medica - POST;
+    localhost/area-medica/{id} - GET
+
+### Histórico médico
+    localhost/historico-medico - GET;
+    localhost/historico-medico - POST;
+    localhost/historico-medico/{id} - GET
+
+### Paciente
+    localhost/paciente - GET;
+    localhost/paciente - POST;
+    localhost/paciente/{id} - GET
+
+### Pessoa
+    localhost/pessoa - GET;
+    localhost/pessoa - POST;
+    localhost/pessoa/{id} - GET
+
+### Plano de saúde
+    localhost/plano-saude - GET;
+    localhost/plano-saude - POST;
+    localhost/plano-saude/{id} - GET
+
+### Proficional de saúde
+    localhost/proficional-saude - GET;
+    localhost/proficional-saude - POST;
+    localhost/proficional-saude/{id} - GET
 
 
 *NOTA¹: Tive  problemas com o git e tive que passar o projeto parte por parte novamente.
