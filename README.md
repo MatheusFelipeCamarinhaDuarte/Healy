@@ -59,9 +59,7 @@ sendo assim, basta rodar no postman.
 <a id="_Picth"></a>
 
 # 4 - Nossa proposta
-[Veja aqui nosso vídeo!](#https://www.youtube.com)
-
-LINK
+[LINK](https://www.youtube.com/watch?v=5i9sSBTHdaI)
 
 <a id="_Explicacoes"></a>
 
