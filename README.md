@@ -50,11 +50,15 @@ sendo assim, basta rodar no postman.
 
 # 3 - Diagramas
 ## Diagrama de classe
-![diagrama.jpg](documentacao%2Fdiagramas%2Fdiagrama.jpg)
+![diagrama1.jpg](documentacao%2Fdiagramas%2Fdiagrama.jpg)
 
 ## Diagrama de entidade e relacionamento (DER)
 
-![diagrama.jpg](documentacao%2Fdiagramas%2Fmodelo-der-1.jpeg)
+![diagrama2.jpg](documentacao%2Fdiagramas%2Fmodelo-der.jpeg)
+
+## Diagrama (MER)
+
+![diagrama3.jpg](documentacao%2Fdiagramas%2Fmodelo-mer.jpeg)
 
 <a id="_Picth"></a>
 
