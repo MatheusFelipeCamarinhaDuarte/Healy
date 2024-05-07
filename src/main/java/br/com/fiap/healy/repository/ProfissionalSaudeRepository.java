@@ -1,9 +1,9 @@
 package br.com.fiap.healy.repository;
 
-import br.com.fiap.healy.entity.ProficionalSaude;
+import br.com.fiap.healy.entity.ProfissionalSaude;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProficionalSaudeRepository extends JpaRepository<ProficionalSaude,Long> {
+public interface ProfissionalSaudeRepository extends JpaRepository<ProfissionalSaude,Long> {
 }

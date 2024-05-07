@@ -1,11 +1,11 @@
 package br.com.fiap.healy.resource;
 
-import br.com.fiap.healy.dto.request.ProficionalSaudeRequest;
-import br.com.fiap.healy.dto.response.ProficionalSaudeResponse;
-import br.com.fiap.healy.entity.ProficionalSaude;
+import br.com.fiap.healy.dto.request.ProfissionalSaudeRequest;
+import br.com.fiap.healy.dto.response.ProfissionalSaudeResponse;
+import br.com.fiap.healy.entity.ProfissionalSaude;
 import br.com.fiap.healy.service.PacienteService;
 import br.com.fiap.healy.service.PessoaService;
-import br.com.fiap.healy.service.ProficionalSaudeService;
+import br.com.fiap.healy.service.ProfissionalSaudeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -18,17 +18,17 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(value = "/proficional-saude")
-public class ProficionalSaudeResource {
+@RequestMapping(value = "/profissional-saude")
+public class ProfissionalSaudeResource {
     @Autowired
-    private ProficionalSaudeService service;
+    private ProfissionalSaudeService service;
 
     @GetMapping
-    public Collection<ProficionalSaudeResponse> findAll(
+    public Collection<ProfissionalSaudeResponse> findAll(
             @RequestParam(name = "userMedico", required = false) String userMedico,
             @RequestParam(name = "crm", required = false) String crm
     ){
-        ProficionalSaude proficionalSaude = ProficionalSaude.builder()
+        ProfissionalSaude profissionalSaude = ProfissionalSaude.builder()
                 .userMedico(userMedico)
                 .crm(crm)
                 .build();
@@ -37,7 +37,7 @@ public class ProficionalSaudeResource {
                 .withIgnoreCase()
                 .withIgnoreNullValues();
 
-        Example<ProficionalSaude> example = Example.of(proficionalSaude,matcher);
+        Example<ProfissionalSaude> example = Example.of(profissionalSaude,matcher);
 
         var entity = service.findAll(example);
 
@@ -45,14 +45,14 @@ public class ProficionalSaudeResource {
     }
 
     @GetMapping(value = "/{id}")
-    public ProficionalSaudeResponse findById(@PathVariable Long id){
+    public ProfissionalSaudeResponse findById(@PathVariable Long id){
         return  service.toResponse(service.findById(id));
     }
 
     @Transactional
     @PostMapping
-    public ResponseEntity<ProficionalSaudeResponse> save(@RequestBody @Valid ProficionalSaudeRequest proficionalSaudeRequest){
-        var entity = service.toEntity(proficionalSaudeRequest);
+    public ResponseEntity<ProfissionalSaudeResponse> save(@RequestBody @Valid ProfissionalSaudeRequest profissionalSaudeRequest){
+        var entity = service.toEntity(profissionalSaudeRequest);
 
         var saved = service.save(entity);
 

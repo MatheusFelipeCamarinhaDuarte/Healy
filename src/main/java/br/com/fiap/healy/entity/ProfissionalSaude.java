@@ -14,25 +14,25 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "TB_HEALY_PROFICIONAL_SAUDE", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_TB_HEALY_PROFICIONAL_SAUDE_USER", columnNames = {
-                "USER_PROFICIONAL"
+@Table(name = "TB_HEALY_PROFISSIONAL_SAUDE", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PROFISSIONAL_SAUDE_USER", columnNames = {
+                "USER_PROFISSIONAL"
         }),
-        @UniqueConstraint(name = "UK_TB_HEALY_PROFICIONAL_SAUDE_DOCUMENTO", columnNames = {
+        @UniqueConstraint(name = "UK_TB_HEALY_PROFISSIONAL_SAUDE_DOCUMENTO", columnNames = {
                 "DOCUMENTO"
         })
 })
-public class ProficionalSaude {
+public class ProfissionalSaude {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PROFICIONAL_SAUDE")
-    @SequenceGenerator(name = "SQ_PROFICIONAL_SAUDE", sequenceName = "SQ_PROFICIONAL_SAUDE", allocationSize = 1)
-    @Column(name = "ID_PROFICIONAL_SAUDE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PROFISSIONAL_SAUDE")
+    @SequenceGenerator(name = "SQ_PROFISSIONAL_SAUDE", sequenceName = "SQ_PROFISSIONAL_SAUDE", allocationSize = 1)
+    @Column(name = "ID_PROFISSIONAL_SAUDE")
     private Long id;
 
-    @Column(name = "USER_PROFICIONAL")
+    @Column(name = "USER_PROFISSIONAL")
     private String userMedico;
 
-    @Column(name = "SENHA_PROFICIONAL")
+    @Column(name = "SENHA_PROFISSIONAL")
     private String senhaMedico;
 
     @Column(name = "DOCUMENTO")
@@ -43,20 +43,20 @@ public class ProficionalSaude {
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",
             foreignKey = @ForeignKey(
-                    name = "FK_PROFICIONAL_PESSOA"
+                    name = "FK_PROFISSIONAL_PESSOA"
             )
     )
     private Pessoa pessoa;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
-            name = "TB_HEALY_PROFICIONAL_PACIENTE",
+            name = "TB_HEALY_PROFISSIONAL_PACIENTE",
             joinColumns = {
                     @JoinColumn(
-                            name = "PROFICIONAL",
-                            referencedColumnName = "ID_PROFICIONAL_SAUDE",
+                            name = "PROFISSIONAL",
+                            referencedColumnName = "ID_PROFISSIONAL_SAUDE",
                             foreignKey = @ForeignKey(
-                                    name = "FK_PROFICIONAL_DO_PACIENTE"
+                                    name = "FK_PROFISSIONAL_DO_PACIENTE"
                             )
                     )
             },
@@ -65,7 +65,7 @@ public class ProficionalSaude {
                             name = "PACIENTE",
                             referencedColumnName = "ID_PACIENTE",
                             foreignKey = @ForeignKey(
-                                    name = "FK_PACIENTE_DO_PROFICIONAL"
+                                    name = "FK_PACIENTE_DO_PROFISSIONAL"
                             )
                     )
             }

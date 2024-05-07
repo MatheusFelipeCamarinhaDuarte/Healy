@@ -5,7 +5,7 @@ import lombok.Builder;
 import java.util.Collection;
 
 @Builder
-public record ProficionalSaudeResponse(
+public record ProfissionalSaudeResponse(
         Long id,
         String userMedico,
         String senhaMedico,

@@ -10,7 +10,7 @@ import java.util.Collection;
  * @param <Request>  é um DTO de requisição
  * @param <Response> é um DTO de response
  */
-public interface ServiceDTO<Entity, Request, Response> {
+public interface    ServiceDTO<Entity, Request, Response> {
 
     /**
      * Este método converte um DTO de requisição para uma

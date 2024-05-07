@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.Collection;
 
-public record ProficionalSaudeRequest(
+public record ProfissionalSaudeRequest(
         @NotNull(message = "O atributo userPaciente não pode ser nulo")
         String userMedico,
 
