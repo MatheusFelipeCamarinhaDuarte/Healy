@@ -2,7 +2,8 @@
 ***Your healf AI***
 
 Aplicação em desenvolvimento desde 28/03/2024*
-
+### Link para o GIT
+https://github.com/MatheusFelipeCamarinhaDuarte/Healy
 
 # Sumário
 
@@ -26,6 +27,7 @@ Aplicação em desenvolvimento desde 28/03/2024*
     RM: 551856  Nome: Beatriz Fon Ehnert de Santi
     RM: 552295  Nome: Matheus Felipe Camarinha Duarte
     RM: 98672   Nome: Mirelly Ribeiro Azevedo
+    RM: 99708   Nome: Gabriel Francisco Lobo
 
 <a id="_Instruicoes"></a>
 
@@ -48,16 +50,20 @@ sendo assim, basta rodar no postman.
 
 # 3 - Diagramas
 ## Diagrama de classe
-![diagrama.jpg](documentacao%2Fdiagramas%2Fdiagrama.jpg)
+![diagrama1.jpg](documentacao%2Fdiagramas%2Fdiagrama.jpg)
 
 ## Diagrama de entidade e relacionamento (DER)
+
+![diagrama2.jpg](documentacao%2Fdiagramas%2Fmodelo-der.jpeg)
+
+## Diagrama (MER)
+
+![diagrama3.jpg](documentacao%2Fdiagramas%2Fmodelo-mer.jpeg)
 
 <a id="_Picth"></a>
 
 # 4 - Nossa proposta
-[Veja aqui nosso vídeo!](#https://www.youtube.com)
-
-LINK
+[LINK](https://www.youtube.com/watch?v=5i9sSBTHdaI)
 
 <a id="_Explicacoes"></a>
 
@@ -71,7 +77,8 @@ Nele contém a descrição do que cada área abrenge.
 
 ## 5.2. Histórico médico
     Nesta classe, por enquanto, há atributos provisórios até que se decidam
-    quais serão pertinentes a ela de acordo com o modelo de previsão em IA.
+    quais serão pertinentes a ela de acordo com o modelo de previsão em IA 
+    que será desenvolvido em furutas sprints.
 
 ## 5.3. Paciente
 ### User
@@ -82,6 +89,7 @@ Regras de caracterização da senha ainda serão definidas.
 
 ### CPF
 Deve ser unico, para que não seja possível a entrada de mais de 1 paciente.
+Há verificação do formato do CPF.
 
 ### Pessoa
 Herdará os atributos cadastrados de uma pessoa.
@@ -98,6 +106,7 @@ Guarda o nome completo do paciente.
 
 ### Email
 Deve ser unico para evitar cadastro com o mesmo e-mail na plataforma.
+Há verificação do formato do email.
 
 ### Telefone
 Guarda o telefone para contato com o paciente.
@@ -131,6 +140,43 @@ Guarda uma lista dos pacientes atuais.
 <a id="_Endpoint"></a>
 
 # 6 -  Endpoints
+### Área médica
+    localhost/area-medica - GET;
+    localhost/area-medica?nome= - GET;
+    localhost/area-medica - POST;
+    localhost/area-medica/{id} - GET
 
+### Histórico médico
+    localhost/historico-medico - GET;
+    localhost/historico-medico?doecas= - GET;
+    localhost/historico-medico?doencasAnteriores= - GET;
+    localhost/historico-medico?alergias= - GET;
+    localhost/historico-medico?medicamento= - GET;
+    localhost/historico-medico - POST;
+    localhost/historico-medico/{id} - GET
+
+### Paciente
+    localhost/paciente - GET;
+    localhost/paciente?cpf= - GET;
+    localhost/paciente?userPaciente= - GET;
+    localhost/paciente - POST;
+    localhost/paciente/{id} - GET
+
+### Pessoa
+    localhost/pessoa - GET;
+    localhost/pessoa?nascimento= - GET;
+    localhost/pessoa - POST;
+    localhost/pessoa/{id} - GET
+
+### Plano de saúde
+    localhost/plano-saude - GET;
+    localhost/plano-saude - POST;
+    localhost/plano-saude/{id} - GET
+
+### Proficional de saúde
+    localhost/proficional-saude - GET;
+    localhost/proficional-saude?crm= - GET;
+    localhost/proficional-saude - POST;
+    localhost/proficional-saude/{id} - GET
 
 *NOTA¹: Tive  problemas com o git e tive que passar o projeto parte por parte novamente.
