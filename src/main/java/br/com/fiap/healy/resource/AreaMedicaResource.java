@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/area-medica")
@@ -23,7 +24,7 @@ public class AreaMedicaResource {
     private AreaMedicaService service;
 
     @GetMapping
-    public List<AreaMedicaResponse> findAll(
+    public ResponseEntity<List<AreaMedicaResponse>> findAll(
             @RequestParam(name = "nome", required = false) String nome
     ) {
         AreaMedica area = AreaMedica.builder()
@@ -37,14 +38,19 @@ public class AreaMedicaResource {
 
         Example<AreaMedica> example = Example.of(area, macther);
 
-        var entity = service.findAll(example);
+        var entities = service.findAll(example);
 
-        return entity.stream().map(service::toResponse).toList();
+        var response = entities.stream().map(service::toResponse).toList();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/{id}")
-    public AreaMedicaResponse findById(@PathVariable Long id) {
-        return service.toResponse(service.findById(id));
+    public ResponseEntity<AreaMedicaResponse> findById(@PathVariable Long id) {
+        var entity = service.findById(id);
+        if (Objects.isNull(entity)) return ResponseEntity.notFound().build();
+
+        var response = service.toResponse(entity);
+        return ResponseEntity.ok(response);
     }
 
     @Transactional
@@ -52,14 +58,14 @@ public class AreaMedicaResource {
     public ResponseEntity<AreaMedicaResponse> save(@RequestBody @Valid AreaMedicaRequest area) {
         var entity = service.toEntity(area);
 
-        var saved = service.save(entity);
+        entity = service.save(entity);
 
-        var response = service.toResponse(saved);
+        var response = service.toResponse(entity);
 
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(saved.getId())
+                .buildAndExpand(entity.getId())
                 .toUri();
 
         return ResponseEntity.created(uri).body(response);

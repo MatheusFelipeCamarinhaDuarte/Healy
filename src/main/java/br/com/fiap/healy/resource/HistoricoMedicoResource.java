@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/historico-medico")
@@ -22,7 +23,7 @@ public class HistoricoMedicoResource {
     private HistoricoMedicoService service;
 
     @GetMapping
-    public Collection<HistoricoMedicoResponse> findAll(
+    public ResponseEntity<Collection<HistoricoMedicoResponse>> findAll(
             @RequestParam(name = "doecas", required = false) String doecas,
             @RequestParam(name = "doencasAnteriores", required = false) String doencasAnteriores,
             @RequestParam(name = "alergias", required = false) String alergias,
@@ -40,16 +41,21 @@ public class HistoricoMedicoResource {
                 .matchingAll()
                 .withIgnoreCase()
                 .withIgnoreNullValues();
-
         Example<HistoricoMedico> example = Example.of(historicoMedico, matcher);
 
-        return service.findAll(example).stream().map(service::toResponse).toList();
+        var entities = service.findAll(example);
+
+        var response = entities.stream().map(service::toResponse).toList();
+        return ResponseEntity.ok(response);
 
     }
 
     @GetMapping(value = "/{id}")
-    public HistoricoMedicoResponse findById(@PathVariable Long id) {
-        return service.toResponse(service.findById(id));
+    public ResponseEntity<HistoricoMedicoResponse> findById(@PathVariable Long id) {
+        var entity = service.findById(id);
+        if(Objects.isNull(entity)) return ResponseEntity.notFound().build();
+        var response = service.toResponse(entity);
+        return ResponseEntity.ok(response);
     }
 
     @Transactional
@@ -57,14 +63,14 @@ public class HistoricoMedicoResource {
     public ResponseEntity<HistoricoMedicoResponse> save(@RequestBody @Valid HistoricoMedicoRequest historicoMedicoRequest) {
         var entity = service.toEntity(historicoMedicoRequest);
 
-        var saved = service.save(entity);
+        entity = service.save(entity);
 
-        var response = service.toResponse(saved);
+        var response = service.toResponse(entity);
 
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(saved)
+                .buildAndExpand(entity.getId())
                 .toUri();
 
         return ResponseEntity.created(uri).body(response);

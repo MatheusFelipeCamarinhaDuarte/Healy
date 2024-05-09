@@ -18,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/paciente")
@@ -26,7 +27,7 @@ public class PacienteResource {
     private PacienteService service;
 
     @GetMapping
-    public Collection<PacienteResponse> findAll(
+    public ResponseEntity<Collection<PacienteResponse>> findAll(
             @RequestParam(name = "userPaciente", required = false) String userPaciente,
             @RequestParam(name = "cpf", required = false) String cpf
     ){
@@ -41,15 +42,20 @@ public class PacienteResource {
 
         Example<Paciente> example = Example.of(paciente, matcher);
 
-        var entity = service.findAll(example);
+        var entities = service.findAll(example);
 
-        return entity.stream().map(service::toResponse).toList();
+        var response = entities.stream().map(service::toResponse).toList();
+
+        return ResponseEntity.ok(response);
 
     }
 
     @GetMapping(value = "/{id}")
-    public PacienteResponse findById(@PathVariable Long id) {
-        return service.toResponse(service.findById(id));
+    public ResponseEntity<PacienteResponse> findById(@PathVariable Long id) {
+        var entity = service.findById(id);
+        if(Objects.isNull(entity)) return ResponseEntity.notFound().build();
+        var response = service.toResponse(entity);
+        return ResponseEntity.ok(response);
     }
 
     @Transactional
@@ -58,14 +64,14 @@ public class PacienteResource {
 
         var entity = service.toEntity(pacienteRequest);
 
-        var saved = service.save(entity);
+        entity = service.save(entity);
 
-        var response = service.toResponse(saved);
+        var response = service.toResponse(entity);
 
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(saved)
+                .buildAndExpand(entity.getId())
                 .toUri();
 
         return ResponseEntity.created(uri).body(response);

@@ -8,6 +8,7 @@ import br.com.fiap.healy.service.AreaMedicaService;
 import br.com.fiap.healy.service.PlanoSaudeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -20,16 +21,25 @@ public class PlanoSaudeResource {
 
     @Autowired
     private PlanoSaudeService service;
+    @Autowired
+    private LocalContainerEntityManagerFactoryBean entityManagerFactory;
 
 
     @GetMapping
-    public List<PlanoSaudeResponse> findAll() {
-        return service.findAll().stream().map(service::toResponse).toList();
+    public ResponseEntity<List<PlanoSaudeResponse>> findAll() {
+
+        var entities = service.findAll();
+
+        var response = entities.stream().map(service::toResponse).toList();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/{id}")
-    public PlanoSaudeResponse findById(@PathVariable Long id) {
-        return service.toResponse(service.findById(id));
+    public ResponseEntity<PlanoSaudeResponse> findById(@PathVariable Long id) {
+        var entity = service.findById(id);
+        if (Objects.isNull(entity)) return ResponseEntity.notFound().build();
+        var response =service.toResponse(entity);
+        return ResponseEntity.ok(response);
     }
 
     @Transactional
@@ -38,14 +48,14 @@ public class PlanoSaudeResource {
 
         var entity = service.toEntity(planoSaudeRequest);
 
-        var saved = service.save(entity);
+        entity = service.save(entity);
 
-        var response = service.toResponse(saved);
+        var response = service.toResponse(entity);
 
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(saved.getId())
+                .buildAndExpand(entity.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(response);
     }
