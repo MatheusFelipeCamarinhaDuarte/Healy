@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/pessoa")
@@ -25,7 +26,7 @@ public class PessoaResource {
     private PessoaService service;
 
     @GetMapping
-    public List<PessoaResponse> findAll(
+    public ResponseEntity<List<PessoaResponse>> findAll(
             @RequestParam(name = "nome", required = false) String nome,
             @RequestParam(name = "nascimento", required = false) LocalDate nascimento,
             @RequestParam(name = "email", required = false) String email
@@ -44,14 +45,19 @@ public class PessoaResource {
 
         Example<Pessoa> example = Example.of(pessoa, matcher);
 
-        var entity = service.findAll(example);
+        var entities = service.findAll(example);
 
-        return entity.stream().map(service::toResponse).toList();
+        var response = entities.stream().map(service::toResponse).toList();
+        return  ResponseEntity.ok(response);
     }
 
     @GetMapping(value = "/{id}")
-    public PessoaResponse findById(@PathVariable Long id) {
-        return service.toResponse(service.findById(id));
+    public ResponseEntity<PessoaResponse> findById(@PathVariable Long id) {
+        var entity = service.findById(id);
+        if(Objects.isNull(entity)) return ResponseEntity.notFound().build();
+        var response = service.toResponse(entity);
+
+        return ResponseEntity.ok(response);
     }
 
     @Transactional
@@ -59,14 +65,14 @@ public class PessoaResource {
     public ResponseEntity<PessoaResponse> save(@RequestBody @Valid PessoaRequest pessoa) {
         var entity = service.toEntity(pessoa);
 
-        var saved = service.save(entity);
+        entity = service.save(entity);
 
-        var response = service.toResponse(saved);
+        var response = service.toResponse(entity);
 
         var uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")
-                .buildAndExpand(saved.getId())
+                .buildAndExpand(entity.getId())
                 .toUri();
 
         return ResponseEntity.created(uri).body(response);
