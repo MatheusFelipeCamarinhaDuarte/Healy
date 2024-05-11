@@ -2,9 +2,6 @@ package br.com.fiap.healy.resource;
 
 import br.com.fiap.healy.dto.request.PlanoSaudeRequest;
 import br.com.fiap.healy.dto.response.PlanoSaudeResponse;
-import br.com.fiap.healy.entity.AreaMedica;
-import br.com.fiap.healy.entity.PlanoSaude;
-import br.com.fiap.healy.service.AreaMedicaService;
 import br.com.fiap.healy.service.PlanoSaudeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "TB_HEALY_HISTORICO_MEDICO")
-public class HistoricoMedico {
+public class Exame {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_HEALY_HISTORICO_MEDICO")
     @SequenceGenerator(name = "SQ_HEALY_HISTORICO_MEDICO", sequenceName = "SQ_HEALY_HISTORICO_MEDICO", allocationSize = 1)
@@ -30,5 +30,15 @@ public class HistoricoMedico {
 
     @Column(name = "MEDICAMENTOS")
     private String medicamento;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(
+            name = "PESSOA",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(
+                    name = "FK_TELEFONE_PESSOA"
+            )
+    )
+    private Pessoa pessoa;
 
 }

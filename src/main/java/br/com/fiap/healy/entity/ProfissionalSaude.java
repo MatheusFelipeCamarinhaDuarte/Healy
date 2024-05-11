@@ -14,11 +14,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "TB_HEALY_PROFISSIONAL_SAUDE", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_TB_HEALY_PROFISSIONAL_SAUDE_USER", columnNames = {
-                "USER_PROFISSIONAL"
-        }),
-        @UniqueConstraint(name = "UK_TB_HEALY_PROFISSIONAL_SAUDE_DOCUMENTO", columnNames = {
+@Table(name = "TB_PROFISSIONAL_SAUDE", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_TB_PROFISSIONAL_SAUDE_DOCUMENTO", columnNames = {
                 "DOCUMENTO"
         })
 })
@@ -29,14 +26,15 @@ public class ProfissionalSaude {
     @Column(name = "ID_PROFISSIONAL_SAUDE")
     private Long id;
 
-    @Column(name = "USER_PROFISSIONAL")
-    private String userMedico;
-
-    @Column(name = "SENHA_PROFISSIONAL")
-    private String senhaMedico;
-
-    @Column(name = "DOCUMENTO")
-    private String crm;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(
+            name = "DOCUMENTO",
+            referencedColumnName = "ID_DOCUMENTO_SAUDE",
+            foreignKey = @ForeignKey(
+                    name = "FK_DOCUMENTO_SAUDE_PROFISSIONALL"
+            )
+    )
+    private DocumentoSaude documento;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(
@@ -50,7 +48,7 @@ public class ProfissionalSaude {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
-            name = "TB_HEALY_PROFISSIONAL_PACIENTE",
+            name = "TB_PROFISSIONAL_PACIENTE",
             joinColumns = {
                     @JoinColumn(
                             name = "PROFISSIONAL",
@@ -69,8 +67,7 @@ public class ProfissionalSaude {
                             )
                     )
             }
-
     )
-    private Set<Paciente> pacientes = new LinkedHashSet<>();
+    private Set<Pessoa> pacientes = new LinkedHashSet<>();
 
 }

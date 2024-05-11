@@ -3,7 +3,6 @@ package br.com.fiap.healy.resource;
 
 import br.com.fiap.healy.dto.request.AreaMedicaRequest;
 import br.com.fiap.healy.dto.response.AreaMedicaResponse;
-import br.com.fiap.healy.entity.AreaMedica;
 import br.com.fiap.healy.service.AreaMedicaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,6 @@ import lombok.Builder;
 public record PacienteResponse(
         Long id,
         String userPaciente,
-        String senhaPaciente,
         String cpf,
         PessoaResponse pessoa,
         PlanoSaudeResponse plano,

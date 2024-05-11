@@ -2,11 +2,7 @@ package br.com.fiap.healy.resource;
 
 import br.com.fiap.healy.dto.request.PacienteRequest;
 import br.com.fiap.healy.dto.response.PacienteResponse;
-import br.com.fiap.healy.entity.Paciente;
-import br.com.fiap.healy.service.HistoricoMedicoService;
 import br.com.fiap.healy.service.PacienteService;
-import br.com.fiap.healy.service.PessoaService;
-import br.com.fiap.healy.service.PlanoSaudeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 @RestController

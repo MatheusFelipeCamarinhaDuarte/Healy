@@ -3,7 +3,6 @@ package br.com.fiap.healy.service;
 import br.com.fiap.healy.dto.request.ProfissionalSaudeRequest;
 import br.com.fiap.healy.dto.response.PacienteResponse;
 import br.com.fiap.healy.dto.response.ProfissionalSaudeResponse;
-import br.com.fiap.healy.entity.Paciente;
 import br.com.fiap.healy.entity.ProfissionalSaude;
 import br.com.fiap.healy.repository.ProfissionalSaudeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
