@@ -8,6 +8,7 @@ import org.springframework.format.annotation.NumberFormat;
 import java.time.LocalDate;
 
 public record PessoaRequest(
+        // TODO: Ajeitar a classe PessoaRequest para conter as novas modificações
 
         @NotNull(message = "O nome é obrigatório")
         String nome,

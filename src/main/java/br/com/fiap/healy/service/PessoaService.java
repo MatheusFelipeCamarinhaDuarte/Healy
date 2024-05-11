@@ -12,6 +12,7 @@ import java.util.Collection;
 
 @Service
 public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaResponse> {
+    // TODO: Ajeitar a classe PessoaService para conter as novas modificações
 
     @Autowired
     private PessoaRepository repo;

@@ -21,6 +21,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping(value = "/pessoa")
 public class PessoaResource {
+    // TODO: Ajeitar a classe PessoaResource para conter as novas modificações
 
     @Autowired
     private PessoaService service;

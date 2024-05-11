@@ -19,17 +19,9 @@ public class Exame {
     @Column(name = "ID_HISTORICO_MEDICO")
     private Long id;
 
-    @Column(name = "DOENCAS")
-    private String doencas;
-
-    @Column(name = "DOENCAS_ANTERIORES")
-    private String doencasAnteriores;
-
-    @Column(name = "ALERGIAS")
-    private String alergias;
-
-    @Column(name = "MEDICAMENTOS")
-    private String medicamento;
+    // TODO: fazer exame uma classe funcional
+    @Column(name = "EXAME")
+    private String exame;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(

@@ -3,8 +3,6 @@ package br.com.fiap.healy.resource;
 import br.com.fiap.healy.dto.request.ProfissionalSaudeRequest;
 import br.com.fiap.healy.dto.response.ProfissionalSaudeResponse;
 import br.com.fiap.healy.entity.ProfissionalSaude;
-import br.com.fiap.healy.service.PacienteService;
-import br.com.fiap.healy.service.PessoaService;
 import br.com.fiap.healy.service.ProfissionalSaudeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,8 @@ import java.util.Objects;
 @RestController
 @RequestMapping(value = "/profissional-saude")
 public class ProfissionalSaudeResource {
+    // TODO: Ajeitar a classe ProfissionalSaudeResource para conter as novas modificações
+
     @Autowired
     private ProfissionalSaudeService service;
 

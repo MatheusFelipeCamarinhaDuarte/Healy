@@ -6,6 +6,7 @@ import java.util.Collection;
 
 @Builder
 public record ProfissionalSaudeResponse(
+        // TODO: Ajeitar a classe ProfissionalSaudeResponse para conter as novas modificações
         Long id,
         String userMedico,
         String senhaMedico,

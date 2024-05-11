@@ -1,7 +1,6 @@
 package br.com.fiap.healy.service;
 
 import br.com.fiap.healy.dto.request.ProfissionalSaudeRequest;
-import br.com.fiap.healy.dto.response.PacienteResponse;
 import br.com.fiap.healy.dto.response.ProfissionalSaudeResponse;
 import br.com.fiap.healy.entity.ProfissionalSaude;
 import br.com.fiap.healy.repository.ProfissionalSaudeRepository;
@@ -16,6 +15,7 @@ import java.util.Set;
 
 @Service
 public class ProfissionalSaudeService implements ServiceDTO<ProfissionalSaude, ProfissionalSaudeRequest, ProfissionalSaudeResponse>{
+    // TODO: Ajeitar a classe ProfissionalSaude para conter as novas modificações
     @Autowired
     private ProfissionalSaudeRepository repo;
     @Autowired
