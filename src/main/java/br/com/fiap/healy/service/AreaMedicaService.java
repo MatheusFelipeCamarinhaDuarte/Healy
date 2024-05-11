@@ -2,7 +2,6 @@ package br.com.fiap.healy.service;
 
 import br.com.fiap.healy.dto.request.AreaMedicaRequest;
 import br.com.fiap.healy.dto.response.AreaMedicaResponse;
-import br.com.fiap.healy.repository.AreaMedicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
