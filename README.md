@@ -49,16 +49,17 @@ sendo assim, basta rodar no postman.
 <a id="_Diagramas"></a>
 
 # 3 - Diagramas
+## Diagrama do projeto Java
+
+![diagrama3.jpg](documentacao%2Fdiagramas%2Fdiagrama_do_projeto.jpeg)
+
 ## Diagrama de classe
-![diagrama1.jpg](documentacao%2Fdiagramas%2Fmodelo_uml.png)
+![diagrama1.jpg](documentacao%2Fdiagramas%2Fdiagrama_classe.png)
 
 ## Diagrama de entidade e relacionamento (DER)
 
 ![diagrama2.jpg](documentacao%2Fdiagramas%2Fmodelo-der.jpeg)
 
-## Diagrama (MER)
-
-![diagrama3.jpg](documentacao%2Fdiagramas%2Fmodelo-mer.jpeg)
 
 <a id="_Picth"></a>
 
