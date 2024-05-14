@@ -20,9 +20,9 @@ public interface    ServiceDTO<Entity, Request, Response> {
      * @return é a Entidade pronta para ser salva pela primeira vez no Banco de dados
      */
 
-    Entity toEntity(Request request);
+    Entity toEntity(Request dto);
 
-    Response toResponse(Entity entity);
+    Response toResponse(Entity e);
 
     Collection<Entity> findAll();
 
@@ -30,7 +30,7 @@ public interface    ServiceDTO<Entity, Request, Response> {
 
     Entity findById(Long id);
 
-    Entity save(Entity entity);
+    Entity save(Entity e);
 
 
 }

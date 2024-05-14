@@ -18,23 +18,23 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
     private PessoaRepository repo;
 
     @Override
-    public Pessoa toEntity(PessoaRequest pessoaRequest) {
+    public Pessoa toEntity(PessoaRequest dto) {
         return Pessoa.builder()
-                .nome(pessoaRequest.nome())
-                .email(pessoaRequest.email())
-                .nascimento(pessoaRequest.nascimento())
-                .telefone(pessoaRequest.telefone())
+                .nome(dto.nome())
+                .email(dto.email())
+                .cpf(dto.cpf())
+                .nascimento(dto.nascimento())
+                .tipoPessoa(dto.tipo())
                 .build();
     }
 
     @Override
-    public PessoaResponse toResponse(Pessoa pessoa) {
+    public PessoaResponse toResponse(Pessoa e) {
         return PessoaResponse.builder()
-                .id(pessoa.getId())
-                .nome(pessoa.getNome())
-                .email(pessoa.getEmail())
-                .nascimento(pessoa.getNascimento())
-                .telefone(pessoa.getTelefone())
+                .id(e.getId())
+                .nome(e.getNome())
+                .email(e.getEmail())
+                .nascimento(e.getNascimento())
                 .build();
     }
 
@@ -54,7 +54,7 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
     }
 
     @Override
-    public Pessoa save(Pessoa pessoa) {
-        return repo.save(pessoa);
+    public Pessoa save(Pessoa e) {
+        return repo.save(e);
     }
 }

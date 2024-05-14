@@ -1,6 +1,6 @@
 package br.com.fiap.healy.dto.response;
 
-import br.com.fiap.healy.dto.request.AbstractRequest;
+import br.com.fiap.healy.entity.Pessoa;
 import lombok.Builder;
 
 @Builder
@@ -27,6 +27,6 @@ public record ExameResponse(
         Integer indiceMassa,
         Integer mesAteCrise,
         Integer anoAteCrise,
-        AbstractRequest pessoa
+        PessoaResponse pessoa
 ) {
 }
