@@ -51,7 +51,7 @@ sendo assim, basta rodar no postman.
 # 3 - Diagramas
 ## Diagrama do projeto Java
 
-![diagrama3.jpg](documentacao%2Fdiagramas%2Fdiagrama_do_projeto.jpeg)
+![diagrama3.jpg](documentacao%2Fdiagramas%2Fdiagrama_do_projeto.png)
 
 ## Diagrama de classe
 ![diagrama1.jpg](documentacao%2Fdiagramas%2Fdiagrama_classe.png)
