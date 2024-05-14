@@ -25,13 +25,9 @@ public class ProfissionalSaudeResource {
     private ProfissionalSaudeService service;
 
     @GetMapping
-    public ResponseEntity<Collection<ProfissionalSaudeResponse>> findAll(
-            @RequestParam(name = "userMedico", required = false) String userMedico,
-            @RequestParam(name = "crm", required = false) String crm
-    ){
+    public ResponseEntity<Collection<ProfissionalSaudeResponse>> findAll(){
         ProfissionalSaude profissionalSaude = ProfissionalSaude.builder()
-                .userMedico(userMedico)
-                .crm(crm)
+
                 .build();
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()
