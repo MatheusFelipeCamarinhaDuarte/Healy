@@ -1,7 +1,13 @@
 package br.com.fiap.healy.dto.response;
 
-public record TelefoneResponse(
-    // TODO: Implementar a nova classe Telefone
+import lombok.Builder;
 
+@Builder
+public record TelefoneResponse(
+        Long id,
+        String ddi,
+        String ddd,
+        String numero,
+        PessoaResponse pessoa
 ) {
 }

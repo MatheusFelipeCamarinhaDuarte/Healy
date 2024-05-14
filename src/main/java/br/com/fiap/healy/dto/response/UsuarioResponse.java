@@ -1,7 +1,11 @@
 package br.com.fiap.healy.dto.response;
 
+import lombok.Builder;
+
+@Builder
 public record UsuarioResponse(
-// TODO: JAMAIS DEIXE A SENHA APARECER AQUI
-// TODO: Implementar a nova classe UsuarioResponse
+        Long id,
+        String user,
+        PessoaResponse pessoa
 ) {
 }

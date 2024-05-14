@@ -6,15 +6,10 @@ import org.hibernate.validator.constraints.br.CPF;
 import java.util.Collection;
 
 public record ProfissionalSaudeRequest(
-        // TODO: Ajeitar a classe ProfissionalSaudeRequest para conter as novas modificações
-        @NotNull(message = "O atributo userPaciente não pode ser nulo")
-        String userMedico,
+        @NotNull(message = "O proficional da saude precisa ter um documento.")
+        AbstractRequest documento,
 
-        @NotNull(message = "O atributo senhaPaciente não pode ser nulo")
-        String senhaMedico,
-        @NotNull(message = "O atributo CPF não pode ser nulo")
-        String crm,
-
+        @NotNull(message = "O proficional da saude precisa ser uma pessoa.")
         AbstractRequest pessoa,
 
         Collection<AbstractRequest> pacientes

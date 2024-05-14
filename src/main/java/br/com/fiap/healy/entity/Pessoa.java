@@ -31,6 +31,9 @@ public class Pessoa {
     @Column(name = "DT_NASCIMENTO")
     private LocalDate nascimento;
 
+    @Column(name = "CPF")
+    private String cpf;
+
     @Enumerated
     @Column(name = "TIPO_PESSOA",nullable = false)
     private Tipo tipoPessoa;

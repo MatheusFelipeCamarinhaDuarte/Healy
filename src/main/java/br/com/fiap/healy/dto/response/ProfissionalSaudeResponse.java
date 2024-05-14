@@ -1,17 +1,15 @@
 package br.com.fiap.healy.dto.response;
 
+import br.com.fiap.healy.entity.Pessoa;
 import lombok.Builder;
 
 import java.util.Collection;
 
 @Builder
 public record ProfissionalSaudeResponse(
-        // TODO: Ajeitar a classe ProfissionalSaudeResponse para conter as novas modificações
         Long id,
-        String userMedico,
-        String senhaMedico,
-        String crm,
+        DocumentoSaudeResponse documento,
         PessoaResponse pessoa,
-        Collection<PacienteResponse> pacientes
+        Collection<PessoaResponse> pacientes
 ) {
 }

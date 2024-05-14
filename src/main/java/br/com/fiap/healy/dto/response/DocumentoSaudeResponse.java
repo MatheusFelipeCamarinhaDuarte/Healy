@@ -1,7 +1,12 @@
 package br.com.fiap.healy.dto.response;
 
-public record DocumentoSaudeResponse(
-    // TODO: Fazer a classe DocumentoSaudeResponse
+import lombok.Builder;
 
+@Builder
+public record DocumentoSaudeResponse(
+        Long id,
+        String estado,
+        String sigla,
+        Integer numero
 ) {
 }
