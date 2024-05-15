@@ -19,7 +19,6 @@ import java.util.Objects;
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioResource implements ResourceDTO<UsuarioRequest, UsuarioResponse>{
-    // TODO: Implementar a nova classe UsuarioResource
     @Autowired
     private UsuarioService service;
     @Autowired

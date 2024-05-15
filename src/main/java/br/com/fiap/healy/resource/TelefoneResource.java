@@ -21,7 +21,6 @@ import java.util.Objects;
 @RestController
 @RequestMapping(value = "/telefone")
 public class TelefoneResource implements ResourceDTO<TelefoneRequest, TelefoneResponse>{
-    // TODO: Implementar a nova classe TelefoneResource
     @Autowired
     private TelefoneService service;
     @Autowired
