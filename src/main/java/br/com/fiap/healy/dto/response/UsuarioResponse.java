@@ -3,9 +3,9 @@ package br.com.fiap.healy.dto.response;
 import lombok.Builder;
 
 @Builder
-public record AreaMedicaResponse(
+public record UsuarioResponse(
         Long id,
-        String nome,
-        String descricao
+        String user,
+        PessoaResponse pessoa
 ) {
 }

@@ -10,15 +10,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_HEALY_PESSOA", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_TB_HEALY_PESSOA", columnNames = {
+@Table(name = "PESSOA", uniqueConstraints = {
+        @UniqueConstraint(name = "UK_TB_PESSOA", columnNames = {
                 "EMAIL"
         })
 })
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_HEALY_PESSOA")
-    @SequenceGenerator(name = "SQ_HEALY_PESSOA")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PESSOA")
+    @SequenceGenerator(name = "SQ_PESSOA")
     @Column(name = "ID_PESSOA")
     private Long id;
 
@@ -31,6 +31,10 @@ public class Pessoa {
     @Column(name = "DT_NASCIMENTO")
     private LocalDate nascimento;
 
-    @Column(name = "TELEFONE")
-    private String telefone;
+    @Column(name = "CPF")
+    private String cpf;
+
+    @Enumerated
+    @Column(name = "TIPO_PESSOA",nullable = false)
+    private Tipo tipoPessoa;
 }

@@ -1,9 +1,9 @@
 package br.com.fiap.healy.service;
 
 import br.com.fiap.healy.dto.request.ProfissionalSaudeRequest;
-import br.com.fiap.healy.dto.response.PacienteResponse;
+import br.com.fiap.healy.dto.response.PessoaResponse;
 import br.com.fiap.healy.dto.response.ProfissionalSaudeResponse;
-import br.com.fiap.healy.entity.Paciente;
+import br.com.fiap.healy.entity.Pessoa;
 import br.com.fiap.healy.entity.ProfissionalSaude;
 import br.com.fiap.healy.repository.ProfissionalSaudeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,24 +16,23 @@ import java.util.Objects;
 import java.util.Set;
 
 @Service
-public class ProfissionalSaudeService implements ServiceDTO<ProfissionalSaude, ProfissionalSaudeRequest, ProfissionalSaudeResponse>{
+public class ProfissionalSaudeService implements ServiceDTO<ProfissionalSaude, ProfissionalSaudeRequest, ProfissionalSaudeResponse> {
     @Autowired
     private ProfissionalSaudeRepository repo;
     @Autowired
     private PessoaService pessoaService;
-    @Autowired
-    private PacienteService pacienteService;
+
     @Override
-    public ProfissionalSaude toEntity(ProfissionalSaudeRequest profissionalSaudeRequest) {
-        if (Objects.isNull(profissionalSaudeRequest.pessoa().id())) return null;
-        var pessoa = pessoaService.findById(profissionalSaudeRequest.pessoa().id());
+    public ProfissionalSaude toEntity(ProfissionalSaudeRequest dto) {
+        if (Objects.isNull(dto.pessoa().id())) return null;
+        var pessoa = pessoaService.findById(dto.pessoa().id());
         if (Objects.isNull(pessoa)) return null;
 
-        Set<Paciente> pacientes = new LinkedHashSet<>();
+        Set<Pessoa> pacientes = new LinkedHashSet<>();
 
-        profissionalSaudeRequest.pacientes().forEach(paciente -> {
+        dto.pacientes().forEach(paciente -> {
             if (Objects.nonNull(paciente.id())) {
-                var p = pacienteService.findById(paciente.id());
+                var p = pessoaService.findById(paciente.id());
                 if (p != null) {
                     pacientes.add(p);
                 }
@@ -41,34 +40,28 @@ public class ProfissionalSaudeService implements ServiceDTO<ProfissionalSaude, P
         });
 
         return ProfissionalSaude.builder()
-                .userMedico(profissionalSaudeRequest.userMedico())
-                .senhaMedico(profissionalSaudeRequest.senhaMedico())
-                .crm(profissionalSaudeRequest.crm())
                 .pessoa(pessoa)
                 .pacientes(pacientes)
                 .build();
     }
 
     @Override
-    public ProfissionalSaudeResponse toResponse(ProfissionalSaude profissionalSaude) {
-        if (Objects.isNull(profissionalSaude)) return null;
-        var pessoa = pessoaService.toResponse( profissionalSaude.getPessoa() );
+    public ProfissionalSaudeResponse toResponse(ProfissionalSaude e) {
+        if (Objects.isNull(e)) return null;
+        var pessoa = pessoaService.toResponse(e.getPessoa());
 
-        Set<PacienteResponse> pacientes = new LinkedHashSet<>();
+        Set<PessoaResponse> pacientes = new LinkedHashSet<>();
 
-        profissionalSaude.getPacientes().forEach(paciente -> {
+        e.getPacientes().forEach(paciente -> {
             if (Objects.nonNull(paciente.getId())) {
-                var p = pacienteService.toResponse(pacienteService.findById(paciente.getId()));
+                var p = pessoaService.toResponse(pessoaService.findById(paciente.getId()));
                 if (p != null) {
                     pacientes.add(p);
                 }
             }
         });
         return ProfissionalSaudeResponse.builder()
-                .id(profissionalSaude.getId())
-                .userMedico(profissionalSaude.getUserMedico())
-                .senhaMedico(profissionalSaude.getSenhaMedico())
-                .crm(profissionalSaude.getCrm())
+                .id(e.getId())
                 .pessoa(pessoa)
                 .pacientes(pacientes)
                 .build();
@@ -90,7 +83,7 @@ public class ProfissionalSaudeService implements ServiceDTO<ProfissionalSaude, P
     }
 
     @Override
-    public ProfissionalSaude save(ProfissionalSaude profissionalSaude) {
-        return repo.save(profissionalSaude);
+    public ProfissionalSaude save(ProfissionalSaude e) {
+        return repo.save(e);
     }
 }
