@@ -2,8 +2,11 @@ package br.com.fiap.healy.resource;
 
 import br.com.fiap.healy.dto.request.ProfissionalSaudeRequest;
 import br.com.fiap.healy.dto.response.ProfissionalSaudeResponse;
+import br.com.fiap.healy.entity.DocumentoSaude;
+import br.com.fiap.healy.entity.Pessoa;
 import br.com.fiap.healy.entity.ProfissionalSaude;
 import br.com.fiap.healy.service.ProfissionalSaudeService;
+import br.com.fiap.healy.service.TelefoneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -18,31 +21,46 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping(value = "/profissional-saude")
-public class ProfissionalSaudeResource {
-    // TODO: Ajeitar a classe ProfissionalSaudeResource para conter as novas modificações
-
+public class ProfissionalSaudeResource implements ResourceDTO<ProfissionalSaudeRequest, ProfissionalSaudeResponse>{
     @Autowired
     private ProfissionalSaudeService service;
+    @Autowired
+    private TelefoneService telefoneService;
 
     @GetMapping
-    public ResponseEntity<Collection<ProfissionalSaudeResponse>> findAll(){
+    public ResponseEntity<Collection<ProfissionalSaudeResponse>> findAll(
+            @RequestParam(name = "nome", required = false) String nome,
+            @RequestParam(name = "cpf", required = false) String cpf,
+            @RequestParam(name = "email", required = false) String email,
+            @RequestParam(name = "documento.sigla", required = false) String sigla,
+            @RequestParam(name = "documento.estado", required = false) String estado,
+            @RequestParam(name = "documento.numero", required = false) String numero
+    ){
+        Pessoa pessoaMedico = Pessoa.builder()
+                .nome(nome)
+                .cpf(cpf)
+                .email(email)
+                .build();
+        DocumentoSaude documento = DocumentoSaude.builder()
+                .estado(estado)
+                .sigla(sigla)
+                .numero(numero)
+                .build();
         ProfissionalSaude profissionalSaude = ProfissionalSaude.builder()
-
+                .documento(documento)
+                .pessoa(pessoaMedico)
                 .build();
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()
                 .withIgnoreCase()
                 .withIgnoreNullValues();
-
         Example<ProfissionalSaude> example = Example.of(profissionalSaude,matcher);
-
         var entities = service.findAll(example);
-
         var response = entities.stream().map(service::toResponse).toList();
-
         return ResponseEntity.ok(response);
     }
 
+    @Override
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProfissionalSaudeResponse> findById(@PathVariable Long id){
         var entity = service.findById(id);
@@ -51,6 +69,7 @@ public class ProfissionalSaudeResource {
         return ResponseEntity.ok(response);
     }
 
+    @Override
     @Transactional
     @PostMapping
     public ResponseEntity<ProfissionalSaudeResponse> save(@RequestBody @Valid ProfissionalSaudeRequest profissionalSaudeRequest){
@@ -62,8 +81,9 @@ public class ProfissionalSaudeResource {
                 .path("/{id}")
                 .buildAndExpand(entity.getId())
                 .toUri();
-
         return ResponseEntity.created(uri).body(response);
     }
-
+    // TODO: fazer um retorno para dar um médico por meio paciente.
+    //             @RequestParam(name = "paciente.nome", required = false) String nmPaciente,
+    //            @RequestParam(name = "paciente.cpf", required = false) String cpfPaciente
 }

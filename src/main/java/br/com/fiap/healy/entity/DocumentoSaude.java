@@ -20,7 +20,7 @@ public class DocumentoSaude {
         private Long id;
         private String estado;
         private String sigla;
-        private Integer numero;
+        private String numero;
 
 
 }

@@ -10,6 +10,6 @@ public record DocumentoSaudeRequest(
     String sigla,
 
     @NotNull(message = "O documento precisa de um número que valide ele.")
-    Integer numero
+    String numero
 ) {
 }

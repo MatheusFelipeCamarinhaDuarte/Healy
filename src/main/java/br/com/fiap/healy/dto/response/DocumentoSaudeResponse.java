@@ -7,6 +7,6 @@ public record DocumentoSaudeResponse(
         Long id,
         String estado,
         String sigla,
-        Integer numero
+        String numero
 ) {
 }

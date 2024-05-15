@@ -18,12 +18,20 @@ public class DocumentoSaudeService implements ServiceDTO<DocumentoSaude, Documen
 
     @Override
     public DocumentoSaude toEntity(DocumentoSaudeRequest dto) {
-        return null;
+        return DocumentoSaude.builder()
+                .estado(dto.estado())
+                .sigla(dto.sigla())
+                .numero(dto.numero())
+                .build();
     }
 
     @Override
     public DocumentoSaudeResponse toResponse(DocumentoSaude e) {
-        return null;
+        return DocumentoSaudeResponse.builder()
+                .estado(e.getEstado())
+                .sigla(e.getSigla())
+                .numero(e.getNumero())
+                .build();
     }
 
     @Override
@@ -46,5 +54,4 @@ public class DocumentoSaudeService implements ServiceDTO<DocumentoSaude, Documen
     public DocumentoSaude save(DocumentoSaude e) {
         return repo.save(e);
     }
-    // TODO: Fazer a classe DocumentoSaudeService
 }

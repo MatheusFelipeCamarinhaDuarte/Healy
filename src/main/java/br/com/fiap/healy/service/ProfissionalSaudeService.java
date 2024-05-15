@@ -17,7 +17,6 @@ import java.util.Set;
 
 @Service
 public class ProfissionalSaudeService implements ServiceDTO<ProfissionalSaude, ProfissionalSaudeRequest, ProfissionalSaudeResponse> {
-    // TODO: Ajeitar a classe ProfissionalSaude para conter as novas modificações
     @Autowired
     private ProfissionalSaudeRepository repo;
     @Autowired
