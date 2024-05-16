@@ -71,6 +71,7 @@ aquela patologia.
 
 # 5 - Explicações de classes
 ## 5.1. Documento Saude
+Todos os atributos desta classe fazem parte de uma única UK, que representa a regra de negócio para não permitir que haja mais de um documento com as mesmas informações
 ### Sigla
 Aqui se destina a identificar o tipo de documento de saude (como CRM e afins).
 
@@ -92,13 +93,13 @@ Nesta classe, todos os demais atributos se referem a resultados de exame e hist�
 
 ## 5.3. Usuario
 ### User
-Deve ser unico e composto por 2 letras inicialmente e 8 números após.
+Deve ser unico e composto por 2 letras inicialmente e 8 números após. Esta classse conta com um UK para evitar de ter um mesmo Username para mais de um usuário.
 
 ### Senha
 Regras de caracterização da senha ainda serão definidas.
 
 ### Pessoa
-Herdará os atributos cadastrados de uma pessoa.
+Herdará os atributos cadastrados de uma pessoa. Nesta classe, existe uma UK responsável por tornar o atributo único, desta forma, não podendo se repetir uma mesma pessoa. 
 
 ## 5.4. Pessoa
 ### Nome
@@ -109,25 +110,26 @@ Deve ser unico para evitar cadastro com o mesmo e-mail na plataforma.
 Há verificação do formato do email.
 
 ### CPF
-Aqui se coloca sem pontuação e em forma de string o número de CPF da pessoa.
+Aqui se coloca sem pontuação e em forma de string o número de CPF da pessoa e é um atributo único.
 
 ### Data de nacimento
 Um LocalDate que guarda a data de nascimento do paciente.
 
 ### Tipo Pessoa
-Aqui se define se uma determinada pessoa é física ou Jurídica. Este atributo é um Enum.
+Aqui se define se uma determinada é Paciente(PC) ou Profissional da saude (PF). Este atributo é um Enum.
 
-## 5.5. Proficional da saude
+## 5.5. Profissional da saude
 ### Documento de saude
 Deve ser unico, para que não seja possível a entrada de mais de 1 documento por profissional da saude. é uma classe a parte.
 
 ### Pessoa
-Herdará os atributos cadastrados de uma pessoa.
+Herdará os atributos cadastrados de uma pessoa e terá que ser único para não se repetir o cadastro numa mesma pessoa.
 
 ### Pacientes
 Guarda uma lista dos pacientes atuais, fazendo uma Collection de Pessoas. 
 
 ## 5.6. Telefone
+Os atributos "DDI", "DDD" e "NUMERO" desta classe fazem parte de uma única UK, que representa a regra de negócio para não permitir que haja mais de um telefone com as mesmas informações
 ### DDI
 Se refere ao código identificador do pais de origem do número
 
