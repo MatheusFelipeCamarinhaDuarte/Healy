@@ -4,6 +4,10 @@
 Aplicação em desenvolvimento desde 28/03/2024*
 ### Link para o GIT
 https://github.com/MatheusFelipeCamarinhaDuarte/Healy
+### LINK para o Trello
+https://trello.com/b/0GSQQFgK/gestao-das-sprints
+![image](https://github.com/MatheusFelipeCamarinhaDuarte/Healy/assets/128056372/1e481ca9-4a84-4981-9c37-108c1692a965)
+
 
 # Sumário
 
