@@ -116,7 +116,7 @@ Aqui se coloca sem pontuação e em forma de string o número de CPF da pessoa e
 Um LocalDate que guarda a data de nascimento do paciente.
 
 ### Tipo Pessoa
-Aqui se define se uma determinada pessoa é física ou Jurídica. Este atributo é um Enum.
+Aqui se define se uma determinada é Paciente(PC) ou Profissional da saude (PF). Este atributo é um Enum.
 
 ## 5.5. Profissional da saude
 ### Documento de saude

@@ -11,7 +11,7 @@
 			"name": "Pessoa",
 			"item": [
 				{
-					"name": "POST Matheus ✔️",
+					"name": "POST Benezinho ✔️",
 					"event": [
 						{
 							"listen": "test",
@@ -19,18 +19,6 @@
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
 									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"  pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"  pm.expect(responseData.email).to.exist.and.to.be.a('string');",
-									"  pm.expect(responseData.nascimento).to.exist.and.to.be.a('string');",
-									"  pm.expect(responseData.telefone).to.exist.and.to.be.a('string');",
 									"});",
 									"",
 									"pm.test(\"Email is in a valid format\", function () {",
@@ -59,191 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Matheus Felipe Camarinha Duarte\",\r\n  \"email\": \"matheus.duarte.lins@gmail.com\",\r\n  \"nascimento\": \"2005-04-05\",\r\n  \"telefone\": \"+55 11 991512776\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/pessoa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"pessoa"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST Ana ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('Response status code is 201', function () {",
-									"    pm.response.to.have.status(201);",
-									"})",
-									"",
-									"pm.test('Response has the required fields', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.nome).to.exist;",
-									"    pm.expect(responseData.email).to.exist;",
-									"    pm.expect(responseData.nascimento).to.exist;",
-									"    pm.expect(responseData.telefone).to.exist;",
-									"})",
-									"",
-									"pm.test('Email is in a valid format', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.email).to.match(/\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\\b/, 'Email is not in a valid format');",
-									"})",
-									"",
-									"pm.test('Nascimento is in a valid date format', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Ana Luiza\",\r\n  \"email\": \"ana.luiza@gmail.com\",\r\n  \"nascimento\": \"2005-04-17\",\r\n  \"telefone\": \"+55 11 997723882\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/pessoa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"pessoa"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST Beatriz ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('Response status code is 201', function () {",
-									"    pm.response.to.have.status(201);",
-									"})",
-									"",
-									"pm.test('Response has the required fields', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.email).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.nascimento).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.telefone).to.exist.and.to.be.a('string');",
-									"})",
-									"",
-									"pm.test('Email is in a valid format', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, 'Email is not in a valid format');",
-									"})",
-									"",
-									"pm.test('Nascimento is in a valid date format', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/, 'Nascimento should be in the format yyyy-mm-dd');",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Beatriz Fon\",\r\n  \"email\": \"beatriz@gmail.com\",\r\n  \"nascimento\": \"2005-03-18\",\r\n  \"telefone\": \"+55 11 969306395\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/pessoa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"pessoa"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST Mirelly ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('Response status code is 201', function () {",
-									"    pm.response.to.have.status(201);",
-									"})",
-									"",
-									"pm.test('Response has the required fields', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.email).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.nascimento).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.telefone).to.exist.and.to.be.a('string');",
-									"})",
-									"",
-									"pm.test('Email is in a valid format', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, 'Email should be in a valid format');",
-									"})",
-									"",
-									"pm.test('The id must be a non-negative integer', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.be.a('number');",
-									"    pm.expect(responseData.id).to.be.at.least(0);",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Mirelly Azevedo\",\r\n  \"email\": \"mirelly@gmail.com\",\r\n  \"nascimento\": \"2005-03-18\",\r\n  \"telefone\": \"+55 11 958387172\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"Benefrancis\",\r\n  \"email\": \"benefrancis@gmail.com\",\r\n  \"nascimento\": \"1980-04-05\",\r\n  \"tipo\": \"PC\",\r\n  \"cpf\": \"12345678999\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -320,15 +124,6 @@
 									"    pm.response.to.have.status(200);",
 									"})",
 									"",
-									"pm.test('Response has the required fields', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.nome).to.exist;",
-									"    pm.expect(responseData.email).to.exist;",
-									"    pm.expect(responseData.nascimento).to.exist;",
-									"    pm.expect(responseData.telefone).to.exist;",
-									"})",
 									"",
 									"pm.test('Email is in a valid format', function () {",
 									"    const responseData = pm.response.json();",
@@ -340,7 +135,8 @@
 									"    pm.expect(responseData.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/, 'Nascimento should be in the format YYYY-MM-DD');",
 									"})"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -348,21 +144,21 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/pessoa/1",
+							"raw": "http://localhost/pessoa/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
 								"pessoa",
-								"1"
+								"3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GET BY nascimento ✔️",
+					"name": "GET BY nome ✔️",
 					"event": [
 						{
 							"listen": "test",
@@ -372,20 +168,6 @@
 									"  pm.response.to.have.status(200);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('array').that.is.not.empty;",
-									"  ",
-									"  responseData.forEach(function (item) {",
-									"    pm.expect(item).to.have.property('id');",
-									"    pm.expect(item).to.have.property('nome');",
-									"    pm.expect(item).to.have.property('email');",
-									"    pm.expect(item).to.have.property('nascimento');",
-									"    pm.expect(item).to.have.property('telefone');",
-									"  });",
-									"});",
 									"",
 									"",
 									"pm.test(\"Email is in a valid format\", function () {",
@@ -411,7 +193,8 @@
 									"    pm.expect(pm.response.responseTime).to.be.below(500);",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -419,7 +202,135 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/pessoa?nascimento=2005-03-18",
+							"raw": "http://localhost/pessoa?nome=Benefrancis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"pessoa"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Benefrancis"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY email ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    responseData.forEach(function (item) {",
+									"        pm.expect(item.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email is not in a valid format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nascimento is in a valid date format\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('array');",
+									"  responseData.forEach(function (item) {",
+									"    pm.expect(item.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/, \"Nascimento should be in the format 'YYYY-MM-DD'\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/pessoa?email=benefrancis@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"pessoa"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "benefrancis@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY nascimento ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    responseData.forEach(function (item) {",
+									"        pm.expect(item.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email is not in a valid format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nascimento is in a valid date format\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('array');",
+									"  responseData.forEach(function (item) {",
+									"    pm.expect(item.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/, \"Nascimento should be in the format 'YYYY-MM-DD'\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/pessoa?nascimento=2005-04-05",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -430,7 +341,71 @@
 							"query": [
 								{
 									"key": "nascimento",
-									"value": "2005-03-18"
+									"value": "2005-04-05"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY sigla✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Email is in a valid format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    responseData.forEach(function (item) {",
+									"        pm.expect(item.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email is not in a valid format\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nascimento is in a valid date format\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('array');",
+									"  responseData.forEach(function (item) {",
+									"    pm.expect(item.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/, \"Nascimento should be in the format 'YYYY-MM-DD'\");",
+									"  });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/pessoa?sigla=PC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"pessoa"
+							],
+							"query": [
+								{
+									"key": "sigla",
+									"value": "PC"
 								}
 							]
 						}
@@ -441,46 +416,55 @@
 			"description": "TODOS FUNCIONAM!\n\nRestrições:\n\nÉ proibido cadastrar um mesmo e-mail mais de 1 vez.\n\nA data de nasciemento não pode ser cadastrada como depois do dia de hoje.\n\nA data de nasciemento é aceita no formato \"YYYY-MM-DD\""
 		},
 		{
-			"name": "Histórico Médico",
+			"name": "Documento",
 			"item": [
 				{
-					"name": "POST hist-1 ✔️",
+					"name": "POST doc-bene ✔️",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
 									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.response.to.have.status(201);",
+									"    pm.expect(pm.response.code).to.equal(201);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response has the required fields\", function () {",
+									"pm.test(\"Response has the required fields - id, estado, sigla, and numero\", function () {",
 									"    const responseData = pm.response.json();",
 									"    ",
 									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.doencas).to.exist;",
-									"    pm.expect(responseData.doencasAnteriores).to.exist;",
-									"    pm.expect(responseData.alergias).to.exist;",
-									"    pm.expect(responseData.medicamento).to.exist;",
+									"    pm.expect(responseData).to.have.property('id');",
+									"    pm.expect(responseData).to.have.property('estado');",
+									"    pm.expect(responseData).to.have.property('sigla');",
+									"    pm.expect(responseData).to.have.property('numero');",
 									"});",
 									"",
 									"",
-									"pm.test(\"Id is a non-negative integer\", function () {",
+									"pm.test(\"Id should be a non-negative integer\", function () {",
 									"  const responseData = pm.response.json();",
 									"  ",
 									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"  pm.expect(responseData.id).to.be.at.least(0, \"Id should be a non-negative integer\");",
+									"  pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response time is less than 500ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(500);",
-									"});"
+									"pm.test(\"Estado and Sigla should be non-empty strings\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.estado).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Estado should be a non-empty string\");",
+									"  pm.expect(responseData.sigla).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Sigla should be a non-empty string\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -489,7 +473,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"doencas\": \"Cancer\",\r\n  \"doencasAnteriores\": \"Gripe\",\r\n  \"alergias\": \"Nenhuma\",\r\n  \"medicamento\": \"isotretinoina\"\r\n}",
+							"raw": "{\r\n  \"estado\": \"RJ\",\r\n  \"sigla\": \"CRR\",\r\n  \"numero\": \"1122334455\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -497,155 +481,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/historico-medico",
+							"raw": "http://localhost/documentos-de-saude",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"historico-medico"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST hist-2 ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.id).to.exist;",
-									"  pm.expect(responseData.doencas).to.exist;",
-									"  pm.expect(responseData.doencasAnteriores).to.exist;",
-									"  pm.expect(responseData.alergias).to.exist;",
-									"  pm.expect(responseData.medicamento).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Id is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.id).to.exist.and.to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Doencas should be a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.doencas).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"pm.test(\"Content-Type header is set to 'application/json'\", function () {",
-									"  pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json');",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"doencas\": \"Virose\",\r\n  \"doencasAnteriores\": \"Gripe\",\r\n  \"alergias\": \"Nenhuma\",\r\n  \"medicamento\": \"Nenhuma\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/historico-medico",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"historico-medico"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST hist-3 ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.doencas).to.exist;",
-									"    pm.expect(responseData.doencasAnteriores).to.exist;",
-									"    pm.expect(responseData.alergias).to.exist;",
-									"    pm.expect(responseData.medicamento).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the 'id' field is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData.id).to.be.a('number');",
-									"  pm.expect(responseData.id).to.be.at.least(0, \"Value should be a non-negative integer\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the 'doencas' field is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.doencas).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"pm.test(\"Response time is less than 500ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(500);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"doencas\": \"Virose\",\r\n  \"doencasAnteriores\": \"Peneumonia\",\r\n  \"alergias\": \"Amendoim\",\r\n  \"medicamento\": \"isotretinoina\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/historico-medico",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"historico-medico"
+								"documentos-de-saude"
 							]
 						}
 					},
@@ -659,56 +501,35 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.response.to.have.status(200);",
+									"    pm.expect(pm.response.code).to.equal(200);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('array').that.is.not.empty;",
-									"  ",
-									"  responseData.forEach(function(item) {",
-									"    pm.expect(item).to.have.property('id');",
-									"    pm.expect(item).to.have.property('doencas');",
-									"    pm.expect(item).to.have.property('doencasAnteriores');",
-									"    pm.expect(item).to.have.property('alergias');",
-									"    pm.expect(item).to.have.property('medicamento');",
-									"  });",
-									"});",
-									"",
-									"pm.test(\"Validate that the 'id' is a non-negative integer\", function () {",
+									"pm.test(\"Response has the required fields - id, estado, sigla, and numero\", function () {",
 									"    const responseData = pm.response.json();",
-									"",
+									"    ",
 									"    pm.expect(responseData).to.be.an('array');",
 									"    responseData.forEach(function(item) {",
-									"        pm.expect(item.id).to.be.a('number');",
-									"        pm.expect(item.id).to.satisfy(function (id) {",
-									"            return id >= 0;",
-									"        }, \"Value should be a non-negative integer\");",
+									"        pm.expect(item).to.have.property('id');",
+									"        pm.expect(item).to.have.property('estado');",
+									"        pm.expect(item).to.have.property('sigla');",
+									"        pm.expect(item).to.have.property('numero');",
 									"    });",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response is an array with at least one element\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"pm.test(\"Verify the response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
 									"});",
 									"",
 									"",
-									"pm.test(\"Validate that 'doencas' is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData).to.be.an('array');",
-									"  pm.expect(responseData.length).to.be.above(0, \"Array should not be empty\");",
-									"",
-									"  responseData.forEach(function (item) {",
-									"    pm.expect(item.doencas).to.be.a('string').and.to.have.lengthOf.at.least(1, \"'doencas' should not be empty\");",
-									"  });",
-									"});"
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -716,13 +537,382 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/historico-medico",
+							"raw": "http://localhost/documentos-de-saude",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"historico-medico"
+								"documentos-de-saude"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/documentos-de-saude/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"documentos-de-saude",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY estado ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Updated response time test to 300ms",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 300ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(300);",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Presence of 'Content-Type' header in the response\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the 'Content-Type' header value is 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Ensure that the 'id', 'estado', 'sigla', and 'numero' fields are present in the response\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item.id).to.exist;",
+									"        pm.expect(item.estado).to.exist;",
+									"        pm.expect(item.sigla).to.exist;",
+									"        pm.expect(item.numero).to.exist;",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Estado field is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item.estado).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Estado field should not be empty\");",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Numero field is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item.numero).to.be.a('string').and.to.have.lengthOf.at.least(1);",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/documentos-de-saude?estado=RJ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"documentos-de-saude"
+							],
+							"query": [
+								{
+									"key": "estado",
+									"value": "RJ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY sigla ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response contains Content-Type header with value application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/documentos-de-saude?sigla=CRR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"documentos-de-saude"
+							],
+							"query": [
+								{
+									"key": "sigla",
+									"value": "CRR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY numero ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(item => {",
+									"        pm.expect(item).to.have.property('id');",
+									"        pm.expect(item).to.have.property('estado');",
+									"        pm.expect(item).to.have.property('sigla');",
+									"        pm.expect(item).to.have.property('numero');",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response content type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/documentos-de-saude?numero=1122334455",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"documentos-de-saude"
+							],
+							"query": [
+								{
+									"key": "numero",
+									"value": "1122334455"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profissional da Saúde",
+			"item": [
+				{
+					"name": "POST medico-bene ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.have.property('id');",
+									"    pm.expect(responseData).to.have.property('documento');",
+									"    pm.expect(responseData).to.have.property('pessoa');",
+									"    pm.expect(responseData).to.have.property('pacientes');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify the presence of Content-Type header in the response\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documento\":{\"id\":2},\r\n  \"pessoa\": {\"id\":5},\r\n  \"pacientes\": [{\"id\":2},{\"id\":3},{\"id\":1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/profissional-saude",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"profissional-saude"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Response has the Content-Type header set to 'application/json'\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/profissional-saude",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"profissional-saude"
 							]
 						}
 					},
@@ -740,23 +930,13 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.id).to.exist;",
-									"  pm.expect(responseData.doencas).to.exist;",
-									"  pm.expect(responseData.doencasAnteriores).to.exist;",
-									"  pm.expect(responseData.alergias).to.exist;",
-									"  pm.expect(responseData.medicamento).to.exist;",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
 									"});",
-									"",
-									"",
-									"pm.test(\"Response time is within an acceptable range\", function () {",
-									"  pm.expect(pm.response.responseTime).to.be.below(500);",
-									"});"
+									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -764,683 +944,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/historico-medico/2",
+							"raw": "http://localhost/profissional-saude/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"historico-medico",
+								"profissional-saude",
 								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY doencas ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.expect(pm.response.code).to.equal(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"id is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('array');",
-									"  ",
-									"  responseData.forEach(function(item) {",
-									"    pm.expect(item.id).to.be.a('number').and.to.be.at.least(0);",
-									"  });",
-									"});",
-									"",
-									"",
-									"pm.test(\"doencas should be a non-empty string\", function() {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function(item) {",
-									"        pm.expect(item.doencas).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"    });",
-									"});",
-									"",
-									"pm.test(\"Response is in JSON format\", function () {",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/historico-medico?doecas=Virose",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"historico-medico"
-							],
-							"query": [
-								{
-									"key": "doecas",
-									"value": "Virose"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY doencasAnteriores ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response content type is application/json\", function () {",
-									"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response is an array with at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
-									"});",
-									"",
-									"",
-									"pm.test(\"DoencasAnteriores field value is 'Gripe'\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function(data){",
-									"        pm.expect(data.doencasAnteriores).to.equal(\"Gripe\");",
-									"    });",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/historico-medico?doencasAnteriores=Gripe",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"historico-medico"
-							],
-							"query": [
-								{
-									"key": "doencasAnteriores",
-									"value": "Gripe"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY alergias ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.expect(pm.response.code).to.equal(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('array').that.is.not.empty;",
-									"  ",
-									"  responseData.forEach(function (data) {",
-									"    pm.expect(data).to.have.property('id');",
-									"    pm.expect(data).to.have.property('doencas');",
-									"    pm.expect(data).to.have.property('doencasAnteriores');",
-									"    pm.expect(data).to.have.property('alergias');",
-									"    pm.expect(data).to.have.property('medicamento');",
-									"  });",
-									"});",
-									"",
-									"pm.test(\"Alergias field should not be empty\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('array');",
-									"  responseData.forEach(function(item) {",
-									"    pm.expect(item.alergias).to.exist.and.to.have.lengthOf.at.least(1, \"Alergias field should not be empty\");",
-									"  });",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the response is an array with at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the id is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData).to.be.an('array');",
-									"  responseData.forEach(function(item){",
-									"    pm.expect(item.id).to.exist.and.to.be.a('number').and.to.be.at.least(0);",
-									"  });",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/historico-medico?alergias=Nenhuma",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"historico-medico"
-							],
-							"query": [
-								{
-									"key": "alergias",
-									"value": "Nenhuma"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY medicamento ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the 'id' is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function (item) {",
-									"        pm.expect(item.id).to.be.a('number').and.to.be.at.least(0, \"Value should be a non-negative integer\");",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"Verify that the 'medicamento' field is equal to 'isotretinoina'\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData[0].medicamento).to.equal(\"isotretinoina\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/historico-medico?medicamento=isotretinoina",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"historico-medico"
-							],
-							"query": [
-								{
-									"key": "medicamento",
-									"value": "isotretinoina"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "TODOS FUNCIONAM!\n\nRestrições:\n\nNenhuma até então."
-		},
-		{
-			"name": "Area Médica",
-			"item": [
-				{
-					"name": "POST Cardiologia ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.property('id');",
-									"    pm.expect(responseData).to.have.property('nome');",
-									"    pm.expect(responseData).to.have.property('descricao');",
-									"});",
-									"",
-									"",
-									"pm.test(\"id is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.id).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nome is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.nome).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Descricao is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.descricao).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Cardiologia\",\r\n  \"descricao\": \"Área responsável por exames, tratamentos e cirugias que se referem ao coração\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/area-medica",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"area-medica"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST Neurologia ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has required fields - id, nome, and descricao\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.descricao).to.exist.and.to.be.a('string');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Id is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0, \"Id should be a non-negative integer\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nome is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.nome).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Descricao is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.descricao).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Neurologia\",\r\n  \"descricao\": \"Área responsável por exames, tratamentos e cirugias que se referem ao cérebro\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/area-medica",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"area-medica"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST Dermatologista ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.descricao).to.exist.and.to.be.a('string');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Id is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.id).to.be.a('number');",
-									"    pm.expect(responseData.id).to.be.above(-1, \"Id should be a non-negative integer\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nome is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.nome).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Descricao is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.descricao).to.exist.and.to.be.a('string').and.to.not.be.empty;",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Dermatologista\",\r\n  \"descricao\": \"Área responsável por exames, tratamentos e cirugias que se referem a pele\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/area-medica",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"area-medica"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST Virologia ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"  pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"  pm.expect(responseData.descricao).to.exist.and.to.be.a('string');",
-									"});",
-									"",
-									"",
-									"pm.test(\"ID is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.id).to.be.at.least(0, \"ID should be a non-negative integer\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nome is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.nome).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Descricao is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.descricao).to.exist.and.to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Virologia\",\r\n  \"descricao\": \"Área responsável por exames, tratamentos e cirugias que se referem a diferentes vírus\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/area-medica",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"area-medica"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ALL ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('Response status code is 200', function () {",
-									"    pm.response.to.have.status(200);",
-									"})",
-									"",
-									"pm.test('Response has the required fields - id, nome, and descricao', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function (item) {",
-									"        pm.expect(item.id).to.exist.and.to.be.a('number');",
-									"        pm.expect(item.nome).to.exist.and.to.be.a('string');",
-									"        pm.expect(item.descricao).to.exist.and.to.be.a('string');",
-									"    });",
-									"})",
-									"",
-									"pm.test('ID is a non-negative integer', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function (item) {",
-									"        pm.expect(item.id).to.be.a('number').and.to.be.at.least(0);",
-									"    });",
-									"})",
-									"",
-									"pm.test('Descricao is a non-empty string', function () {",
-									"    const responseData = pm.response.json();",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function (item) {",
-									"        pm.expect(item.descricao).to.be.a('string').and.to.have.lengthOf.at.least(1, 'Value should not be empty');",
-									"    });",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/area-medica",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"area-medica"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY ID ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.expect(pm.response.code).to.equal(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.nome).to.exist.and.to.be.a('string');",
-									"    pm.expect(responseData.descricao).to.exist.and.to.be.a('string');",
-									"});",
-									"",
-									"",
-									"pm.test(\"ID is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.id).to.be.a('number');",
-									"    pm.expect(responseData.id).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nome is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.nome).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Descricao is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData.descricao).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/area-medica/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"area-medica",
-								"3"
 							]
 						}
 					},
@@ -1453,48 +964,25 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - id, nome, and descricao\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function(item) {",
-									"        pm.expect(item.id).to.exist;",
-									"        pm.expect(item.nome).to.exist;",
-									"        pm.expect(item.descricao).to.exist;",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"Nome field is a non-empty string\", function () {",
-									"  const responseData = pm.response.json();",
-									"",
-									"  pm.expect(responseData).to.be.an('array').and.to.have.lengthOf(1);",
-									"  responseData.forEach(function (item) {",
-									"    pm.expect(item.nome).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Nome field should not be empty\");",
-									"  });",
-									"});",
-									"",
-									"",
-									"pm.test(\"The descricao field is a non-empty string\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('array');",
-									"    responseData.forEach(function (item) {",
-									"        pm.expect(item.descricao).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response content type is application/json\", function () {",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});"
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.to.have.status(200));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the content type header set to application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -1502,639 +990,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/area-medica?nome=Neurologia",
+							"raw": "http://localhost/profissional-saude?nome=Benefrancis",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"area-medica"
+								"profissional-saude"
 							],
 							"query": [
 								{
 									"key": "nome",
-									"value": "Neurologia"
+									"value": "Benefrancis"
 								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "TODOS FUNCIONAM!\n\nRestrições:\n\nÉ proibido cadastrar 2 nomes iguais de áreas da saude."
-		},
-		{
-			"name": "Plano de saúde",
-			"item": [
-				{
-					"name": "POST pl-matheus ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.area).to.exist;",
-									"    pm.expect(responseData.valor).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Validate the area object\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.area).to.exist.and.to.be.an('array').that.is.not.empty;",
-									"    ",
-									"    responseData.area.forEach(function(area) {",
-									"        pm.expect(area).to.be.an('object');",
-									"        pm.expect(area.id).to.exist.and.to.be.a('number');",
-									"        pm.expect(area.nome).to.exist.and.to.be.a('string');",
-									"        pm.expect(area.descricao).to.exist.and.to.be.a('string');",
-									"    });",
-									"});",
-									"",
-									"",
-									"pm.test(\"The 'valor' field should be a non-negative number\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.valor).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.valor).to.be.at.least(0, \"Value should be non-negative\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"area\": [\r\n    {\"id\":1},\r\n    {\"id\":2},\r\n    {\"id\":3}\r\n    ],\r\n  \"valor\": 1900\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/plano-saude",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"plano-saude"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST pl-ana ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData).to.have.property('id');",
-									"  pm.expect(responseData).to.have.property('area');",
-									"  pm.expect(responseData).to.have.property('valor');",
-									"});",
-									"",
-									"",
-									"pm.test(\"The 'valor' field is a non-negative integer\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.valor).to.exist.and.to.be.a('number');",
-									"  pm.expect(responseData.valor).to.be.at.least(0);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"area\": [\r\n    {\"id\":1},\r\n    {\"id\":4}\r\n    ],\r\n  \"valor\": 800\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/plano-saude",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"plano-saude"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST pl-beatriz ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Content-Type is application/json\", function () {",
-									"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields - id, area, and valor\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.area).to.exist;",
-									"    pm.expect(responseData.valor).to.exist;",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"area\": [{\"id\":3}],\r\n  \"valor\": 200\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/plano-saude",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"plano-saude"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ALL ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test('Response status code is 200', function () {",
-									"    pm.expect(pm.response.code).to.equal(200);",
-									"})",
-									"",
-									"pm.test('Response has the correct Content-Type header', function () {",
-									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
-									"})",
-									"",
-									"pm.test('Verify that the \\'id\\' field is a non-negative integer', function () {",
-									"    const responseData = pm.response.json();",
-									"    responseData.forEach(function (item) {",
-									"        pm.expect(item.id).to.be.a('number').and.to.be.at.least(0);",
-									"    });",
-									"})"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/plano-saude",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"plano-saude"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY ID ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 200\", function () {",
-									"  pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Content-Type header is 'application/json'\", function () {",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(\"application/json\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.exist;",
-									"    pm.expect(responseData.area).to.exist;",
-									"    pm.expect(responseData.valor).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"The id is a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0, \"id should be a non-negative integer\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Area is an array and is not empty\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.area).to.be.an('array', \"Area should be an array\");",
-									"  pm.expect(responseData.area).to.have.lengthOf.at.least(1, \"Area should not be empty\");",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/plano-saude/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"plano-saude",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "TODOS FUNCIONAM!\n\nRestrições:\n\nNenhuma por enquanto."
-		},
-		{
-			"name": "Paciente",
-			"item": [
-				{
-					"name": "POST pac-matheus ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"",
-									"pm.test(\"Response status code is 201\", function () {",
-									"  pm.expect(pm.response.code).to.equal(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Email is in a valid format\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData).to.be.an('object');",
-									"  pm.expect(responseData.pessoa.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email format is not valid\");",
-									"});",
-									"",
-									"",
-									"",
-									"pm.test(\"Nascimento date is in a valid date format\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.pessoa.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Plano object contains a non-negative integer for the valor field\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.plano).to.be.an('object');",
-									"    pm.expect(responseData.plano.valor).to.exist.and.to.be.a('number');",
-									"    pm.expect(responseData.plano.valor).to.satisfy((value) => value >= 0, \"Value should be a non-negative integer\");",
-									"});",
-									"",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"userPaciente\": \"RM552295\",\r\n  \"senhaPaciente\": \"matheus@1\",\r\n  \"cpf\": \"440.837.228-51\",\r\n  \"pessoa\": {\"id\":1},\r\n  \"plano\": {\"id\":1},\r\n  \"historico\": {\"id\":1}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/paciente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"paciente"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST pac-ana ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Response status code is 201\", function () {\r",
-									"  pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Email is in a valid format\", function () {\r",
-									"  pm.expect(pm.response.json().pessoa.email).to.be.a('string').and.to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Plano object contains expected fields and values\", function () {\r",
-									"  pm.expect(pm.response.json().plano).to.exist;\r",
-									"  pm.expect(pm.response.json().plano.id).to.be.a('number');\r",
-									"  pm.expect(pm.response.json().plano.area).to.be.an('array');\r",
-									"  pm.response.json().plano.area.forEach(function(area) {\r",
-									"      pm.expect(area.id).to.be.a('number');\r",
-									"      pm.expect(area.nome).to.be.a('string');\r",
-									"      pm.expect(area.descricao).to.be.a('string');\r",
-									"  });\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Historico object contains expected fields and values\", function () {\r",
-									"  pm.expect(pm.response.json().historico).to.be.an('object');\r",
-									"  pm.expect(pm.response.json().historico).to.include.all.keys('id', 'doencas', 'doencasAnteriores', 'alergias', 'medicamento');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response Content-Type header is application/json\", function () {\r",
-									"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Id, userPaciente, senhaPaciente, cpf, and pessoa object are present in the response\", function () {\r",
-									"  pm.expect(pm.response.json()).to.be.an('object');\r",
-									"  pm.expect(pm.response.json().id).to.exist;\r",
-									"  pm.expect(pm.response.json().userPaciente).to.exist;\r",
-									"  pm.expect(pm.response.json().senhaPaciente).to.exist;\r",
-									"  pm.expect(pm.response.json().cpf).to.exist;\r",
-									"  pm.expect(pm.response.json().pessoa).to.exist.and.to.be.an('object');\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Nascimento is in a valid date format\", function () {\r",
-									"  pm.expect(pm.response.json().pessoa).to.be.an('object');\r",
-									"  pm.expect(pm.response.json().pessoa.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"userPaciente\": \"RM555555\",\r\n  \"senhaPaciente\": \"ana@1\",\r\n  \"cpf\": \"335.824.158-05\",\r\n  \"pessoa\": {\"id\":2},\r\n  \"plano\": {\"id\":2},\r\n  \"historico\": {\"id\":2}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/paciente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"paciente"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST pac-beatriz ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"\r",
-									"pm.test(\"Response status code is 201\", function () {\r",
-									"  pm.expect(pm.response.code).to.equal(201);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Email is in a valid format\", function () {\r",
-									"  const responseData = pm.response.json();\r",
-									"  \r",
-									"  pm.expect(responseData).to.be.an('object');\r",
-									"  pm.expect(responseData.pessoa.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email format is not valid\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"\r",
-									"pm.test(\"Nascimento date is in a valid date format\", function () {\r",
-									"  const responseData = pm.response.json();\r",
-									"  \r",
-									"  pm.expect(responseData.pessoa.nascimento).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Plano object contains a non-negative integer for the valor field\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"\r",
-									"    pm.expect(responseData.plano).to.be.an('object');\r",
-									"    pm.expect(responseData.plano.valor).to.exist.and.to.be.a('number');\r",
-									"    pm.expect(responseData.plano.valor).to.satisfy((value) => value >= 0, \"Value should be a non-negative integer\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"userPaciente\": \"RM001122\",\r\n  \"senhaPaciente\": \"beatriz@1\",\r\n  \"cpf\": \"212.944.140-89\",\r\n  \"pessoa\": {\"id\":3},\r\n  \"plano\": {\"id\":3},\r\n  \"historico\": {\"id\":3}\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost/paciente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"paciente"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET ALL ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"\r",
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Email is in a valid format\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    responseData.forEach(function(paciente) {\r",
-									"        pm.expect(paciente.pessoa.email).to.match(/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/);\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/paciente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"paciente"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET BY ID ✔️",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"",
-									"pm.test(\"Response status code is 200\", function () {",
-									"    pm.expect(pm.response.code).to.equal(200);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Content type is application/json\", function () {",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Pessoa object must exist and be an object\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.pessoa).to.exist.and.to.be.an('object');",
-									"});",
-									"",
-									"",
-									"pm.test(\"Plano object should exist and be an object\", function () {",
-									"  const responseData = pm.response.json();",
-									"  ",
-									"  pm.expect(responseData.plano).to.exist;",
-									"  pm.expect(responseData.plano).to.be.an('object');",
-									"});",
-									"",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost/paciente/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"path": [
-								"paciente",
-								"2"
 							]
 						}
 					},
@@ -2147,19 +1015,34 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"  pm.expect(pm.response.code).to.equal(200);\r",
 									"});\r",
 									"\r",
 									"\r",
-									"pm.test(\"Email is in a valid format\", function () {\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the content type header set to 'application/json'\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
 									"    const responseData = pm.response.json();\r",
 									"    \r",
-									"    responseData.forEach(function(paciente) {\r",
-									"        pm.expect(paciente.pessoa.email).to.match(/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/);\r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('documento');\r",
+									"        pm.expect(item).to.have.property('pessoa');\r",
+									"        pm.expect(item).to.have.property('pacientes');\r",
 									"    });\r",
 									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2171,18 +1054,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/paciente?cpf=440.837.228-51",
+							"raw": "http://localhost/profissional-saude?cpf=12345678999",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"paciente"
+								"profissional-saude"
 							],
 							"query": [
 								{
 									"key": "cpf",
-									"value": "440.837.228-51"
+									"value": "12345678999"
 								}
 							]
 						}
@@ -2190,25 +1073,40 @@
 					"response": []
 				},
 				{
-					"name": "GET BY userPaciente  ✔️",
+					"name": "GET BY email ✔️",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"\r",
 									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"  pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
 									"\r",
-									"pm.test(\"Email is in a valid format\", function () {\r",
+									"pm.test(\"Response time is within the acceptable range\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required Content-Type header\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate id, documento, and pessoa objects in the response\", function () {\r",
 									"    const responseData = pm.response.json();\r",
 									"    \r",
-									"    responseData.forEach(function(paciente) {\r",
-									"        pm.expect(paciente.pessoa.email).to.match(/^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$/);\r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    \r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.be.an('object');\r",
+									"        pm.expect(item.id).to.exist.and.to.be.a('number');\r",
+									"        pm.expect(item.documento).to.exist.and.to.be.an('object');\r",
+									"        pm.expect(item.pessoa).to.exist.and.to.be.an('object');\r",
 									"    });\r",
 									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -2220,77 +1118,224 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/paciente?userPaciente=RM555555",
+							"raw": "http://localhost/profissional-saude?email=benefrancis@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"paciente"
+								"profissional-saude"
 							],
 							"query": [
 								{
-									"key": "userPaciente",
-									"value": "RM555555"
+									"key": "email",
+									"value": "benefrancis@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY doc.sigla ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.expect(pm.response.to.have.status(200));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the content type header of 'application/json'\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/profissional-saude?documento.sigla=CRR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"profissional-saude"
+							],
+							"query": [
+								{
+									"key": "documento.sigla",
+									"value": "CRR"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY doc.estado ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+									"    \r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');\r",
+									"        \r",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/profissional-saude?documento.estado=RJ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"profissional-saude"
+							],
+							"query": [
+								{
+									"key": "documento.estado",
+									"value": "RJ"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY doc.numero ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+									"    \r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');\r",
+									"        \r",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/profissional-saude?documento.numero=1122334455",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"profissional-saude"
+							],
+							"query": [
+								{
+									"key": "documento.numero",
+									"value": "1122334455"
 								}
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"description": "TODOS FUNCIONAM!\n\nRestrições:\n\nÉ necessário cadastrar e-mail, cpf e nome.\n\nCPF é um atributo UNICO, não podendo ser repetido, assim como userPaciente."
+			]
 		},
 		{
-			"name": "Profissional da Saúde",
+			"name": "Exames",
 			"item": [
 				{
-					"name": "POST medica-mirelly ✔️",
+					"name": "POST exame-bene ✔️",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
 									"",
 									"pm.test(\"Response status code is 201\", function () {",
 									"    pm.expect(pm.response.code).to.equal(201);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Id field is present and a non-negative integer\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.have.property('id');",
-									"    pm.expect(responseData.id).to.be.a('number');",
-									"    pm.expect(responseData.id).to.be.at.least(0);",
-									"});",
-									"",
-									"",
-									"pm.test(\"UserMedico and SenhaMedico are non-empty strings\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.userMedico).to.be.a('string').and.to.have.lengthOf.at.least(1, \"UserMedico should not be empty\");",
-									"    pm.expect(responseData.senhaMedico).to.be.a('string').and.to.have.lengthOf.at.least(1, \"SenhaMedico should not be empty\");",
-									"});",
-									"",
-									"",
-									"pm.test(\"Pessoa object has required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"",
-									"    pm.expect(responseData.pessoa).to.be.an('object');",
-									"    pm.expect(responseData.pessoa.id).to.exist;",
-									"    pm.expect(responseData.pessoa.nome).to.exist;",
-									"    pm.expect(responseData.pessoa.email).to.exist;",
-									"    pm.expect(responseData.pessoa.nascimento).to.exist;",
-									"    pm.expect(responseData.pessoa.telefone).to.exist;",
-									"});",
-									"",
-									"",
-									"pm.test(\"Pacientes array is present and contains at least one element\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData.pacientes).to.exist.and.to.be.an('array').that.is.not.empty;",
+									"pm.test(\"Pessoa object must exist and be an object\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.pessoa).to.exist.and.to.be.an('object');",
 									"});",
 									"",
 									""
@@ -2305,7 +1350,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userMedico\": \"PF123456\",\r\n  \"senhaMedico\": \"mirelly@1\",\r\n  \"crm\": \"CRM/SP 123456\",\r\n  \"pessoa\": {\"id\":4},\r\n  \"pacientes\": [{\"id\":2},{\"id\":3},{\"id\":1}]\r\n}",
+							"raw": "{\r\n  \"sexo\": \"M\",\r\n  \"idade\": 44,\r\n  \"histDiabetes\": false,\r\n  \"histDoencaCoronaria\": false,\r\n  \"histDoencaVascular\": false,\r\n  \"histFumo\": false,\r\n  \"histHipertensao\": false,\r\n  \"histDislipidemia\": false,\r\n  \"histObesidade\": false,\r\n  \"remDislipidemia\": false,\r\n  \"remDiabetes\": false,\r\n  \"remHipertensao\": false,\r\n  \"remACEIeARB\": false,\r\n  \"nvlColesterol\": 10,\r\n  \"nvlCreatina\": 20,\r\n  \"exameGFRB\": 30,\r\n  \"presSistolica\": 40,\r\n  \"presDiastolica\": 50,\r\n  \"indiceMassa\": 60,\r\n  \"mesAteCrise\": 70,\r\n  \"anoAteCrise\": 8,\r\n  \"pessoa\": {\"id\":5}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2313,13 +1358,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/proficional-saude",
+							"raw": "http://localhost/exames",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"proficional-saude"
+								"exames"
 							]
 						}
 					},
@@ -2377,13 +1422,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/proficional-saude",
+							"raw": "http://localhost/exames",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"proficional-saude"
+								"exames"
 							]
 						}
 					},
@@ -2396,52 +1441,27 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"",
-									"",
 									"pm.test(\"Response status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response has the required fields\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData).to.be.an('object');",
-									"    pm.expect(responseData).to.have.property('id');",
-									"    pm.expect(responseData).to.have.property('userMedico');",
-									"    pm.expect(responseData).to.have.property('senhaMedico');",
-									"    pm.expect(responseData).to.have.property('crm');",
-									"    pm.expect(responseData).to.have.property('pessoa');",
-									"    pm.expect(responseData).to.have.property('pacientes');",
-									"});",
 									"",
-									"pm.test(\"Content-Type header is application/json\", function () {",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
 									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
 									"});",
 									"",
-									"pm.test(\"Pessoa object has required fields\", function () {",
-									"    const responseData = pm.response.json();",
 									"",
-									"    pm.expect(responseData.pessoa).to.be.an('object');",
-									"    pm.expect(responseData.pessoa.id).to.exist;",
-									"    pm.expect(responseData.pessoa.nome).to.exist;",
-									"    pm.expect(responseData.pessoa.email).to.exist;",
-									"    pm.expect(responseData.pessoa.nascimento).to.exist;",
-									"    pm.expect(responseData.pessoa.telefone).to.exist;",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Validate the structure of the 'plano' object within the 'pacientes' array\", function () {",
-									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.pacientes).to.be.an('array');",
-									"    responseData.pacientes.forEach(function(paciente) {",
-									"        pm.expect(paciente.plano).to.be.an('object');",
-									"        pm.expect(paciente.plano.id).to.exist;",
-									"        pm.expect(paciente.plano.area).to.exist;",
-									"        pm.expect(paciente.plano.valor).to.exist;",
-									"    });",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
 									"});",
+									"",
 									""
 								],
 								"type": "text/javascript",
@@ -2453,60 +1473,60 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/proficional-saude/1",
+							"raw": "http://localhost/exames/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"proficional-saude",
-								"1"
+								"exames",
+								"4"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "GET BY crm ✔️",
+					"name": "GET BY sexo ✔️",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Email is in a valid format for medico and paciente\", function () {\r",
-									"    pm.response.json().forEach(function(item) {\r",
-									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
-									"        \r",
-									"        if (item.pacientes) {\r",
-									"            item.pacientes.forEach(function(paciente) {\r",
-									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
-									"            });\r",
-									"        }\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Response Content-Type is application/json\", function () {\r",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
-									"    \r",
-									"    responseData.forEach(function(item) {\r",
-									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');\r",
-									"        \r",
-									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");\r",
-									"    });\r",
-									"});\r",
-									"\r",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
 									""
 								],
 								"type": "text/javascript",
@@ -2518,18 +1538,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/proficional-saude?crm=CRM/SP 123456",
+							"raw": "http://localhost/exames?sexo=M",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"proficional-saude"
+								"exames"
 							],
 							"query": [
 								{
-									"key": "crm",
-									"value": "CRM/SP 123456"
+									"key": "sexo",
+									"value": "M"
 								}
 							]
 						}
@@ -2537,46 +1557,46 @@
 					"response": []
 				},
 				{
-					"name": "GET BY userMedico ✔️",
+					"name": "GET BY idade ✔️",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Email is in a valid format for medico and paciente\", function () {\r",
-									"    pm.response.json().forEach(function(item) {\r",
-									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
-									"        \r",
-									"        if (item.pacientes) {\r",
-									"            item.pacientes.forEach(function(paciente) {\r",
-									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);\r",
-									"            });\r",
-									"        }\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Response Content-Type is application/json\", function () {\r",
-									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {\r",
-									"    const responseData = pm.response.json();\r",
-									"    \r",
-									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
-									"    \r",
-									"    responseData.forEach(function(item) {\r",
-									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');\r",
-									"        \r",
-									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");\r",
-									"    });\r",
-									"});\r",
-									"\r",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
 									""
 								],
 								"type": "text/javascript",
@@ -2588,18 +1608,1282 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost/proficional-saude?userMedico=PF123456",
+							"raw": "http://localhost/exames?idade=44",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"path": [
-								"proficional-saude"
+								"exames"
 							],
 							"query": [
 								{
-									"key": "userMedico",
-									"value": "PF123456"
+									"key": "idade",
+									"value": "44"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY indiceMassa ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/exames?indiceMassa=60",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"exames"
+							],
+							"query": [
+								{
+									"key": "indiceMassa",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY mesAteCrise ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/exames?mesAteCrise=70",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"exames"
+							],
+							"query": [
+								{
+									"key": "mesAteCrise",
+									"value": "70"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY anoAteCrise ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/exames?anoAteCrise=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"exames"
+							],
+							"query": [
+								{
+									"key": "anoAteCrise",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY pessoa.nome ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/exames?pessoa.nome=Benefrancis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"exames"
+							],
+							"query": [
+								{
+									"key": "pessoa.nome",
+									"value": "Benefrancis"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY pessoa.email ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/exames?pessoa.email=benefrancis@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"exames"
+							],
+							"query": [
+								{
+									"key": "pessoa.email",
+									"value": "benefrancis@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Telefone",
+			"item": [
+				{
+					"name": "POST telefone-bene ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 201\", function () {",
+									"    pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id field is present and a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.have.property('id');",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Pessoa object schema validation\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.pessoa).to.be.an('object');",
+									"    pm.expect(responseData.pessoa.id).to.be.a('number');",
+									"    pm.expect(responseData.pessoa.nome).to.be.a('string');",
+									"    pm.expect(responseData.pessoa.email).to.be.a('string');",
+									"    pm.expect(responseData.pessoa.nascimento).to.be.a('string');",
+									"    pm.expect(responseData.pessoa.tipoPessoa).to.be.a('string');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Content-Type header is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response status code is 201\", function () {",
+									"  pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ddi\": \"55\",\r\n  \"ddd\": \"11\",\r\n  \"numero\": \"999998888\",\r\n  \"pessoa\": {\"id\":5}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/telefone",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/telefone",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id, ddi, ddd, and numero fields are present in the response\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.id).to.exist;",
+									"  pm.expect(responseData.ddi).to.exist;",
+									"  pm.expect(responseData.ddd).to.exist;",
+									"  pm.expect(responseData.numero).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Pessoa object has expected fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.pessoa).to.be.an('object');",
+									"    pm.expect(responseData.pessoa).to.have.property('id');",
+									"    pm.expect(responseData.pessoa).to.have.property('nome');",
+									"    pm.expect(responseData.pessoa).to.have.property('email');",
+									"    pm.expect(responseData.pessoa).to.have.property('nascimento');",
+									"    pm.expect(responseData.pessoa).to.have.property('tipoPessoa');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/telefone/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ddi ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/telefone?ddi=55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone"
+							],
+							"query": [
+								{
+									"key": "ddi",
+									"value": "55"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ddd ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/telefone?ddd=11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone"
+							],
+							"query": [
+								{
+									"key": "ddd",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY numero ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/telefone?numero=999998888",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone"
+							],
+							"query": [
+								{
+									"key": "numero",
+									"value": "999998888"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY pessoa.nome ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/telefone?pessoa.nome=Benefrancis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"telefone"
+							],
+							"query": [
+								{
+									"key": "pessoa.nome",
+									"value": "Benefrancis"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "POST usuario-bene ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Response status code is 201\", function () {",
+									"    pm.expect(pm.response.code).to.equal(201);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Id field is present and a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.have.property('id');",
+									"    pm.expect(responseData.id).to.be.a('number');",
+									"    pm.expect(responseData.id).to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required fields - id, user, pessoa\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData).to.have.property('id');",
+									"    pm.expect(responseData).to.have.property('user');",
+									"    pm.expect(responseData).to.have.property('pessoa');",
+									"});",
+									"",
+									"",
+									"pm.test(\"User is a non-empty string\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData).to.be.an('object');",
+									"  pm.expect(responseData.user).to.be.a('string').and.to.have.lengthOf.at.least(1, \"User should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Pessoa object contains expected fields\", function () {",
+									"  const responseData = pm.response.json();",
+									"  ",
+									"  pm.expect(responseData.pessoa).to.be.an('object');",
+									"  pm.expect(responseData.pessoa).to.have.property('id');",
+									"  pm.expect(responseData.pessoa).to.have.property('nome');",
+									"  pm.expect(responseData.pessoa).to.have.property('email');",
+									"  pm.expect(responseData.pessoa).to.have.property('nascimento');",
+									"  pm.expect(responseData.pessoa).to.have.property('tipoPessoa');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": \"Benezinho\",\r\n  \"senha\": \"Matheus@1\",\r\n  \"pessoa\": {\"id\":5}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/usuario/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"usuario",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY user ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/usuario?usuario=Benefrancis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "usuario",
+									"value": "Benefrancis"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY nome ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/usuario?pessoa.nome=Matheus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "pessoa.nome",
+									"value": "Matheus"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY pessoa.email ✔️",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Email is in a valid format for medico and paciente\", function () {",
+									"    pm.response.json().forEach(function(item) {",
+									"        pm.expect(item.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"        ",
+									"        if (item.pacientes) {",
+									"            item.pacientes.forEach(function(paciente) {",
+									"                pm.expect(paciente.pessoa.email).to.be.a('string').and.to.match(/^.+@.+\\..+$/);",
+									"            });",
+									"        }",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response Content-Type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Nome should be a non-empty string for Medico and Paciente\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+									"    ",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('pessoa').that.is.an('object');",
+									"        ",
+									"        pm.expect(item.pessoa).to.have.property('nome').that.is.a('string').and.to.have.lengthOf.at.least(1, \"Nome should not be empty\");",
+									"    });",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/usuario?pessoa.email=benefrancis@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "pessoa.email",
+									"value": "benefrancis@gmail.com"
 								}
 							]
 						}
