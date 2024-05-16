@@ -15,9 +15,12 @@ import java.util.Set;
 @Entity
 @Builder
 @Table(name = "TB_PROFISSIONAL_SAUDE", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_TB_PROFISSIONAL_SAUDE_DOCUMENTO", columnNames = {
-                "DOCUMENTO"
-        })
+        /**
+         * UK para garantir que não exista um médico com o mesmo documento.
+         * UK para garantir que não exista um médico que herde uma mesma pessoa.
+         */
+        @UniqueConstraint(name = "UK_TB_PROFISSIONAL_SAUDE_DOCUMENTO", columnNames = {"DOCUMENTO"}),
+        @UniqueConstraint(name = "UK_TB_PROFISSIONAL_SAUDE_PESSOA", columnNames = {"PESSOA"})
 })
 public class ProfissionalSaude {
     @Id

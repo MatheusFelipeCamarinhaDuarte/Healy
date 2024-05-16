@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "TB_USUARIO", uniqueConstraints = {
-        @UniqueConstraint(name = "UK_TB_USUARIO_USERNAME", columnNames = {
-                "USERNAME"
-        }),
-        @UniqueConstraint(name = "UK_TB_USUARIO_PESSOA", columnNames = {
-                "PESSOA"
-        })
+        /**
+         * UK para garantir que não se tenha mais usernames iguais.
+         * UK para garantir que não se tenha mais de um usuario vinculado a mesma pessoa.
+         */
+        @UniqueConstraint(name = "UK_USUARIO_USERNAME", columnNames = {"USERNAME"}),
+        @UniqueConstraint(name = "UK_USUARIO_PESSOA", columnNames = {"PESSOA"})
 })
 public class Usuario {
     @Id

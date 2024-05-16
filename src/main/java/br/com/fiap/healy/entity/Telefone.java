@@ -11,7 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "TELEFONE")
+@Table(name = "TELEFONE", uniqueConstraints = {
+        /**
+         * UK para garantir que não tenha nenhum telefone exatamente igual.
+         */
+        @UniqueConstraint(name = "UK_TB_TELEFONE", columnNames = {"DDD","DDI","NUMERO"})
+})
 public class Telefone {
 
     @Id
@@ -19,8 +24,11 @@ public class Telefone {
     @SequenceGenerator(name = "SQ_TELEFONE", sequenceName = "SQ_TELEFONE", allocationSize = 1)
     @Column(name = "ID_TELEFONE")
     private Long id;
+    @Column(name = "DDI")
     private String ddi;
+    @Column(name = "DDD")
     private String ddd;
+    @Column(name = "NUMERO")
     private String numero;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
