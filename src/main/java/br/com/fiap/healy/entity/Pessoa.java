@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "PESSOA", uniqueConstraints = {
+@Table(name = "TB_PESSOA", uniqueConstraints = {
         /**
          * UK para garantir que não se tenha mais de uma pessoa com o mesmo e-mail.
          * Uk para garantir que não se tenha mais de uma pessoa com o mesmo CPF.

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "TELEFONE", uniqueConstraints = {
+@Table(name = "TB_TELEFONE", uniqueConstraints = {
         /**
          * UK para garantir que não tenha nenhum telefone exatamente igual.
          */

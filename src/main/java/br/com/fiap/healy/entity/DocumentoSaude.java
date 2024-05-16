@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "DOCUMENTO_SAUDE", uniqueConstraints = {
+@Table(name = "TB_DOCUMENTO_SAUDE", uniqueConstraints = {
         /**
          * UK para garantir que não se tenha mais de um documento com todas as informações iguais.
          */

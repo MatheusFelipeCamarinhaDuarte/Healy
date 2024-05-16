@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "TB_HEALY_HISTORICO_MEDICO")
+@Table(name = "TB_EXAME")
 public class Exame {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_HEALY_HISTORICO_MEDICO")
@@ -72,7 +72,7 @@ public class Exame {
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",
             foreignKey = @ForeignKey(
-                    name = "FK_TELEFONE_PESSOA"
+                    name = "FK_EXAME_PESSOA"
             )
     )
     private Pessoa pessoa;

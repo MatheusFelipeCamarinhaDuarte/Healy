@@ -63,8 +63,8 @@ public class ProfissionalSaude {
             },
             inverseJoinColumns = {
                     @JoinColumn(
-                            name = "PACIENTE",
-                            referencedColumnName = "ID_PACIENTE",
+                            name = "PESSOA",
+                            referencedColumnName = "ID_PESSOA",
                             foreignKey = @ForeignKey(
                                     name = "FK_PACIENTE_DO_PROFISSIONAL"
                             )
