@@ -145,55 +145,61 @@ Aqui se coloca a qual pessoa pertence o número telefônico.
 <a id="_Endpoint"></a>
 
 # 6 -  Endpoints
-### Documento Saude
-    localhost/documento-saude - GET;
-
-    OUTROS**
-    
-    localhost/documento-saude - POST;
-    localhost/documento-saude/{id} - GET
-
-### Exame
-    localhost/exame - GET;
-    
-    OUTROS**
-
-    localhost/exame - POST;
-    localhost/exame/{id} - GET
-
-### Usuario
-    localhost/usuario - GET;
-    localhost/usuario?user= - GET;
-
-    OUTROS**
-    
-    localhost/usuario - POST;
-    localhost/usuario/{id} - GET
-
 ### Pessoa
-    localhost/pessoa - GET;
-    localhost/pessoa?nascimento= - GET;
-
-    OUTROS**
-    
     localhost/pessoa - POST;
+    localhost/pessoa - GET;
     localhost/pessoa/{id} - GET
+    localhost/pessoa?nome= - GET;
+    localhost/pessoa?email= - GET;
+    localhost/pessoa?nascimento= - GET;
+    localhost/pessoa?sigla= - GET;    
 
-### Telefone
-    localhost/telefone - GET;
-    localhost/telefone?ddd= - GET;
-    localhost/telefone?ddi= - GET;
-    localhost/telefone - POST;
-    localhost/telefone/{id} - GET
+### Documento Saude
+    localhost/documento-saude - POST;
+    localhost/documento-saude - GET;
+    localhost/documento-saude/{id} - GET
+    localhost/documento-saude?estado= - GET
+    localhost/documento-saude?sigla= - GET
+    localhost/documento-saude?numero= - GET
 
 ### Profissional de saúde
-    localhost/profissional-saude - GET;
-    localhost/profissional-saude?documento= - GET;
-
-    OURTOS**
-    
     localhost/profissional-saude - POST;
+    localhost/profissional-saude - GET;
     localhost/profissional-saude/{id} - GET
+    localhost/profissional-saude?nome= - GET;
+    localhost/profissional-saude?cpf= - GET;
+    localhost/profissional-saude?email= - GET;
+    localhost/profissional-saude?documento.sigla= - GET;
+    localhost/profissional-saude?documento.estado= - GET;
+    localhost/profissional-saude?documento.numero= - GET;
+
+### Exame
+    localhost/exame - POST;
+    localhost/exame - GET;
+    localhost/exame/{id} - GET
+    localhost/exame?sexo - GET
+    localhost/exame?idade - GET
+    localhost/exame?indiceMassa - GET
+    localhost/exame?mesAteCrise - GET
+    localhost/exame?anoAteCrise - GET
+    localhost/exame?pessoa.nome - GET
+    localhost/exame?pessoa.email - GET
+
+### Telefone
+    localhost/telefone - POST;
+    localhost/telefone - GET;
+    localhost/telefone/{id} - GET
+    localhost/telefone?ddd= - GET;
+    localhost/telefone?ddi= - GET;
+    localhost/telefone?numero= - GET;
+
+### Usuario
+    localhost/usuario - POST;
+    localhost/usuario - GET;
+    localhost/usuario/{id} - GET
+    localhost/usuario?usuario= - GET;
+    localhost/usuario?pessoa.nome= - GET;
+    localhost/usuario?pessoa.email= - GET;
 
 *NOTA¹: Tive  problemas com o git e tive que passar o projeto parte por parte novamente.
 **NOTA²: Ainda a serem implementados.
