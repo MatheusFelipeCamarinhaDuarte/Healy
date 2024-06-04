@@ -6,7 +6,6 @@ import lombok.Builder;
 public record ExameResponse(
         Long id,
         String sexo,
-        Integer idade,
         Boolean histDiabetes,
         Boolean histDoencaCoronaria,
         Boolean histDoencaVascular,

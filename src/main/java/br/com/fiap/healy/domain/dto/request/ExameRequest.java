@@ -2,7 +2,6 @@ package br.com.fiap.healy.domain.dto.request;
 
 public record ExameRequest(
     String sexo,
-    Integer idade,
     Boolean histDiabetes,
     Boolean histDoencaCoronaria,
     Boolean histDoencaVascular,

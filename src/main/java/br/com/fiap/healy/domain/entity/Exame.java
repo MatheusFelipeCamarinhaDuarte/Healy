@@ -21,8 +21,6 @@ public class Exame {
 
     @Column(name = "SEXO")
     private String sexo;
-    @Column(name = "IDADE")
-    private Integer idade;
 
     @Column(name = "HIST_DIABETES")
     private Boolean histDiabetes;

@@ -27,7 +27,6 @@ public class ExameResource implements ResourceDTO<ExameRequest, ExameResponse>{
     @GetMapping
     public ResponseEntity<Collection<ExameResponse>> findAll(
             @RequestParam(name = "sexo",required = false) String sexo,
-            @RequestParam(name = "idade",required = false) Integer idade,
             @RequestParam(name = "indiceMassa",required = false) Integer indiceMassa,
             @RequestParam(name = "mesAteCrise",required = false) Integer mesAteCrise,
             @RequestParam(name = "anoAteCrise",required = false) Integer anoAteCrise,
@@ -40,7 +39,6 @@ public class ExameResource implements ResourceDTO<ExameRequest, ExameResponse>{
                 .build();
         Exame exame = Exame.builder()
                 .sexo(sexo)
-                .idade(idade)
                 .indiceMassa(indiceMassa)
                 .mesAteCrise(mesAteCrise)
                 .anoAteCrise(anoAteCrise)
