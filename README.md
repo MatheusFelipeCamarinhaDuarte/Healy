@@ -67,7 +67,7 @@ sendo assim, basta rodar no postman.
 [LINK](https://www.youtube.com/watch?v=5i9sSBTHdaI)
 
 Após algumas alterações na proposta, decidimos mudar algumas coisas.
-- Agora. ao imvés de oferecer um plano com determinadas áreas da saude, criaremos um IA que, de acordo com informações de exames,
+- Agora. ao invés de oferecer um plano com determinadas áreas da saude, criaremos um IA que, de acordo com informações de exames,
 vejam a probabilidade do desenvolvimento de determinada doença, e alerte ao médico quais as chanches que o paciente tem de desenvolver
 aquela patologia.
 - Ao invés de enviar os dados de doenças pré-existentes, serão enviados dados de exames recentes feitos pelo paciente.
