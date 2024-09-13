@@ -27,7 +27,6 @@ public class ExameService implements ServiceDTO<Exame, ExameRequest, ExameRespon
         }
         return Exame.builder()
                 .sexo(dto.sexo())
-                .idade(dto.idade())
                 .histDiabetes(dto.histDiabetes())
                 .histDoencaCoronaria(dto.histDoencaCoronaria())
                 .histDoencaVascular(dto.histDoencaVascular())
@@ -58,7 +57,6 @@ public class ExameService implements ServiceDTO<Exame, ExameRequest, ExameRespon
         return ExameResponse.builder()
                 .id(e.getId())
                 .sexo(e.getSexo())
-                .idade(e.getIdade())
                 .histDiabetes(e.getHistDiabetes())
                 .histDoencaCoronaria(e.getHistDoencaCoronaria())
                 .histDoencaVascular(e.getHistDoencaVascular())
