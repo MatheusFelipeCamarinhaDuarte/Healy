@@ -1,4 +1,4 @@
-package br.com.fiap.healy.domain.resource;
+package br.com.fiap.healy.domain.controller.api;
 
 import br.com.fiap.healy.domain.dto.request.DocumentoSaudeRequest;
 import br.com.fiap.healy.domain.dto.response.DocumentoSaudeResponse;

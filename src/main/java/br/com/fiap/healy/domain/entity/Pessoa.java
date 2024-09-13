@@ -20,8 +20,7 @@ import java.time.LocalDate;
 })
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_PESSOA")
-    @SequenceGenerator(name = "SQ_PESSOA")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PESSOA")
     private Long id;
 

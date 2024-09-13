@@ -1,10 +1,10 @@
 spring:
   datasource:
     url: jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
-    username: rm552295
-    password: 050405
+    username: rm98672
+    password: 190305
   jpa:
     hibernate:
       ddl-auto: create
+      dialect: org.hibernate.dialect.Oracle12cDialect
     show-sql: true
-

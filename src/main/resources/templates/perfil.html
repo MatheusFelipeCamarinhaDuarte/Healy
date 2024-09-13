@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Informações</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Informações')}"/>
+
+<main class="">
+    <div th:if="${pessoa}">
+        <h2 th:text="${pessoa.nome}">Nome</h2>
+        <p>Email: <span th:text="${pessoa.email}">email</span></p>
+        <p>CPF: <span th:text="${pessoa.cpf}">cpf</span></p>
+        <p>Data de Nascimento: <span th:text="${pessoa.nascimento}">nascimento</span></p>
+        <p>Tipo: <span th:text="${pessoa.tipoPessoa}">tipo</span></p>
+    </div>
+    <div th:if="${profissionalSaude}">
+        <h2>Informações do Médico</h2>
+        <p>Documento de Saúde: <span th:text="${profissionalSaude.documento}">documento</span></p>
+    </div>
+</main>
+<footer th:replace="~{fragments/rodape :: conteudo-rodape()}"/>
+</body>
+</html>
