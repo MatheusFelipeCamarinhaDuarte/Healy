@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Login')}"/>
+
+<main class="container">
+    <form th:action="@{/entrar/login}" method="post">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit">Entrar</button>
+    </form>
+</main>
+<footer th:replace="~{fragments/rodape :: conteudo-rodape()}"/>
+</body>
+</html>

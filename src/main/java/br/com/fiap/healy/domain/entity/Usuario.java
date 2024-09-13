@@ -21,8 +21,7 @@ import lombok.NoArgsConstructor;
 })
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_HEALY_USUARIO")
-    @SequenceGenerator(name = "SQ_HEALY_USUARIO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_USUARIO")
     private Long id;
 

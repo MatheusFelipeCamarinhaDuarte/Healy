@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Cadastro de usuário')}"></header>
+
+<body>
+    <form>
+        <div class="form-row">
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <!-- Senha -->
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+
+            <!-- Confirmação de Senha -->
+            <div class="form-group">
+                <label for="confirmarSenha">Confirmar Senha:</label>
+                <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

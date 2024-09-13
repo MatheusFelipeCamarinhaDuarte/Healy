@@ -1,0 +1,14 @@
+<header th:fragment="conteudo-cabecalho(titulo)">
+    <h1 th:text="${titulo}">Titulo</h1>
+    <nav>
+        <a th:href="@{/home}">Home</a>
+<!--
+        <a th:href="@{/cadastro/paciente}">Cadastro Paciente</a>
+        <a th:href="@{/cadastro/medico}">Cadastro Médico</a
+-->
+
+
+        <a th:href="@{/cadastro}">cadastro</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+</header>

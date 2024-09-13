@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@EntityScan
 @SpringBootApplication
 public class HealyApplication implements CommandLineRunner {
 
@@ -83,21 +85,21 @@ public class HealyApplication implements CommandLineRunner {
         var telefoneBeatriz = Telefone.builder().ddi("1").ddd("12").numero("999999997").pessoa(beatriz).build();
         telefoneRepository.save(telefoneBeatriz);
 
-        var exameMatheus = Exame.builder().sexo("M").idade(30)
+        var exameMatheus = Exame.builder().sexo("M")
                 .histDiabetes(false).histDoencaCoronaria(true).histDoencaVascular(false)
                 .histFumo(true).histHipertensao(true).histDislipidemia(false).histObesidade(false)
                 .remDislipidemia(false).remDiabetes(false).remHipertensao(true).remACEIeARB(false)
                 .nvlColesterol(180.0).nvlCreatina(0.9).exameGFRB(85.0).presSistolica(120).presDiastolica(80)
                 .indiceMassa(25).mesAteCrise(0).anoAteCrise(0).pessoa(matheus).build();
         exameRepository.save(exameMatheus);
-        var exameAna = Exame.builder().sexo("F").idade(45)
+        var exameAna = Exame.builder().sexo("F")
                 .histDiabetes(true).histDoencaCoronaria(false).histDoencaVascular(false)
                 .histFumo(false).histHipertensao(true).histDislipidemia(true).histObesidade(false)
                 .remDislipidemia(true).remDiabetes(false).remHipertensao(true).remACEIeARB(true)
                 .nvlColesterol(220.0).nvlCreatina(1.2).exameGFRB(60.0).presSistolica(140).presDiastolica(90)
                 .indiceMassa(23).mesAteCrise(0).anoAteCrise(0).pessoa(ana).build();
         exameRepository.save(exameAna);
-        var exameBeatriz = Exame.builder().sexo("F").idade(55)
+        var exameBeatriz = Exame.builder().sexo("F")
                 .histDiabetes(false).histDoencaCoronaria(true).histDoencaVascular(false)
                 .histFumo(true).histHipertensao(true).histDislipidemia(true).histObesidade(false)
                 .remDislipidemia(true).remDiabetes(false).remHipertensao(false).remACEIeARB(false)
