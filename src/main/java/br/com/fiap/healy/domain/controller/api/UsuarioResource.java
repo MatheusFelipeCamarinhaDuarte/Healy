@@ -36,7 +36,7 @@ public class UsuarioResource implements ResourceDTO<UsuarioRequest, UsuarioRespo
                 .email(email)
                 .build();
         Usuario user = Usuario.builder()
-                .user(usuario)
+                .username(usuario)
                 .pessoa(pessoa)
                 .build();
         ExampleMatcher matcher = ExampleMatcher

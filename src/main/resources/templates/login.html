@@ -17,8 +17,12 @@
         <input type="password" id="senha" name="senha" required>
 
         <button type="submit">Entrar</button>
+
+        <!-- Exibir mensagem de erro se houver -->
+        <p th:if="${erro}" th:text="${erro}" class="error-message" style="color: red;"></p>
     </form>
 </main>
+
 <footer th:replace="~{fragments/rodape :: conteudo-rodape()}"/>
 </body>
 </html>
