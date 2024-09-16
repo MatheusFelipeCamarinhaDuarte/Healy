@@ -21,6 +21,12 @@ public class UsuarioService implements ServiceDTO<Usuario, UsuarioRequest, Usuar
     @Autowired
     private PessoaService pessoaService;
 
+
+    public boolean validarUsuario(String username, String senha) {
+        Usuario usuario = repo.findByUsername(username);
+        return usuario != null && usuario.getSenha().equals(senha);
+    }
+
     @Override
     public Usuario toEntity(UsuarioRequest dto) {
         Pessoa pessoa = null;
@@ -29,7 +35,7 @@ public class UsuarioService implements ServiceDTO<Usuario, UsuarioRequest, Usuar
         }
 
         return Usuario.builder()
-                .user(dto.user())
+                .username(dto.user())
                 .senha(dto.senha())
                 .pessoa(pessoa)
                 .build();
@@ -40,7 +46,7 @@ public class UsuarioService implements ServiceDTO<Usuario, UsuarioRequest, Usuar
         var pessoa = pessoaService.toResponse(e.getPessoa());
         return UsuarioResponse.builder()
                 .id(e.getId())
-                .user(e.getUser())
+                .user(e.getUsername())
                 .pessoa(pessoa)
                 .build();
     }

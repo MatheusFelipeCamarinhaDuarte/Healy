@@ -37,6 +37,6 @@ public class Pessoa {
     private String cpf;
 
     @Enumerated
-    @Column(name = "TIPO_PESSOA",nullable = false)
+    @Column(name = "TIPO_PESSOA")
     private Tipo tipoPessoa;
 }

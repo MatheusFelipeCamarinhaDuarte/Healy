@@ -67,13 +67,13 @@ public class HealyApplication implements CommandLineRunner {
                 .cpf("12345678913").tipoPessoa(Tipo.PC).build();
         pessoaRepository.save(beatriz);
 
-        var userMatheus = Usuario.builder().user("Matheus").senha("Matheus@1").pessoa(matheus).build();
+        var userMatheus = Usuario.builder().username("Matheus").senha("Matheus@1").pessoa(matheus).build();
         usuarioRepository.save(userMatheus);
-        var userAna = Usuario.builder().user("Ana").senha("AnaAna@1").pessoa(ana).build();
+        var userAna = Usuario.builder().username("Ana").senha("AnaAna@1").pessoa(ana).build();
         usuarioRepository.save(userAna);
-        var userMirelly = Usuario.builder().user("Mirelly").senha("Mirelly@1").pessoa(mirelly).build();
+        var userMirelly = Usuario.builder().username("Mirelly").senha("Mirelly@1").pessoa(mirelly).build();
         usuarioRepository.save(userMirelly);
-        var userBeatriz = Usuario.builder().user("Beatriz").senha("Beatriz@1").pessoa(beatriz).build();
+        var userBeatriz = Usuario.builder().username("Beatriz").senha("Beatriz@1").pessoa(beatriz).build();
         usuarioRepository.save(userBeatriz);
 
         var telefoneMatheus = Telefone.builder().ddi("55").ddd("11").numero("991512776").pessoa(matheus).build();
