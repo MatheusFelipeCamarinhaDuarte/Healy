@@ -1,7 +1,9 @@
 package br.com.fiap.healy.domain.controller.web;
 
+import br.com.fiap.healy.domain.entity.Exame;
 import br.com.fiap.healy.domain.entity.Pessoa;
 import br.com.fiap.healy.domain.entity.Usuario;
+import br.com.fiap.healy.domain.repository.ExameRepository;
 import br.com.fiap.healy.domain.repository.PessoaRepository;
 import br.com.fiap.healy.domain.repository.UsuarioRepository;
 import br.com.fiap.healy.domain.service.PessoaService;
@@ -13,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class Login {
 
@@ -21,7 +25,7 @@ public class Login {
     @Autowired
     private UsuarioService usuarioService;
     @Autowired
-    private PessoaRepository pessoaRepository;
+    private ExameRepository exameRepository;
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -37,10 +41,12 @@ public class Login {
         boolean isValidUser = usuarioService.validarUsuario(loginRequest.getUsername(), loginRequest.getSenha());
         if (isValidUser) {
             Usuario usuario = usuarioRepository.findByUsername(loginRequest.getUsername());
-            Pessoa pessoa = pessoaService.findById(usuario.getPessoa().getId());
 
             ModelAndView mv = new ModelAndView("perfil");
-            mv.addObject("pessoa", pessoa);
+            List<Exame> listaExames = exameRepository.findAllByPessoa(usuario.getPessoa());
+
+            mv.addObject("usuario", usuario);
+            mv.addObject("lista_exames", listaExames);
             return mv;
         } else {
             // Adiciona a mensagem de erro ao modelo

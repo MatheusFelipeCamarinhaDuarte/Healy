@@ -38,5 +38,5 @@ public class Pessoa {
 
     @Enumerated
     @Column(name = "TIPO_PESSOA")
-    private Tipo tipoPessoa;
+    private Tipo tipoPessoa = Tipo.PC;
 }

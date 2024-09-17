@@ -1,4 +1,4 @@
-<header th:fragment="conteudo-cabecalho(titulo)">
+<header th:fragment="conteudo-cabecalho(titulo,conectado)">
     <h1 th:text="${titulo}">Titulo</h1>
     <nav>
         <a th:href="@{/home}">Home</a>
@@ -6,7 +6,8 @@
         <a th:href="@{/Cadastro/paciente}">Cadastro Paciente</a>
         <a th:href="@{/Cadastro/medico}">Cadastro Médico</a
 -->
-        <a th:href="@{/cadastro}">cadastro</a>
-        <a th:href="@{/login}">Login</a>
+        <a th:if="${!conectado}" th:href="@{/cadastro}">cadastro</a>
+        <a th:if="${!conectado}" th:href="@{/login}">Login</a>
+        <a th:if="${conectado}" th:href="@{/home}">logout</a>
     </nav>
 </header>

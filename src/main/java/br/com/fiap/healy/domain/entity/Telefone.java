@@ -30,7 +30,7 @@ public class Telefone {
     @Column(name = "NUMERO")
     private String numero;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",

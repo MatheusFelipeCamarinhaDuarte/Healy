@@ -8,6 +8,7 @@ import br.com.fiap.healy.domain.repository.UsuarioRepository;
 import br.com.fiap.healy.domain.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -63,16 +64,31 @@ public class Cadastro {
             return new ModelAndView("cadastro_paciente");
         } else {
             usuarioService.save(usuario);
-            ModelAndView mv = new ModelAndView("index");
+            Usuario user = usuarioRP.findByUsername(usuario.getUsername());
+            ModelAndView mv = new ModelAndView("perfil");
+            mv.addObject("usuario",user);
             return mv;
 
+        }
+    }
+
+
+    @GetMapping("atualiza-paciente/{id}")
+    public ModelAndView retornaPaginaAtualizaPaciente(@PathVariable Long id){
+        Optional<Usuario> op = usuarioRP.findById(id);
+        if(op.isPresent()){
+            ModelAndView mv = new ModelAndView("atualiza_paciente");
+            mv.addObject("usuario",new Usuario());
+            return mv;
+        } else {
+            return new ModelAndView("redirect:/perfil");
         }
     }
 
     @PostMapping("/atualizar/paciente/{id}")
     public ModelAndView atualizaPaciente(@PathVariable Long id, @Valid Usuario usuario, BindingResult bd) {
         if (bd.hasErrors()) {
-            ModelAndView mv = new ModelAndView("atualiza_cadastro");
+            ModelAndView mv = new ModelAndView("atualiza_paciente");
             return mv;
         } else {
             Optional<Usuario> opUser = usuarioRP.findById(id);
@@ -97,15 +113,13 @@ public class Cadastro {
     public ModelAndView deletarpaciente(@PathVariable Long id) {
         Optional<Usuario> opUser = usuarioRP.findById(id);
         if (opUser.isPresent()) {
-            Usuario usuario = opUser.get();
-            Optional<Pessoa> opPes = pessoaRP.findById(usuario.getPessoa().getId());
-            if (opPes.isPresent()) {
-                pessoaRP.deleteById(usuario.getPessoa().getId());
-            }
+            Usuario user = opUser.get();
             usuarioRP.deleteById(id);
-            return new ModelAndView("index");
+
+            pessoaRP.deleteById(user.getPessoa().getId());
+            return new ModelAndView("redirect:/home");
         } else {
-            return new ModelAndView("index");
+            return new ModelAndView("redirect:/home");
         }
     }
 
