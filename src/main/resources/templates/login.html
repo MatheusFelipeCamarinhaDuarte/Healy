@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Login')}"/>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Login',false)}"/>
 
 <main class="container">
     <form th:action="@{/entrar/login}" method="post">

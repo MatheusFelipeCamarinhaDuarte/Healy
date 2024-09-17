@@ -64,7 +64,7 @@ sendo assim, basta rodar no postman.
 <a id="_Picth"></a>
 
 # 4 - Nossa proposta
-[LINK](https://www.youtube.com/watch?v=5i9sSBTHdaI)
+[LINK DO VÍDEO](https://www.youtube.com/watch?v=nSN-z2gVDKQ)
 
 Após algumas alterações na proposta, decidimos mudar algumas coisas.
 - Agora. ao imvés de oferecer um plano com determinadas áreas da saude, criaremos um IA que, de acordo com informações de exames,

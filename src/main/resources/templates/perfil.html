@@ -6,20 +6,86 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Informações')}"/>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Informações',true)}"/>
 
 <main class="">
-    <div th:if="${pessoa}">
-        <h2 th:text="${pessoa.nome}">Nome</h2>
-        <p>Email: <span th:text="${pessoa.email}">email</span></p>
-        <p>CPF: <span th:text="${pessoa.cpf}">cpf</span></p>
-        <p>Data de Nascimento: <span th:text="${pessoa.nascimento}">nascimento</span></p>
+    <div th:if="${usuario}">
+        <h2 th:text="${usuario.pessoa.nome}">Nome</h2>
+        <p>Email: <span th:text="${usuario.pessoa.email}">email</span></p>
+        <p>CPF: <span th:text="${usuario.pessoa.cpf}">cpf</span></p>
+        <p>Data de Nascimento: <span th:text="${usuario.pessoa.nascimento}">nascimento</span></p>
+
+        <!-- Botão para Atualizar -->
+        <form th:action="@{/atualizar/paciente/{id}(id=${usuario.id})}" method="get">
+            <button type="button">Atualizar</button>
+        </form>
+
+        <!-- Botão para Excluir -->
+        <form th:action="@{/deletar/paciente/{id}(id=${usuario.id})}" method="get" onsubmit="return confirm('Tem certeza que deseja excluir?');">
+            <button type="submit">Excluir</button>
+        </form>
     </div>
+
     <div th:if="${profissionalSaude}">
         <h2>Informações do Médico</h2>
         <p>Documento de Saúde: <span th:text="${profissionalSaude.documento}">documento</span></p>
     </div>
+
+    <div>
+        <table th:if="${lista_exames}">
+            <thead>
+            <tr>
+                <th scope="col">sexo</th>
+                <th scope="col">Histórico de Diabetes</th>
+                <th scope="col">Histórico de Doença Coronária</th>
+                <th scope="col">Histórico de Doença Vascular</th>
+                <th scope="col">Histórico de Fumo</th>
+                <th scope="col">Histórico de Hipertensao</th>
+                <th scope="col">Histórico de Dislipidemia</th>
+                <th scope="col">Histórico de Obesidade</th>
+                <th scope="col">Toma remédio para Dislipidemia?</th>
+                <th scope="col">Toma remédio para Diabetes?</th>
+                <th scope="col">Toma remédio para Hipertensao?</th>
+                <th scope="col">Toma remédio para ACEI ARB</th>
+                <th scope="col">Nível de Colesterol</th>
+                <th scope="col">Nível de Creatina</th>
+                <th scope="col">Exame GFRB</th>
+                <th scope="col">Pressão Sistolica</th>
+                <th scope="col">Pressão Diastolica</th>
+                <th scope="col">Índice de massa muscular</th>
+                <th scope="col">Meses até a crise</th>
+                <th scope="col">Ano até a crise</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="exame : ${lista_exames}">
+                <th scope="row" th:text="${exame.sexo}">A</th>
+                <th scope="row" th:text="${exame.histDiabetes}">B</th>
+                <th scope="row" th:text="${exame.histDoencaCoronaria}">C</th>
+                <th scope="row" th:text="${exame.histDoencaVascular}">D</th>
+                <th scope="row" th:text="${exame.histFumo}">E</th>
+                <th scope="row" th:text="${exame.histHipertensao}">F</th>
+                <th scope="row" th:text="${exame.histDislipidemia}">G</th>
+                <th scope="row" th:text="${exame.histObesidade}">H</th>
+                <th scope="row" th:text="${exame.remDislipidemia}">I</th>
+                <th scope="row" th:text="${exame.remDiabetes}">J</th>
+                <th scope="row" th:text="${exame.remHipertensao}">K</th>
+                <th scope="row" th:text="${exame.remACEIeARB}">L</th>
+                <th scope="row" th:text="${exame.nvlColesterol}">M</th>
+                <th scope="row" th:text="${exame.nvlCreatina}">N</th>
+                <th scope="row" th:text="${exame.exameGFRB}">O</th>
+                <th scope="row" th:text="${exame.presSistolica}">P</th>
+                <th scope="row" th:text="${exame.presDiastolica}">Q</th>
+                <th scope="row" th:text="${exame.indiceMassa}">R</th>
+                <th scope="row" th:text="${exame.mesAteCrise}">S</th>
+                <th scope="row" th:text="${exame.anoAteCrise}">T</th>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 </main>
+
 <footer th:replace="~{fragments/rodape :: conteudo-rodape()}"/>
 </body>
 </html>

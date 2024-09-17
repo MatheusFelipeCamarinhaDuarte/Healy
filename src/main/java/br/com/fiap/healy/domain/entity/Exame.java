@@ -62,7 +62,7 @@ public class Exame {
     @Column(name = "ANOS_ATE_CRISE" )
     private Integer anoAteCrise;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",

@@ -28,7 +28,7 @@ public class ProfissionalSaude {
     @Column(name = "ID_PROFISSIONAL_SAUDE")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(
             name = "DOCUMENTO",
             referencedColumnName = "ID_DOCUMENTO_SAUDE",
@@ -38,7 +38,7 @@ public class ProfissionalSaude {
     )
     private DocumentoSaude documento;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",
