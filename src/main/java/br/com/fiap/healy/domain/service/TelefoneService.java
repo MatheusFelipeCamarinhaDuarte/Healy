@@ -30,20 +30,17 @@ public class TelefoneService implements ServiceDTO<Telefone, TelefoneRequest, Te
                 .ddi(dto.ddi())
                 .ddd(dto.ddd())
                 .numero(dto.numero())
-                .pessoa(pessoa)
                 .build();
     }
 
     @Override
     public TelefoneResponse toResponse(Telefone e) {
-        var pessoa = pessoaService.toResponse(e.getPessoa());
 
         return TelefoneResponse.builder()
                 .id(e.getId())
                 .ddi(e.getDdi())
                 .ddd(e.getDdd())
                 .numero(e.getNumero())
-                .pessoa(pessoa)
                 .build();
     }
 

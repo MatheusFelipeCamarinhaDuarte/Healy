@@ -1,6 +1,5 @@
 package br.com.fiap.healy.domain.dto.request;
 
-import br.com.fiap.healy.domain.entity.Tipo;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -18,9 +17,6 @@ public record PessoaRequest(
         @PastOrPresent(message = "A data de nascimento não pode ser no futuro")
         @NotNull(message = "O atributo data de nascimento é obrigatório")
         LocalDate nascimento,
-
-        @NotNull(message = "Informe o tipo da pessoa entre jurídica ou física")
-        Tipo tipo,
 
         // Como tava dando erro, tirei o @CPF
         @NotNull(message = "CPF inválido.")

@@ -48,28 +48,8 @@ public class ProfissionalSaude {
     )
     private Pessoa pessoa;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(
-            name = "TB_PROFISSIONAL_PACIENTE",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "PROFISSIONAL",
-                            referencedColumnName = "ID_PROFISSIONAL_SAUDE",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_PROFISSIONAL_DO_PACIENTE"
-                            )
-                    )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "PESSOA",
-                            referencedColumnName = "ID_PESSOA",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_PACIENTE_DO_PROFISSIONAL"
-                            )
-                    )
-            }
-    )
+    // Mapeamento de pacientes usando OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "PROFISSIONAL", referencedColumnName = "ID_PROFISSIONAL_SAUDE")
     private Set<Pessoa> pacientes = new LinkedHashSet<>();
-
 }

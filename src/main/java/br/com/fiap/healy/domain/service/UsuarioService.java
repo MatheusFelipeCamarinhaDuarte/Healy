@@ -7,6 +7,7 @@ import br.com.fiap.healy.domain.entity.Usuario;
 import br.com.fiap.healy.domain.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -23,7 +24,8 @@ public class UsuarioService implements ServiceDTO<Usuario, UsuarioRequest, Usuar
 
 
     public boolean validarUsuario(String username, String senha) {
-        Usuario usuario = repo.findByUsername(username);
+        Usuario usuario = repo.findByUsername(username).orElseThrow(() ->
+                new UsernameNotFoundException("Usuário não encontrado"));
         return usuario != null && usuario.getSenha().equals(senha);
     }
 

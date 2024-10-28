@@ -1,10 +1,45 @@
 /* Geral */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     background: linear-gradient(135deg, #f4f4f4 0%, #e8e8e8 100%);
-    margin: 0;
-    padding: 0;
+    transition: background-color 0.5s, color 0.5s; /* Adicionada transição de cores para light/dark mode */
+}
+
+.no-style-button {
+    all: unset; /* Remove todas as propriedades CSS */
+    display: inline-block; /* Mantém o comportamento do botão */
+    cursor: pointer; /* Muda o cursor para pointer */
+}
+
+/* Contêiner Principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Adicionado para centralizar elementos em cadastro */
+}
+
+/* Estilos do cadastro */
+.container div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+    max-width: 800px;
 }
 
 a {
@@ -17,15 +52,19 @@ a:hover {
     color: #1d6f91;
 }
 
-/* Contêiner Principal */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+/* Rodapé */
+footer {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: #fff;
+    padding: 20px 10%;
+    text-align: center;
+    border-top: 6px solid #1d6f91;
+    margin-top: auto; /* Isso empurra o rodapé para o final da página */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
 }
 
 /* Cabeçalho */
@@ -112,6 +151,56 @@ form button:hover {
     transform: translateY(-2px);
 }
 
+/* Switch para alternância */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3498db;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #64cf6d;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
 /* Tabelas */
 table {
     width: 100%;
@@ -142,38 +231,140 @@ table tr:hover {
 }
 
 /* Ajuste para campos na mesma linha */
-.form-row.short-row {
+.form-row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
-.form-row.short-row .form-group {
+.form-group {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     margin-right: 10px;
+    min-width: 30%;
 }
 
-.form-row.short-row .form-group:last-child {
+.form-group:last-child {
     margin-right: 0;
 }
 
-/* Certifique-se de que o input ocupa todo o espaço disponível */
 .form-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     width: 100%;
+    box-sizing: border-box;
 }
 
-/* Para garantir que funcione bem em telas pequenas */
+/* Botões */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-    .form-row.short-row {
-        flex-direction: column;
+    .form-group {
+        min-width: 100%;
+        margin-right: 0;
     }
 
-    .form-row.short-row .form-group {
-        margin-right: 0;
-        margin-bottom: 15px;
+    nav a {
+        margin: 0 5px;
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    form input,
+    form select,
+    form textarea {
+        padding: 10px;
+    }
+
+    form button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    table th,
+    table td {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card h2 {
+        font-size: 1.5em;
     }
 }
 
-/* Detalhes e Cards */
+@media (max-width: 480px) {
+    header {
+        padding: 15px 3%;
+    }
+
+    footer {
+        padding: 15px 3%;
+    }
+
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    nav a {
+        margin: 0 3px;
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    form input,
+    form select,
+    form textarea {
+        padding: 8px;
+    }
+
+    form button {
+        padding: 8px 15px;
+        font-size: 0.8em;
+    }
+
+    table th,
+    table td {
+        padding: 8px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .card h2 {
+        font-size: 1.2em;
+    }
+}
+
 .card {
     border: 1px solid #ddd;
     border-radius: 12px;
@@ -198,19 +389,63 @@ table tr:hover {
     line-height: 1.8;
 }
 
-/* Rodapé */
-footer {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-    color: #fff;
-    padding: 20px 10%;
-    text-align: center;
-    border-top: 6px solid #1d6f91;
-    margin-top: 20px;
+/* Flexbox para alinhar o h1 e o switch */
+.container div {
+    display: flex;
+    align-items: center; /* Alinha verticalmente no centro */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 20px; /* Espaçamento entre o h1 e o switch */
 }
 
-footer p {
-    margin: 0;
-    font-size: 0.9em;
+/* Quando o checkbox estiver ativado (checked) */
+input:checked + .slider {
+    background-color: #64cf6d;
+}
+
+/* Move o círculo (slider) para a direita quando ativado */
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Adiciona uma sombra no "slider" */
+.slider {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para os campos menores */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Ajusta em telas menores */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Alinha label e input verticalmente */
+    flex: 1;
+    margin-right: 10px; /* Pequeno espaçamento entre os campos */
+    min-width: 30%; /* Reduz para 40% */
+}
+
+/* Remove o margin-right no último elemento da linha */
+.form-group:last-child {
+    margin-right: 0;
+}
+
+/* Padroniza os campos de input */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.form-group input {
+    padding: 8px; /* Menor padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box; /* Inclui padding na largura total */
 }
 
 /* Responsividade */
@@ -266,6 +501,12 @@ footer p {
 
     .card h2 {
         font-size: 1.5em;
+    }
+
+    /* Responsividade: Empilha os campos em telas menores */
+    .form-group {
+        min-width: 100%;
+        margin-right: 0;
     }
 }
 

@@ -30,14 +30,6 @@ public class Telefone {
     @Column(name = "NUMERO")
     private String numero;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
-    @JoinColumn(
-            name = "PESSOA",
-            referencedColumnName = "ID_PESSOA",
-            foreignKey = @ForeignKey(
-                    name = "FK_TELEFONE_PESSOA"
-            )
-    )
-    private Pessoa pessoa;
+
 
 }

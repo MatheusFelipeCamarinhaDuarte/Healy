@@ -1,14 +1,14 @@
 package br.com.fiap.healy.domain.controller.web;
 
-import br.com.fiap.healy.domain.entity.Pessoa;
-import br.com.fiap.healy.domain.entity.Tipo;
 import br.com.fiap.healy.domain.entity.Usuario;
 import br.com.fiap.healy.domain.repository.PessoaRepository;
 import br.com.fiap.healy.domain.repository.UsuarioRepository;
 import br.com.fiap.healy.domain.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,7 +31,10 @@ public class Cadastro {
 
     @GetMapping("/cadastro")
     public ModelAndView cadastro() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         ModelAndView mv = new ModelAndView("cadastro");
+        mv.addObject("autenticado", authentication.isAuthenticated());
         return mv;
     }
 
@@ -40,7 +43,9 @@ public class Cadastro {
     public ModelAndView cadastroPaciente() {
 
         ModelAndView mv = new ModelAndView("cadastro_paciente");
-        mv.addObject("tipo_pessoa", Tipo.PC);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        mv.addObject("autenticado", authentication.isAuthenticated());
+
         mv.addObject("usuario", new Usuario());
         return mv;
     }
@@ -64,8 +69,12 @@ public class Cadastro {
             return new ModelAndView("cadastro_paciente");
         } else {
             usuarioService.save(usuario);
-            Usuario user = usuarioRP.findByUsername(usuario.getUsername());
+
+            Usuario user = usuarioRP.findByUsername(usuario.getUsername()).orElseThrow(() ->
+                    new UsernameNotFoundException("Usuário não encontrado"));
             ModelAndView mv = new ModelAndView("perfil");
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            mv.addObject("autenticado", authentication.isAuthenticated());
             mv.addObject("usuario",user);
             return mv;
 
@@ -79,9 +88,11 @@ public class Cadastro {
         if(op.isPresent()){
             ModelAndView mv = new ModelAndView("atualiza_paciente");
             mv.addObject("usuario",new Usuario());
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            mv.addObject("autenticado", authentication.isAuthenticated());
             return mv;
         } else {
-            return new ModelAndView("redirect:/perfil");
+            return new ModelAndView("redirect:/Perfil");
         }
     }
 
@@ -89,6 +100,8 @@ public class Cadastro {
     public ModelAndView atualizaPaciente(@PathVariable Long id, @Valid Usuario usuario, BindingResult bd) {
         if (bd.hasErrors()) {
             ModelAndView mv = new ModelAndView("atualiza_paciente");
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            mv.addObject("autenticado", authentication.isAuthenticated());
             return mv;
         } else {
             Optional<Usuario> opUser = usuarioRP.findById(id);
@@ -101,26 +114,19 @@ public class Cadastro {
                         .senha(user.getSenha())
                         .build();
                 usuarioRP.save(user);
-                return new ModelAndView("redirect:/home");
+                ModelAndView mv = new ModelAndView("redirect:/home");
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                mv.addObject("autenticado", authentication.isAuthenticated());
+                return mv;
             } else {
                 ModelAndView mv = new ModelAndView("atualiza_cadastro");
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                mv.addObject("autenticado", authentication.isAuthenticated());
                 return mv;
             }
         }
     }
 
-    @GetMapping("/deletar/paciente/{id}")
-    public ModelAndView deletarpaciente(@PathVariable Long id) {
-        Optional<Usuario> opUser = usuarioRP.findById(id);
-        if (opUser.isPresent()) {
-            Usuario user = opUser.get();
-            usuarioRP.deleteById(id);
 
-            pessoaRP.deleteById(user.getPessoa().getId());
-            return new ModelAndView("redirect:/home");
-        } else {
-            return new ModelAndView("redirect:/home");
-        }
-    }
 
 }

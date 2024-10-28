@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,7 +34,11 @@ public class Usuario {
     @Column(name = "SENHA")
     private String senha;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST,CascadeType.REMOVE})
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_roles_associacao", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+    private Set<Role> roles = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",

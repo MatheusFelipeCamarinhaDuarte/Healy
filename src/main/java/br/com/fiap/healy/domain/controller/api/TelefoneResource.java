@@ -40,7 +40,6 @@ public class TelefoneResource implements ResourceDTO<TelefoneRequest, TelefoneRe
                 .ddd(ddd)
                 .ddi(ddi)
                 .numero(numero)
-                .pessoa(pessoa)
                 .build();
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()

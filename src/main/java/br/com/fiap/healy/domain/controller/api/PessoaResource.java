@@ -3,7 +3,6 @@ package br.com.fiap.healy.domain.controller.api;
 import br.com.fiap.healy.domain.dto.request.PessoaRequest;
 import br.com.fiap.healy.domain.dto.response.PessoaResponse;
 import br.com.fiap.healy.domain.entity.Pessoa;
-import br.com.fiap.healy.domain.entity.Tipo;
 import br.com.fiap.healy.domain.service.PessoaService;
 import br.com.fiap.healy.domain.service.TelefoneService;
 
@@ -32,14 +31,12 @@ public class PessoaResource implements ResourceDTO<PessoaRequest, PessoaResponse
     public ResponseEntity<List<PessoaResponse>> findAll(
             @RequestParam(name = "nome", required = false) String nome,
             @RequestParam(name = "email", required = false) String email,
-            @RequestParam(name = "nascimento", required = false) LocalDate nascimento,
-            @RequestParam(name = "silga", required = false) Tipo tipoPessoa
-            ) {
+            @RequestParam(name = "nascimento", required = false) LocalDate nascimento
+    ) {
         Pessoa pessoa = Pessoa.builder()
                 .nome(nome)
                 .nascimento(nascimento)
                 .email(email)
-                .tipoPessoa(tipoPessoa)
                 .build();
         ExampleMatcher matcher = ExampleMatcher
                 .matchingAll()

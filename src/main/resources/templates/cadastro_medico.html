@@ -1,16 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="/css/cadastro.css">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+<head th:replace="~{fragments/head :: conteudo-head(#{titulo.cadastro_medico})}"/>
 <body >
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Bem-vindo ao Healy')}"></header>
-
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.cadastro_medico},${autenticado})}"></header>
 <div class="container">
 
     <div>
@@ -93,5 +86,6 @@
         </main>
     </div>
 </div>
+    <footer th:replace="~{fragments/rodape :: conteudo-rodape()}"></footer>
 </body>
 </html>
