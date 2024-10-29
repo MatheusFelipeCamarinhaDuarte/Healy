@@ -1,13 +1,21 @@
-<header th:fragment="conteudo-cabecalho(titulo,conectado)">
+<header th:fragment="conteudo-cabecalho(titulo,autenticado)">
     <h1 th:text="${titulo}">Titulo</h1>
     <nav>
-        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/home}" th:text="#{link.inicio}">Inicio</a>
 <!--
         <a th:href="@{/Cadastro/paciente}">Cadastro Paciente</a>
         <a th:href="@{/Cadastro/medico}">Cadastro Médico</a
 -->
-        <a th:if="${!conectado}" th:href="@{/cadastro}">cadastro</a>
-        <a th:if="${!conectado}" th:href="@{/login}">Login</a>
-        <a th:if="${conectado}" th:href="@{/home}">logout</a>
+        <a th:if="${autenticado}" th:href="@{/cadastro}" th:text="#{link.cadastro}">cadastro</a>
+        <a th:if="${autenticado}" th:href="@{/perfil}" th:text="#{link.perfil}">Perfil</a>
+        <a th:if="${autenticado}" th:href="@{/retorna_pag_msg_rabbit}" th:text="#{link.mensagens}">Mensagens</a>
+        <a th:if="!${autenticado}" th:href="@{/login}" th:text="#{link.entrar}">Entrar</a>
+
+            <form  th:action="@{/logout}" method="post" th:if="${autenticado}">
+                <button class="no-style-button" th:text="#{link.sair}" type="submit">Sair</button>
+            </form>
+
     </nav>
+
+
 </header>

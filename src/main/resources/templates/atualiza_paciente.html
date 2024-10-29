@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Cadastro</title>
-    <link rel="stylesheet" href="/css/cadastro.css">
-    <link rel="stylesheet" href="/css/styles.css">
+
 </head>
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Atualizar Cadastro de Paciente', true)}"></header>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Atualizar Cadastro de Paciente', ${autenticado})}"></header>
 
 <div class="container">
-    <h1>Atualizar Cadastro de Paciente</h1>
+    <h1 th:text="#{titulo.atualizar_paciente}">Atualizar Cadastro de Paciente</h1>
     <div id="fragmentContainer">
         <main class="container" th:fragment="conteudo-paciente(pessoa)">
             <form th:object="${usuario}" th:action="@{/atualizar/paciente/{id}(id=${usuario.id})}" method="post">

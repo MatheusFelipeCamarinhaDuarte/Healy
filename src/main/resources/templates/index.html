@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Tela Inicial</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: conteudo-head(#{titulo.tela_inicial})}"/>
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Bem-vindo ao Healy',false)}"></header>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.bem_vindo},${autenticado})}"></header>
+<div th:replace="~{fragments/idioma :: idioma('home')}" />
+
 <main>
     <section class="card container">
-        <h2>Sobre Nossa Proposta</h2>
-        <p>Nosso sistema utiliza Inteligência Artificial para avaliar a probabilidade de desenvolvimento de doenças com base em exames recentes. Alertamos os médicos sobre as chances de desenvolvimento de patologias, ajudando a antecipar cuidados e tratamentos.</p>
+        <h2 th:text="#{sobre_proposta}"></h2>
+        <p th:text="#{texto.proposta}"></p>
     </section>
-    <p th:text="${resposta}"> TESTE </p>
+    <p th:text="${resposta}"></p>
 </main>
 <footer th:replace="~{fragments/rodape :: conteudo-rodape()}"></footer>
 </body>

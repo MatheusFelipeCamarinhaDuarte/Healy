@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="/css/cadastro.css">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Escolha o cadastro',false)}"></header>
+<head th:replace="~{fragments/head :: conteudo-head(#{titulo.cadastrar})}"/>
+
 
 <body>
-<div class="container">
-    <h2>Escolha o tipo de cadastro</h2>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.cadastrar},${autenticado})}"></header>
+<div th:replace="~{fragments/idioma :: idioma('cadastro')}" />
+
+<main class="container">
+    <h2 th:text="#{titulo.escolha_cadastro}"></h2>
 
     <!-- Botão para Cadastro de paciente -->
     <form action="/cadastro-paciente" method="get">
-        <button type="submit" class="btn btn-primary">Cadastro de Paciente</button>
+        <button type="submit" class="btn btn-primary" th:text="#{titulo.cadastro_paciente}"></button>
     </form>
 
     <!-- Botão para Cadastro de médico -->
     <form action="/cadastro-medico" method="get">
-        <button type="submit" class="btn btn-primary">Cadastro de Médico</button>
+        <button type="submit" class="btn btn-primary"th:text="#{titulo.cadastro_medico}"></button>
     </form>
 
     <!-- Mensagem de erro, caso o acesso ao Cadastro de médico seja negado -->
     <div th:if="${errorMessage != null}">
         <p style="color: red;" th:text="${errorMessage}"></p>
     </div>
-</div>
+</main>
+<footer th:replace="~{fragments/rodape :: conteudo-rodape()}"></footer>
+
 </body>
 </html>

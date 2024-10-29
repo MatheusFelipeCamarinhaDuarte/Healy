@@ -6,7 +6,6 @@ import br.com.fiap.healy.domain.entity.DocumentoSaude;
 import br.com.fiap.healy.domain.entity.Pessoa;
 import br.com.fiap.healy.domain.entity.ProfissionalSaude;
 import br.com.fiap.healy.domain.service.ProfissionalSaudeService;
-import br.com.fiap.healy.domain.service.TelefoneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -24,8 +23,7 @@ import java.util.Objects;
 public class ProfissionalSaudeResource implements ResourceDTO<ProfissionalSaudeRequest, ProfissionalSaudeResponse>{
     @Autowired
     private ProfissionalSaudeService service;
-    @Autowired
-    private TelefoneService telefoneService;
+
 
     @GetMapping
     public ResponseEntity<Collection<ProfissionalSaudeResponse>> findAll(

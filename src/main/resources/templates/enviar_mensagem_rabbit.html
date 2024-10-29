@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: conteudo-head(#{titulo.tela_inicial})}"/>
+<body>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.bem_vindo},${autenticado})}"></header>
+<div th:replace="~{fragments/idioma :: idioma('home')}" />
+
+<div class="container">
+
+    <div>
+        <h1><b><u>Mensageria - AMQP RabbitMQ</u></b></h1>
+    </div>
+
+    <div>
+
+        <form th:action="@{/enviar_mensagem_rabbit}" method="post">
+            Mensagem: <input class="form-control" type="text" name="mensagem" id="mensagem"><br>
+            <p th:text="${mensagem}" style="color: green;"> </p><br>
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+
+    </div>
+    <div>
+        <p th:if="${msg}" th:text="${msg}"></p>
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>

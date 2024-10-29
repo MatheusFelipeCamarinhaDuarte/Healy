@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://sqlserver-rm9999.database.windows.net:1433;database=db-healy;
+    username: admsql@sqlserver-rm9999
+    password: {Fiap@2tds2023}
+    encrypt: true
+    trust-server-certificate: false
+    host-name-in-certificate: "*.database.windows.net"
+    login-timeout: 30

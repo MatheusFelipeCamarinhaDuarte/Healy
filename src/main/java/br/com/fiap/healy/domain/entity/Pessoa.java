@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -36,7 +38,9 @@ public class Pessoa {
     @Column(name = "CPF")
     private String cpf;
 
-    @Enumerated
-    @Column(name = "TIPO_PESSOA")
-    private Tipo tipoPessoa = Tipo.PC;
+    @Column(name = "TELEFONE")
+    private String telefone;
+
+
+
 }

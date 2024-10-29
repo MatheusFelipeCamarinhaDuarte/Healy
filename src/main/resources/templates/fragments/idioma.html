@@ -1,0 +1,19 @@
+<div th:fragment="idioma(pagina)" class="d-flex justify-content-end align-items-center mt-3">
+
+    <!--
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-danger btn-sm ml-auto">Sair</button>
+    </form>
+    <br>
+    -->
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownIdioma" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{link.escolher_idioma}">
+
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownIdioma">
+            <li><a class="dropdown-item" th:href="@{__${pagina}__ (lang='pt')}" th:text="#{idioma.portugues}">Português</a></li>
+            <li><a class="dropdown-item" th:href="@{__${pagina}__ (lang='en')}" th:text="#{idioma.ingles}">Inglês</a></li>
+        </ul>
+    </div>
+</div>

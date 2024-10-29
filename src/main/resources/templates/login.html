@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+<head th:replace="~{fragments/head :: conteudo-head(#{link.entrar})}"/>
+
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Login',false)}"/>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{link.entrar},false)}"/>
+<div th:replace="~{fragments/idioma :: idioma('login')}" />
 
 <main class="container">
-    <form th:action="@{/entrar/login}" method="post">
-        <label for="username">Usuário:</label>
-        <input type="text" id="username" name="username" required>
+    <form th:action="@{/login}" method="post">
 
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required>
+        <span th:text="#{usuario.tela.login}">Usuário:</span> <input class="form-control" type="text" id="username"
+                                                                     name="username"><br>
+        <span th:text="#{senha.tela.login}">Senha:</span> <input class="form-control"
+                                                                 type="password" id="password" name="password"><br>
 
-        <button type="submit">Entrar</button>
+        <div th:if="${param.erro}">
+            <p style="color: red"><span th:text="#{msg_login_erro}">Usuário ou senha incorretos</span></p>
+        </div>
 
-        <!-- Exibir mensagem de erro se houver -->
-        <p th:if="${erro}" th:text="${erro}" class="error-message" style="color: red;"></p>
+        <div th:if="${param.logout}">
+            <p style="color: green;"><span th:text="#{msg_logout_sucesso}"> Você saiu com sucesso</span></p>
+        </div>
+
+        <button type="submit"><span th:text="#{botao.tela.login}">Logar</span></button>
+
+
     </form>
 </main>
 

@@ -1,4 +1,4 @@
-package br.com.fiap.healy.domain.config;
+package br.com.fiap.healy.domain.config.corsConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -23,7 +23,6 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
                 .email(dto.email())
                 .cpf(dto.cpf())
                 .nascimento(dto.nascimento())
-                .tipoPessoa(dto.tipo())
                 .build();
     }
 
@@ -34,7 +33,6 @@ public class PessoaService implements ServiceDTO<Pessoa, PessoaRequest, PessoaRe
                 .nome(e.getNome())
                 .email(e.getEmail())
                 .nascimento(e.getNascimento())
-                .tipoPessoa(e.getTipoPessoa())
                 .build();
     }
 
