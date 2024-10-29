@@ -16,7 +16,7 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
     final List<String> urlsUser = List.of("/4","/5","6");
-    final List<String> urlsAdmin = List.of("cadastro");
+    final List<String> urlsAdmin = List.of("/cadastrar/paciente","/cadastro-paciente","/cadastro");
     final List<String> urlsPaciente = List.of("/7","/8","/9");
     final List<String> urlsMedico = List.of("/10","/11","/12");
 

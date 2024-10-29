@@ -38,15 +38,8 @@ public class Pessoa {
     @Column(name = "CPF")
     private String cpf;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "TELEFONE",
-            referencedColumnName = "ID_TELEFONE",
-            foreignKey = @ForeignKey(
-                    name = "FK_TELEFONE_PESSOA"
-            )
-    )
-    private Telefone telefone;
+    @Column(name = "TELEFONE")
+    private String telefone;
 
 
 

@@ -23,6 +23,9 @@
                         <strong>CPF:</strong> <span th:text="${usuario.pessoa.cpf}"></span>
                     </li>
                     <li class="list-group-item">
+                        <strong>Telefone:</strong> <span th:text="${usuario.pessoa.telefone}"></span>
+                    </li>
+                    <li class="list-group-item">
                         <strong>Data de Nascimento:</strong> <span th:text="${usuario.pessoa.nascimento}"></span>
                     </li>
                     <li class="list-group-item" th:each="item : ${usuario.roles}">

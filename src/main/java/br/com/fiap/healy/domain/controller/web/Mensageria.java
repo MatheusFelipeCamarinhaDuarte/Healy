@@ -26,10 +26,13 @@ public class Mensageria {
     }
 
     @PostMapping("/enviar_mensagem_rabbit")
-    public String enviarMensagemRabbit(@RequestParam("mensagem") String msg, Model model) {
+    public ModelAndView enviarMensagemRabbit(@RequestParam("mensagem") String msg, Model model) {
         produtorRabbit.enviarMensagem(msg);
         model.addAttribute("mensagem", "Mensagem enviada com sucesso");
-        return "enviar_mensagem_rabbit";
+        ModelAndView mv = new ModelAndView("enviar_mensagem_rabbit");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        mv.addObject("autenticado", auth.isAuthenticated());
+        return mv;
     }
 
 }

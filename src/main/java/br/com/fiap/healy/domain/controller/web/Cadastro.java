@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,6 +29,9 @@ public class Cadastro {
     private PessoaRepository pessoaRP;
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/cadastro")
     public ModelAndView cadastro() {
@@ -65,11 +69,15 @@ public class Cadastro {
 
     @PostMapping("/cadastrar/paciente")
     public ModelAndView cadastrarPaciente(@Valid Usuario usuario, BindingResult bd) {
+        System.out.println("DEU ERRADO");
         if (bd.hasErrors()) {
-            return new ModelAndView("cadastro_paciente");
-        } else {
-            usuarioService.save(usuario);
 
+            return new ModelAndView("cadastro_paciente");
+
+        } else {
+            usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+            usuarioService.save(usuario);
+            System.out.println("Salvou pelo menos");
             Usuario user = usuarioRP.findByUsername(usuario.getUsername()).orElseThrow(() ->
                     new UsernameNotFoundException("Usuário não encontrado"));
             ModelAndView mv = new ModelAndView("perfil");

@@ -30,8 +30,6 @@ public class Perfil {
     @Autowired
     ProfissionalSaudeRepository profissionalSaudeRepository;
 
-    @Autowired
-    TelefoneRepository telefoneRepository;
 
     @GetMapping("/perfil")
     public ModelAndView perfil() {

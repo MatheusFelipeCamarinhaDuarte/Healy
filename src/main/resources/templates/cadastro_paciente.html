@@ -32,6 +32,11 @@
                             <label for="nascimento" th:text="#{cadastro.data_de_nascimento}"></label>
                             <input type="date" id="nascimento" name="nascimento" th:field="*{pessoa.nascimento}"  th:errorclass="is-invalid">
                         </div>
+                        <!-- Telefone -->
+                        <div class="form-group">
+                            <label for="telefone" th:text="#{cadastro.telefone}"></label>
+                            <input type="text" id="telefone" name="telefone" th:field="*{pessoa.telefone}" th:errorclass="is-invalid">
+                        </div>
 
                         <!-- Email -->
                         <div class="form-group">
@@ -58,7 +63,7 @@
                             <input type="password" id="confirmarSenha" name="confirmarSenha">
                         </div>
                     </div>
-
+                    <input type="hidden" name="_csrf" th:value="${_csrf.token}">
                     <button type="submit" th:text="#{link.cadastro}"></button>
                 </form>
             </main>
