@@ -8,6 +8,7 @@
 -->
         <a th:if="${autenticado}" th:href="@{/cadastro}" th:text="#{link.cadastro}">cadastro</a>
         <a th:if="${autenticado}" th:href="@{/perfil}" th:text="#{link.perfil}">Perfil</a>
+        <a th:if="${autenticado}" th:href="@{/retorna_pag_msg_rabbit}" th:text="#{link.mensagens}">Mensagens</a>
         <a th:if="!${autenticado}" th:href="@{/login}" th:text="#{link.entrar}">Entrar</a>
 
             <form  th:action="@{/logout}" method="post" th:if="${autenticado}">
