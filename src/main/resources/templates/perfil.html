@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="ms-3">
-                <a href="/perfil/atualizar" class="btn btn-primary mb-2">Atualizar</a>
+                <a th:href="@{/perfil/atualizar/{idPerfil(idPerfil = ${usuario.id})}}" class="btn btn-primary mb-2">Atualizar</a>
                 <a th:href="@{/perfil/deletar/{idPerfil}(idPerfil = ${usuario.id})}" class="btn btn-danger mb-2">Excluir</a>
             </div>
         </div>

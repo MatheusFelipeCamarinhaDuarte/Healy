@@ -2,11 +2,13 @@
 <html lang="en">
 <head th:replace="~{fragments/head :: conteudo-head(#{titulo.cadastro_paciente})}"/>
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.cadastro_paciente},false)}"></header>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.cadastro_paciente},${autenticado})}"></header>
+<div th:replace="~{fragments/idioma :: idioma('cadastro-paciente')}" />
 
 <div class="container">
-    <div th:replace="~{fragments/idioma :: idioma('cadastro-paciente')}" />
-
+<div th:if="${errorMessage}">
+    <p style="color: red"><span th:text="${errorMessage}"></span></p>
+</div>
         <h1 th:text="#{titulo.cadastro_paciente}"></h1>
         <div id="fragmentContainer">
             <main class="container" th:fragment="conteudo-paciente(pessoa)">
@@ -47,7 +49,7 @@
                     <div class="form-row short-row">
                         <!-- Usuário -->
                         <div class="form-group">
-                            <label for="usuario" th:text="#{cadastro.usuario}"></label>
+                            <label for="usuario" th:text="#{cadastro.usuario}" th:style="${errorMessage}? 'color:red' : ''" ></label>
                             <input type="text" id="usuario" name="usuario" th:field="*{username}" th:errorclass="is-invalid">
                         </div>
 

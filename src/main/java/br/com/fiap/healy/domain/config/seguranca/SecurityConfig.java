@@ -15,21 +15,23 @@ import java.util.List;
 
 @Configuration
 public class SecurityConfig {
-    final List<String> urlsUser = List.of("/4","/5","6");
-    final List<String> urlsAdmin = List.of("/cadastrar/paciente","/cadastro-paciente","/cadastro");
-    final List<String> urlsPaciente = List.of("/7","/8","/9");
-    final List<String> urlsMedico = List.of("/10","/11","/12");
+
+    final List<String> urlsParaTodos = List.of("/css/**", "/js/**", "/images/**", "/webjars/**", "/static/**");
+    final List<String> urlsPaciente = List.of("/");
+    final List<String> urlsAdmin = List.of("/cadastrar/paciente", "/cadastro-paciente");
+
+    public SecurityConfig() {
+
+    }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-
-        http.authorizeHttpRequests((requests) ->requests
-                .requestMatchers("/css/**","/home", "/js/**", "/images/**", "/webjars/**", "/static/**").permitAll()  // Libera acesso a todos os recursos estáticos
-                .requestMatchers(urlsAdmin.toArray(new String[0])).hasAuthority("ROLE_ADMIN")
-                .requestMatchers(urlsMedico.toArray(new String[0])).hasAuthority("ROLE_MEDICO")
-                .requestMatchers(urlsPaciente.toArray(new String[0])).hasAuthority("ROLE_PACIENTE")
-                .anyRequest().authenticated())
+        http.authorizeHttpRequests((requests) -> requests
+                        .requestMatchers(urlsParaTodos.toArray(new String[0])).permitAll()  // Libera acesso a todos os recursos estáticos
+                        .requestMatchers(urlsAdmin.toArray(new String[0])).hasAuthority("ROLE_ADMIN")
+                        .requestMatchers(urlsPaciente.toArray(new String[0])).hasAuthority("ROLE_PACIENTE")
+                        .anyRequest().authenticated())
                 .formLogin((form) -> form.loginPage("/login").failureUrl("/login?erro=true")
                         .defaultSuccessUrl("/home").permitAll())
                 .logout((logout) -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout=true").permitAll())
@@ -41,5 +43,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder(); }
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

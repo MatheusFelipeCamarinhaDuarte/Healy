@@ -1,0 +1,14 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: conteudo-head(#{titulo.tela_inicial})}"/>
+<body>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.bem_vindo},${autenticado})}"></header>
+<div th:replace="~{fragments/idioma :: idioma('home')}" />
+
+    <div class="container">
+
+    </div>
+
+</body>
+</html>

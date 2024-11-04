@@ -1,0 +1,12 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: conteudo-head('Acesso negado')}"/>
+<body>
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho('Acesso negado',false)}"></header>
+<div th:replace="~{fragments/idioma :: idioma('home')}" />
+
+<h1>Acesso Negado!! você precisa ter cargo de administrador para está ação!</h1><br>
+<a th:href="@{/home}" th:text="#{msg_retorno_lista_discente}"></a>
+</body>
+</html>
