@@ -1,14 +1,95 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="~{fragments/head :: conteudo-head(#{titulo.tela_inicial})}"/>
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/head :: conteudo-head(#{titulo.cadastro_exame})}"/>
 <body>
-<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.bem_vindo},${autenticado})}"></header>
-<div th:replace="~{fragments/idioma :: idioma('home')}" />
+<header th:replace="~{fragments/cabecalho :: conteudo-cabecalho(#{titulo.cadastro_exame}, ${autenticado})}"></header>
+<div th:replace="~{fragments/idioma :: idioma('cadastro-exame')}" />
 
-    <div class="container">
+<div class="container">
+    <h1 th:text="#{titulo.cadastro_exame}"></h1>
+    <form th:object="${exame}" action="/cadastrar/exame" method="post">
+        <div class="form-row">
 
-    </div>
+            <!-- Histórico de Saúde -->
+            <div class="form-group">
+                <label for="sexo" th:text="#{cadastro.sexo}"></label>
+                <select id="sexo" name="sexo" th:field="*{sexo}">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+
+                <label for="nascimento" th:text="#{cadastro.data_do_exame}"></label>
+                <input type="date" id="nascimento" name="nascimento" th:field="*{data}"  th:errorclass="is-invalid">
+
+                <label th:text="#{cadastro.hist_diabetes}"></label>
+                <input type="checkbox" name="histDiabetes" th:field="*{histDiabetes}">
+
+                <label th:text="#{cadastro.hist_doenca_coronaria}"></label>
+                <input type="checkbox" name="histDoencaCoronaria" th:field="*{histDoencaCoronaria}">
+
+                <label th:text="#{cadastro.hist_doenca_vascular}"></label>
+                <input type="checkbox" name="histDoencaVascular" th:field="*{histDoencaVascular}">
+
+                <label th:text="#{cadastro.hist_fumo}"></label>
+                <input type="checkbox" name="histFumo" th:field="*{histFumo}">
+
+                <label th:text="#{cadastro.hist_hipertensao}"></label>
+                <input type="checkbox" name="histHipertensao" th:field="*{histHipertensao}">
+
+                <label th:text="#{cadastro.hist_dislipidemia}"></label>
+                <input type="checkbox" name="histDislipidemia" th:field="*{histDislipidemia}">
+
+                <label th:text="#{cadastro.hist_obesidade}"></label>
+                <input type="checkbox" name="histObesidade" th:field="*{histObesidade}">
+            </div>
+
+            <!-- Medicamentos -->
+            <div class="form-group">
+                <label th:text="#{cadastro.remed_dislipidemia}"></label>
+                <input type="checkbox" name="remDislipidemia" th:field="*{remDislipidemia}">
+
+                <label th:text="#{cadastro.remed_diabetes}"></label>
+                <input type="checkbox" name="remDiabetes" th:field="*{remDiabetes}">
+
+                <label th:text="#{cadastro.remed_hipertensao}"></label>
+                <input type="checkbox" name="remHipertensao" th:field="*{remHipertensao}">
+
+                <label th:text="#{cadastro.remed_acei_arb}"></label>
+                <input type="checkbox" name="remACEIeARB" th:field="*{remACEIeARB}">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- Níveis e Medidas -->
+            <div class="form-group">
+                <label for="nvlColesterol" th:text="#{cadastro.nvl_colesterol}"></label>
+                <input type="number" id="nvlColesterol" name="nvlColesterol" th:field="*{nvlColesterol}" step="0.1">
+
+                <label for="nvlCreatina" th:text="#{cadastro.nvl_creatina}"></label>
+                <input type="number" id="nvlCreatina" name="nvlCreatina" th:field="*{nvlCreatina}" step="0.1">
+
+                <label for="exameGFRB" th:text="#{cadastro.exame_egfrb}"></label>
+                <input type="number" id="exameGFRB" name="exameGFRB" th:field="*{exameGFRB}" step="0.1">
+            </div>
+
+            <!-- Pressão e IMC -->
+            <div class="form-group">
+                <label for="presSistolica" th:text="#{cadastro.pres_sistolica}"></label>
+                <input type="number" id="presSistolica" name="presSistolica" th:field="*{presSistolica}">
+
+                <label for="presDiastolica" th:text="#{cadastro.pres_diastolica}"></label>
+                <input type="number" id="presDiastolica" name="presDiastolica" th:field="*{presDiastolica}">
+
+                <label for="indiceMassa" th:text="#{cadastro.indice_massa_corp}"></label>
+                <input type="number" id="indiceMassa" name="indiceMassa" th:field="*{indiceMassa}">
+            </div>
+        </div>
+
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <button type="submit" th:text="#{link.cadastro}"></button>
+    </form>
+</div>
+<footer th:replace="~{fragments/rodape :: conteudo-rodape()}"></footer>
 
 </body>
 </html>

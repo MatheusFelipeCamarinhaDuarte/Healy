@@ -34,10 +34,40 @@
                 </ul>
             </div>
             <div class="ms-3">
-                <a th:href="@{/perfil/atualizar/{idPerfil(idPerfil = ${usuario.id})}}" class="btn btn-primary mb-2">Atualizar</a>
-                <a th:href="@{/perfil/deletar/{idPerfil}(idPerfil = ${usuario.id})}" class="btn btn-danger mb-2">Excluir</a>
+                <a th:href="@{/perfil/atualizar/{idPerfil}(idPerfil = ${usuario.id})}" class="btn btn-primary mb-2">Atualizar</a>
+                <a th:href="@{/perfil/deletar/{idPerfil}(idPerfil = ${usuario.id})}" class="btn btn-danger mb-2" onclick="return confirm('Tem certeza que deseja excluir o perfil?');">Excluir</a>
             </div>
         </div>
+    </div>
+
+    <!-- Lista de Exames -->
+    <h5 class="mb-3">Exames Cadastrados</h5>
+    <div class="mt-4">
+        <ul class="list-group">
+            <li class="list-group-item" th:each="exame : ${examesFeitos}">
+                <strong>Sexo:</strong> <span th:text="${exame.sexo}"></span><br>
+                <strong>Data do Exame:</strong> <span th:text="${exame.data}"></span><br>
+                <strong>Histórico de Diabetes:</strong> <span th:text="${exame.histDiabetes ? 'Sim' : 'Não'}"></span><br>
+                <strong>Histórico de Doença Coronária:</strong> <span th:text="${exame.histDoencaCoronaria ? 'Sim' : 'Não'}"></span><br>
+                <strong>Histórico de Doença Vascular:</strong> <span th:text="${exame.histDoencaVascular ? 'Sim' : 'Não'}"></span><br>
+                <strong>Histórico de Fumo:</strong> <span th:text="${exame.histFumo ? 'Sim' : 'Não'}"></span><br>
+                <strong>Histórico de Hipertensão:</strong> <span th:text="${exame.histHipertensao ? 'Sim' : 'Não'}"></span><br>
+                <strong>Histórico de Dislipidemia:</strong> <span th:text="${exame.histDislipidemia ? 'Sim' : 'Não'}"></span><br>
+                <strong>Histórico de Obesidade:</strong> <span th:text="${exame.histObesidade ? 'Sim' : 'Não'}"></span><br>
+                <strong>Remédio para Dislipidemia:</strong> <span th:text="${exame.remDislipidemia ? 'Sim' : 'Não'}"></span><br>
+                <strong>Remédio para Diabetes:</strong> <span th:text="${exame.remDiabetes ? 'Sim' : 'Não'}"></span><br>
+                <strong>Remédio para Hipertensão:</strong> <span th:text="${exame.remHipertensao ? 'Sim' : 'Não'}"></span><br>
+                <strong>Remédio ACEI/ARB:</strong> <span th:text="${exame.remACEIeARB ? 'Sim' : 'Não'}"></span><br>
+                <strong>Nível de Colesterol:</strong> <span th:text="${exame.nvlColesterol}"></span><br>
+                <strong>Nível de Creatina:</strong> <span th:text="${exame.nvlCreatina}"></span><br>
+                <strong>Exame eGFRB:</strong> <span th:text="${exame.exameGFRB}"></span><br>
+                <strong>Pressão Sistólica:</strong> <span th:text="${exame.presSistolica}"></span><br>
+                <strong>Pressão Diastólica:</strong> <span th:text="${exame.presDiastolica}"></span><br>
+                <strong>Índice de Massa Corpórea:</strong> <span th:text="${exame.indiceMassa}"></span><br>
+                <a th:href="@{/exame/deletar/{idExame}(idExame=${exame.id})}" class="btn btn-danger mt-2" onclick="return confirm('Tem certeza que deseja excluir este exame?');">Excluir Exame</a>
+
+            </li><br><br>
+        </ul>
     </div>
 </div>
 
