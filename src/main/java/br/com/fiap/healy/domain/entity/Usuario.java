@@ -1,6 +1,7 @@
 package br.com.fiap.healy.domain.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,10 +28,10 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_USUARIO")
     private Long id;
-
+    @NotNull()
     @Column(name = "USERNAME")
     private String username;
-
+    @NotNull()
     @Column(name = "SENHA")
     private String senha;
 
