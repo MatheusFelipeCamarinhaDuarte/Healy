@@ -8,8 +8,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -28,6 +30,8 @@ public class Perfil {
     @Autowired
     ExameService exameService;
 
+    @Autowired
+    private ExameRepository exameRepository;
 
 
     @GetMapping("/perfil")
@@ -37,9 +41,10 @@ public class Perfil {
         mv.addObject("autenticado", auth.isAuthenticated());
         String username = auth.getName();
         Optional<Usuario> user = usuarioRepository.findByUsername(username);
-
         user.ifPresent(usuario -> mv.addObject("usuario", usuario));
+        List<Exame> examesCadastrados = exameRepository.findAllByPessoa(user.get().getPessoa());
 
+        user.ifPresent(usuario -> mv.addObject("examesFeitos", examesCadastrados));
 
         return mv;
     }
@@ -66,11 +71,11 @@ public class Perfil {
     }
 
     @GetMapping("/perfil/atualizar/{id}")
-    public ModelAndView retornaPaginaAtualizaPaciente(@PathVariable Long id){
+    public ModelAndView retornaPaginaAtualizaPaciente(@PathVariable Long id) {
         Optional<Usuario> op = usuarioRepository.findById(id);
-        if(op.isPresent()){
+        if (op.isPresent()) {
             ModelAndView mv = new ModelAndView("atualiza_paciente");
-            mv.addObject("usuario",new Usuario());
+            mv.addObject("usuario", new Usuario());
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             mv.addObject("autenticado", authentication.isAuthenticated());
             return mv;
@@ -78,5 +83,7 @@ public class Perfil {
             return new ModelAndView("redirect:/acesso_negado");
         }
     }
+
+
 
 }

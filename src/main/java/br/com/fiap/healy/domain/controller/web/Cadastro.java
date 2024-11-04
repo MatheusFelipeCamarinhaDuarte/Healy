@@ -1,5 +1,6 @@
 package br.com.fiap.healy.domain.controller.web;
 
+import br.com.fiap.healy.domain.entity.Pessoa;
 import br.com.fiap.healy.domain.entity.Role;
 import br.com.fiap.healy.domain.entity.Usuario;
 import br.com.fiap.healy.domain.repository.PessoaRepository;
@@ -96,36 +97,26 @@ public class Cadastro {
 
 
 
-    @PostMapping("/atualizar/paciente/{id}")
-    public ModelAndView atualizaPaciente(@PathVariable Long id, @Valid Usuario usuario, BindingResult bd) {
-        if (bd.hasErrors()) {
-            ModelAndView mv = new ModelAndView("atualiza_paciente");
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            mv.addObject("autenticado", authentication.isAuthenticated());
+    @PostMapping("/atualizar/paciente")
+    public ModelAndView atualizaPaciente(@Valid Usuario usuario, BindingResult bd) {
+        Authentication autenticado = SecurityContextHolder.getContext().getAuthentication();
+        String username = autenticado.getName();
+        Optional<Usuario> opUser = usuarioRP.findByUsername(username);
+            Usuario user = opUser.get();
+            Pessoa pessoa = user.getPessoa();
+            pessoa.setNome(usuario.getPessoa().getNome());
+            pessoa.setTelefone(usuario.getPessoa().getTelefone());
+            pessoa.setEmail(usuario.getPessoa().getEmail());
+            user = Usuario.builder()
+                    .id(user.getId())
+                    .pessoa(pessoa)
+                    .username(user.getUsername())
+                    .senha(passwordEncoder.encode(usuario.getSenha()))
+                    .build();
+            usuarioRP.save(user);
+            ModelAndView mv = new ModelAndView("redirect:/perfil");
             return mv;
-        } else {
-            Optional<Usuario> opUser = usuarioRP.findById(id);
-            if (opUser.isPresent()) {
-                Usuario user = opUser.get();
-                user = Usuario.builder()
-                        .id(user.getId())
-                        .pessoa(user.getPessoa())
-                        .username(user.getUsername())
-                        .senha(user.getSenha())
-                        .build();
-                usuarioRP.save(user);
-                ModelAndView mv = new ModelAndView("redirect:/home");
-                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                mv.addObject("autenticado", authentication.isAuthenticated());
-                return mv;
-            } else {
-                ModelAndView mv = new ModelAndView("atualiza_cadastro");
-                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                mv.addObject("autenticado", authentication.isAuthenticated());
-                return mv;
-            }
         }
-    }
 
 
 

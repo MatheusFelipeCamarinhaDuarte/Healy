@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +22,9 @@ public class Exame {
 
     @Column(name = "SEXO")
     private String sexo;
+
+    @Column(name = "DATA")
+    private LocalDate data;
 
     @Column(name = "HIST_DIABETES")
     private Boolean histDiabetes;
@@ -62,7 +67,7 @@ public class Exame {
     @Column(name = "ANOS_ATE_CRISE" )
     private Integer anoAteCrise;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
             name = "PESSOA",
             referencedColumnName = "ID_PESSOA",
