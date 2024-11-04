@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface ExameRepository extends JpaRepository<Exame, Long> {
     List<Exame> findAllByPessoa(Pessoa pessoa);
+    void deleteByPessoa(Pessoa pessoa);
+
 }
