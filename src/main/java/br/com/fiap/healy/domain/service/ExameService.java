@@ -8,6 +8,7 @@ import br.com.fiap.healy.domain.repository.ExameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public class ExameService implements ServiceDTO<Exame, ExameRequest, ExameRespon
     private ExameRepository repo;
     @Autowired
     private PessoaService pessoaService;
+
+    @Transactional // Adicione esta anotação
+    public void removerExamesPorPessoa(Pessoa pessoa) {
+        repo.deleteByPessoa(pessoa);
+    }
 
     @Override
     public Exame toEntity(ExameRequest dto) {

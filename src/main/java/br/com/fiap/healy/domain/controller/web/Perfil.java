@@ -2,6 +2,7 @@ package br.com.fiap.healy.domain.controller.web;
 
 import br.com.fiap.healy.domain.entity.*;
 import br.com.fiap.healy.domain.repository.*;
+import br.com.fiap.healy.domain.service.ExameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +26,7 @@ public class Perfil {
     PessoaRepository pessoaRepository;
 
     @Autowired
-    ExameRepository exameRepository;
+    ExameService exameService;
 
 
 
@@ -45,17 +46,23 @@ public class Perfil {
 
     @GetMapping("/perfil/deletar/{id}")
     public ModelAndView deletarpaciente(@PathVariable Long id, Model model) {
-        boolean temAutorizacao = false;
-        ModelAndView mv = new ModelAndView("index");
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        mv.addObject("autenticado", authentication.isAuthenticated());
-        if (!temAutorizacao) {
-            model.addAttribute("errorMessage", "Você não tem autorização para esta ação!!!");
+        Optional<Usuario> user = usuarioRepository.findById(id);
+        if (user.isPresent()) {
+            exameService.removerExamesPorPessoa(user.get().getPessoa());
+            usuarioRepository.deleteById(id);
+            ModelAndView mv = new ModelAndView("login");
+            mv.addObject("autenticado", authentication.isAuthenticated());
+            return mv;
+
+        } else {
+            ModelAndView mv = new ModelAndView("acesso_negado");
+            model.addAttribute("errorMessage", "Usuário inexistente");
+            mv.addObject("autenticado", authentication.isAuthenticated());
             return mv;
         }
-        return new ModelAndView("index");
+
     }
 
     @GetMapping("/perfil/atualizar/{id}")
