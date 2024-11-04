@@ -1,14 +1,14 @@
 package br.com.fiap.healy.domain.repository;
 
+import br.com.fiap.healy.domain.entity.Exame;
 import br.com.fiap.healy.domain.entity.Pessoa;
-import br.com.fiap.healy.domain.entity.ProfissionalSaude;
+import br.com.fiap.healy.domain.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Set;
 
 @Repository
-public interface ProfissionalSaudeRepository extends JpaRepository<ProfissionalSaude,Long> {
-    List<ProfissionalSaude> findAllByPacientes(Pessoa pacientes);
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findAllByNome(String Nome);
 }

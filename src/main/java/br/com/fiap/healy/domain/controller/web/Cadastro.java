@@ -1,11 +1,14 @@
 package br.com.fiap.healy.domain.controller.web;
 
+import br.com.fiap.healy.domain.entity.Role;
 import br.com.fiap.healy.domain.entity.Usuario;
 import br.com.fiap.healy.domain.repository.PessoaRepository;
+import br.com.fiap.healy.domain.repository.RoleRepository;
 import br.com.fiap.healy.domain.repository.UsuarioRepository;
 import br.com.fiap.healy.domain.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,7 +21,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class Cadastro {
@@ -26,9 +31,9 @@ public class Cadastro {
     @Autowired
     private UsuarioRepository usuarioRP;
     @Autowired
-    private PessoaRepository pessoaRP;
-    @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -54,55 +59,42 @@ public class Cadastro {
         return mv;
     }
 
-    @GetMapping("/cadastro-medico")
-    public ModelAndView cadastroMedico(Model model) {
-        boolean temAutorizacao = false;
-
-        if (!temAutorizacao) {
-            model.addAttribute("errorMessage", "Você não tem autorização para esta ação");
-            return new ModelAndView("index");
-        }
-
-        return new ModelAndView("cadastro_medico");
-    }
-
 
     @PostMapping("/cadastrar/paciente")
     public ModelAndView cadastrarPaciente(@Valid Usuario usuario, BindingResult bd) {
-        System.out.println("DEU ERRADO");
-        if (bd.hasErrors()) {
+        if(usuarioRP.findByUsername(usuario.getUsername()).isPresent()){
+            ModelAndView mv =  new ModelAndView("cadastro_paciente");
+            mv.addObject("errorMessage","Já  existe um usuário com este Username");
+            Authentication autenticado = SecurityContextHolder.getContext().getAuthentication();
+            mv.addObject("autenticado",autenticado.isAuthenticated());
+            return mv;
+        }
 
-            return new ModelAndView("cadastro_paciente");
+
+        if (bd.hasErrors()) {
+            ModelAndView mv =  new ModelAndView("cadastro_paciente");
+            mv.addObject("errorMessage","Já  existe um usuário com este Username");
+            Authentication autenticado = SecurityContextHolder.getContext().getAuthentication();
+            mv.addObject("autenticado",autenticado.isAuthenticated());
+            return mv;
 
         } else {
             usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+            Role role = roleRepository.findAllByNome("ROLE_PACIENTE");
+            Set<Role> roleSet= new HashSet();
+            roleSet.add(role);
+            usuario.setRoles(roleSet);
             usuarioService.save(usuario);
-            System.out.println("Salvou pelo menos");
-            Usuario user = usuarioRP.findByUsername(usuario.getUsername()).orElseThrow(() ->
-                    new UsernameNotFoundException("Usuário não encontrado"));
-            ModelAndView mv = new ModelAndView("perfil");
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            mv.addObject("autenticado", authentication.isAuthenticated());
-            mv.addObject("usuario",user);
+
+            SecurityContextHolder.clearContext();
+            ModelAndView mv = new ModelAndView("login");
             return mv;
 
         }
     }
 
 
-    @GetMapping("atualiza-paciente/{id}")
-    public ModelAndView retornaPaginaAtualizaPaciente(@PathVariable Long id){
-        Optional<Usuario> op = usuarioRP.findById(id);
-        if(op.isPresent()){
-            ModelAndView mv = new ModelAndView("atualiza_paciente");
-            mv.addObject("usuario",new Usuario());
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            mv.addObject("autenticado", authentication.isAuthenticated());
-            return mv;
-        } else {
-            return new ModelAndView("redirect:/Perfil");
-        }
-    }
+
 
     @PostMapping("/atualizar/paciente/{id}")
     public ModelAndView atualizaPaciente(@PathVariable Long id, @Valid Usuario usuario, BindingResult bd) {

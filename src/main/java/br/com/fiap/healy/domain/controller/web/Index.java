@@ -24,4 +24,8 @@ public class Index {
         return mv;
     }
 
+    @GetMapping("/acesso_negado")
+    public String acessoNegado(){
+        return "acesso_negado";
+    }
 }

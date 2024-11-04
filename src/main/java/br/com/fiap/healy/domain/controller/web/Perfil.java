@@ -27,8 +27,6 @@ public class Perfil {
     @Autowired
     ExameRepository exameRepository;
 
-    @Autowired
-    ProfissionalSaudeRepository profissionalSaudeRepository;
 
 
     @GetMapping("/perfil")
@@ -54,10 +52,24 @@ public class Perfil {
 
         mv.addObject("autenticado", authentication.isAuthenticated());
         if (!temAutorizacao) {
-            model.addAttribute("errorMessage", "Você não tem autorização para esta ação");
+            model.addAttribute("errorMessage", "Você não tem autorização para esta ação!!!");
             return mv;
         }
         return new ModelAndView("index");
+    }
+
+    @GetMapping("/perfil/atualizar/{id}")
+    public ModelAndView retornaPaginaAtualizaPaciente(@PathVariable Long id){
+        Optional<Usuario> op = usuarioRepository.findById(id);
+        if(op.isPresent()){
+            ModelAndView mv = new ModelAndView("atualiza_paciente");
+            mv.addObject("usuario",new Usuario());
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            mv.addObject("autenticado", authentication.isAuthenticated());
+            return mv;
+        } else {
+            return new ModelAndView("redirect:/acesso_negado");
+        }
     }
 
 }
