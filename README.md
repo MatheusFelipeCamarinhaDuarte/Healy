@@ -1,6 +1,8 @@
 # HEALY ⚕️
 ***Your healf AI***
 
+[video da sprint 4](https://youtu.be/iRc3PZxI-0U)
+
 Aplicação em desenvolvimento desde 28/03/2024*
 ### Link para o GIT
 https://github.com/MatheusFelipeCamarinhaDuarte/Healy
