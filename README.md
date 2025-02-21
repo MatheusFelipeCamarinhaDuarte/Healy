@@ -1,7 +1,7 @@
 # HEALY ⚕️
 ***Your healf AI***
 
-[video da sprint 4](https://youtu.be/iRc3PZxI-0U)
+O projeto Healy foi baseado em um projeto para a prévia detecção de algumas doenças com bases em exames rotineiros. A IA tem como intuito complementar e auxiliar o profissional de saúde com diagnósticos e predições de possíveis doenças, podendo otimizar o tempo do doutor.
 
 Aplicação em desenvolvimento desde 28/03/2024*
 ### Link para o GIT
@@ -19,7 +19,7 @@ https://trello.com/b/0GSQQFgK/gestao-das-sprints
 
 [3 - Diagramas](#_Diagramas)
 
-[4 - Nossa proposta em vídeo PITCH](#_Picth)
+[4 - Nossa proposta](#_Picth)
 
 [5 - Explicações de classes](#_Explicacoes)
 
@@ -29,11 +29,9 @@ https://trello.com/b/0GSQQFgK/gestao-das-sprints
 <a id="_Integrantes"></a>
 
 # 1 - Integrantes
-    RM: 551401  Nome: Ana Luiza Fontes Franco
-    RM: 551856  Nome: Beatriz Fon Ehnert de Santi
-    RM: 552295  Nome: Matheus Felipe Camarinha Duarte
-    RM: 98672   Nome: Mirelly Ribeiro Azevedo
-    RM: 99708   Nome: Gabriel Francisco Lobo
+    Matheus Felipe Camarinha Duarte
+    Mirelly Ribeiro Azevedo
+    Gabriel Francisco Lobo
 
 <a id="_Instruicoes"></a>
 
@@ -66,8 +64,6 @@ sendo assim, basta rodar no postman.
 <a id="_Picth"></a>
 
 # 4 - Nossa proposta
-[LINK DO VÍDEO](https://www.youtube.com/watch?v=nSN-z2gVDKQ)
-
 Após algumas alterações na proposta, decidimos mudar algumas coisas.
 - Agora. ao invés de oferecer um plano com determinadas áreas da saude, criaremos um IA que, de acordo com informações de exames,
 vejam a probabilidade do desenvolvimento de determinada doença, e alerte ao médico quais as chanches que o paciente tem de desenvolver
